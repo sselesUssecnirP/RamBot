@@ -1,0 +1,15 @@
+{
+  "name": "skribblio-custom-words",
+  "version": "1.0.0",
+  "description": "a simple bot to collect submissions for custom skribblio words. Can be used for other submission collections.",
+  "main": "main.js",
+  "dependencies": {
+    "discord.js": "^12.5.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "node main.js"
+  },
+  "author": "sselesUssecnirP",
+  "license": "ISC"
+}
