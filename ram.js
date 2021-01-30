@@ -275,7 +275,7 @@ client.on('message', async msg => {
                     ********************************************
         */
         
-        if (msg.channel.id == channels[0]["BrokenKingdom"][0] && !msg.content.includes(prefix)) {
+        if (msg.channel.id == channels[0]["BrokenKingdom"][0] && msg.content.includes(prefix) == false) {
 
 
             let embed = new MessageEmbed()
@@ -316,7 +316,7 @@ client.on('message', async msg => {
 
             return;
 
-        } else if (msg.channel.id == channels[1]["FruitBasket"][0] && !msg.content.includes(prefix)) {
+        } else if (msg.channel.id == channels[1]["FruitBasket"][0] && msg.content.includes(prefix) == false) {
 
             let name = msg.author.username
             let content = msg.content
@@ -344,7 +344,7 @@ client.on('message', async msg => {
             msg.delete({ timeout: 10 })
             console.log(collSubmissions)
 
-        } else if (msg.channel.id == channels[1]["FruitBasket"][1] && !msg.content.includes(prefix)) {
+        } else if (msg.channel.id == channels[1]["FruitBasket"][1] && msg.content.includes(prefix) == false) {
 
             let name = msg.author.username
             let content = msg.content
@@ -372,7 +372,7 @@ client.on('message', async msg => {
             msg.delete({ timeout: 10 })
             console.log(collSubmissions)
 
-        } else if (msg.channel.id == channels[1]["FruitBasket"][2] && !msg.content.includes(prefix)) {
+        } else if (msg.channel.id == channels[1]["FruitBasket"][2] && msg.content.includes(prefix) == false) {
 
             let name = msg.author.username
             let content = msg.content
