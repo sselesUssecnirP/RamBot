@@ -1,6 +1,0 @@
-{
-    "token": "NzYyMzU0MTY4MTMyMDEwMDQ0.X3n7pQ.VvCEH38dAJTVWt25vLdMhtSwivU",
-    "channels": [{"BrokenKingdom": ["803476829741908020"]}, {"FruitBasket": ["803468099433005086"]}, {"AlexServer": ["801228833016905788"]}],
-    "guilds": [{"name": "BrokenKingdom", "id": ["755657350962085888", "621916957238755328"]}, {"name": "FruitBasket", "id": "753436245253685278"}, {"name": "AlexServer", "id": "786859785110814740"}],
-    "prefix": {"BrokenKingdom": "bk!", "FruitBasket": "fb!", "AlexServer": "maid!"}
-}

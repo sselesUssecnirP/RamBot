@@ -1,10 +1,12 @@
 {
-  "name": "skribblio-custom-words",
+  "name": "rambot",
   "version": "1.0.0",
-  "description": "a simple bot to collect submissions for custom skribblio words. Can be used for other submission collections.",
+  "description": "A simple maid bot.",
   "main": "main.js",
   "dependencies": {
-    "discord.js": "^12.5.1"
+    "discord.js": "^12.5.1",
+    "mysql": "^2.18.1",
+    "nodegit": "^0.27.0"
   },
   "devDependencies": {},
   "scripts": {
