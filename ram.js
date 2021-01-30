@@ -1,6 +1,6 @@
 const { Client, MessageEmbed } = require('discord.js');
 //const { token } = require("./config/token.json");
-const { channels, guilds, prefix, ownerid } = require('./config/config.json');
+const { channels, guilds, prefix, ownerid, maid } = require('./config/config.json');
 const token = process.env.TOKEN
 
 client = new Client({
@@ -47,7 +47,7 @@ client.on('message', async msg => {
         console.log(command)
 
         if (command === 'invite') {
-            if (msg.author.id == owner) {
+            if (msg.author.id == ownerid) {
         
         /*
                     ********************************************
