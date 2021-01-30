@@ -1,7 +1,7 @@
 const { Client, MessageEmbed } = require('discord.js');
-//const { token } = require("./config/token.json");
+const { token } = require("./config/token.json");
 const { channels, guilds, prefix, ownerid, maid } = require('./config/config.json');
-const token = process.env.TOKEN
+//const token = process.env.TOKEN
 
 client = new Client({
     disableMentions: 'everyone',
@@ -310,7 +310,10 @@ client.on('message', async msg => {
 
     // The Fruit Basket
 
-    } else if (msg.guild.id == guilds[1]["id"]) {
+    } 
+    
+    
+    if (msg.guild.id == guilds[1]["id"]) {
 
         if (msg.author.username === client.user.username) { 
 
@@ -405,7 +408,9 @@ client.on('message', async msg => {
 
     // Alex's (Friend's) Server
 
-    } else if (msg.guild.id == guilds[2]["id"]) {
+    }
+    
+    if (msg.guild.id == guilds[2]["id"]) {
 
         if (msg.author.username === client.user.username) { 
 
