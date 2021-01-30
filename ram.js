@@ -55,7 +55,7 @@ client.on('message', async msg => {
                     ********************************************
         */
         
-                if (msg.guild.id != guilds[0]["id"]) {
+                if (msg.guild.id != guilds[0]["id"][0]) {
                         
                     let embed = new MessageEmbed()
                     .setAuthor(client.user.username, client.user.displayAvatarURL())
@@ -242,7 +242,7 @@ client.on('message', async msg => {
                     ********************************************
         */
         
-        } else if (command == 'getSubmissions') {
+        } else if (command == 'getsubmissions') {
             if (msg.author.id != ownerid) msg.reply("You're most certainly not my master, and you will not be able to run this command.");
 
             if (msg.author.id == ownerid) {
