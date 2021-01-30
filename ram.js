@@ -275,7 +275,7 @@ client.on('message', async msg => {
                     ********************************************
         */
         
-        if (msg.channel.id == channels[0]["BrokenKingdom"][0] && msg.content.includes(prefix) == false) {
+        if (msg.channel.id == channels[0]["BrokenKingdom"][0]) {
 
 
             let embed = new MessageEmbed()
@@ -316,7 +316,7 @@ client.on('message', async msg => {
 
             return;
 
-        } else if (msg.channel.id == channels[1]["FruitBasket"][0] && msg.content.includes(prefix) == false) {
+        } else if (msg.channel.id == channels[1]["FruitBasket"][0]) {
 
             let name = msg.author.username
             let content = msg.content
@@ -344,7 +344,7 @@ client.on('message', async msg => {
             msg.delete({ timeout: 10 })
             console.log(collSubmissions)
 
-        } else if (msg.channel.id == channels[1]["FruitBasket"][1] && msg.content.includes(prefix) == false) {
+        } else if (msg.channel.id == channels[1]["FruitBasket"][1]) {
 
             let name = msg.author.username
             let content = msg.content
@@ -372,7 +372,7 @@ client.on('message', async msg => {
             msg.delete({ timeout: 10 })
             console.log(collSubmissions)
 
-        } else if (msg.channel.id == channels[1]["FruitBasket"][2] && msg.content.includes(prefix) == false) {
+        } else if (msg.channel.id == channels[1]["FruitBasket"][2]) {
 
             let name = msg.author.username
             let content = msg.content
@@ -411,7 +411,7 @@ client.on('message', async msg => {
 
             return;
 
-        } else if (msg.channel.id == channels[2]["AlexServer"][0] && !msg.content.includes(prefix)) {
+        } else if (msg.channel.id == channels[2]["AlexServer"][0]) {
 
             let name = msg.author.username
             let content = msg.content
