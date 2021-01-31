@@ -9,7 +9,7 @@ client = new Client({
     presence: {
         status: "online",
         activity: {
-            name: "ram! | Ram 1.0.0",
+            name: "ram! | Ram 1.0.1",
             type: "LISTENING"
         },
         afk: false
@@ -20,7 +20,7 @@ const collSubmissions = require('./saves/submissions.json');
 const fs = require('fs');
 
 client.on('typingStart', async (channel, user) => {
-    if (user.id == guilds[1]["ownerid"]) (await msg.channel.send("I see you typing Cole! Better not say anything naughty that'll make Emilia upset!")).delete({ timeout: 2500 })
+    if (user.id == guilds[1]["ownerid"]) (await channel.send("I see you typing Cole! Better not say anything naughty that'll make Emilia upset!")).delete({ timeout: 2500 })
 })
 
 client.on('message', async msg => {
