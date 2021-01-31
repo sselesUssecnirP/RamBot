@@ -19,7 +19,12 @@ client = new Client({
 const collSubmissions = require('./saves/submissions.json');
 const fs = require('fs');
 
+client.on('typingStart', async (channel, user) => {
+    if (user.id == guilds[1]["ownerid"]) (await msg.channel.send("I see you typing Cole! Better not say anything naughty that'll make Emilia upset!")).delete({ timeout: 2500 })
+})
+
 client.on('message', async msg => {
+
 
     // Broken Kingdom
 
@@ -127,6 +132,7 @@ client.on('message', async msg => {
         */
         
             if (args[0] == "skribblio") {
+                if (!msg.member.hasPermission('MANAGE_GUILD'))  msg.reply('You do not have the proper permission!');
                 if (msg.guild.id != guilds[0]["id"][0] || guilds[0]["id"][1]) return;
 
                 let submissions = []
@@ -150,6 +156,7 @@ client.on('message', async msg => {
         */
         
             } else if (args[0] == "fbroles") {
+                if (!msg.member.hasPermission('MANAGE_GUILD')) msg.reply('You do not have the proper permission!');
                 if (!msg.guild.id == guilds[1]["id"]) return;
 
                 let submissions = []
@@ -173,6 +180,7 @@ client.on('message', async msg => {
         */
         
             } else if (args[0] == "fbmovienight") {
+                if (!msg.member.hasPermission('MANAGE_GUILD'))  msg.reply('You do not have the proper permission!');
                 if (!msg.guild.id == guilds[1]["id"]) return;
 
                 let submissions = []
@@ -196,6 +204,7 @@ client.on('message', async msg => {
         */
         
             } else if (args[0] == "fbanimenight") {
+                if (!msg.member.hasPermission('MANAGE_GUILD'))  msg.reply('You do not have the proper permission!');
                 if (!msg.guild.id == guilds[1]["id"]) return;
 
                 let submissions = []
@@ -249,6 +258,63 @@ client.on('message', async msg => {
                 await msg.author.send(`submissions.json as of ${new Date()}`, { files: ["./saves/submissions.json"] })
                 msg.reply("Master, I've DM'd you an updated version of submissions.json as you've asked.")
             }
+        /*
+        } else if (command == 'say') {
+            if (args[0] == undefined) {
+                msg.reply("You've provided no arguments for the embed. Proper usuage: `ram!say channel:{CHANNEL} color:{COLOR} {MESSAGE}` // `channel:{CHANNEL}` must be a channel mention (#channel_name) -- `color:{COLOR}` must be either an RGB or Hex code. (#FFFFFF or 20, 20, 20)")
+                return;
+            }
+
+            let channel = false
+            let color = false
+            let customChannel = false
+
+            if (args[0].includes("channel:")) {
+                console.log("custom channel")
+                args[0].slice("channel:<#")
+                args[0].slice(">")
+                channel = msg.guild.channels.cache.find(iChannel => {
+                    if (iChannel.id == msg.mentions.channels.first()) return iChannel;
+                })
+                args.slice(channel)
+                customChannel = true
+
+            } else {
+
+
+
+            }
+
+            if (args[0].includes('color:#')) {
+                console.log("hex color")
+                args[0].slice("color:")
+                color = args[0]
+                args.slice(args[0])
+
+            } else if (args[0].includes('color:') && !args[0].includes('color:#')) {
+                console.log("RGB color")
+                args[0].slice("color:")
+                color = `${args[0]},${args[1]},${args[2]}`
+                for (let i = 0; i <= 3; i++) {
+                    console.log(args[0])
+                    args.slice(args[0]);
+                }
+
+            } else {
+                console.log("default color")
+                color = 83,12,176
+
+            }
+
+
+            let embed = new MessageEmbed()
+                .setAuthor(name, msg.author.displayAvatarURL())
+                .setColor(color)
+                .addField("Message from ram!say", args.join(' '), { inline: true })
+
+            if (!customChannel) msg.channel.send(embed);    
+            if (customChannel) channel.send(embed);
+        */
         }
 
     }
@@ -320,6 +386,7 @@ client.on('message', async msg => {
             return;
 
         } else if (msg.channel.id == channels[1]["FruitBasket"][0] && msg.content.includes(prefix) == false) {
+            if (msg.author.bot) return;
 
             let name = msg.author.username
             let content = msg.content
@@ -339,7 +406,7 @@ client.on('message', async msg => {
         
                 collSubmissions["submissions"]["movienight-fb"].push({name: name, message: content, submitted: dateCreated, channel: channel, guild: guild})
 
-            fs.writeFile('./saves/submissions.json', JSON.stringify(collSubmissions), (err) => {
+            fs.writeFile('./saves/submissions.json', JSON.stringify(collSubmissions, null, '\t'), (err) => {
             if (err) throw err;
                 console.log('The file has been saved!');
             });
@@ -348,6 +415,7 @@ client.on('message', async msg => {
             console.log(collSubmissions)
 
         } else if (msg.channel.id == channels[1]["FruitBasket"][1] && msg.content.includes(prefix) == false) {
+            if (msg.author.bot) return;
 
             let name = msg.author.username
             let content = msg.content
@@ -367,7 +435,7 @@ client.on('message', async msg => {
         
                 collSubmissions["submissions"]["animenight-fb"].push({name: name, message: content, submitted: dateCreated, channel: channel, guild: guild})
 
-            fs.writeFile('./saves/submissions.json', JSON.stringify(collSubmissions), (err) => {
+            fs.writeFile('./saves/submissions.json', JSON.stringify(collSubmissions, null, '\t'), (err) => {
             if (err) throw err;
                 console.log('The file has been saved!');
             });
@@ -376,6 +444,7 @@ client.on('message', async msg => {
             console.log(collSubmissions)
 
         } else if (msg.channel.id == channels[1]["FruitBasket"][2] && msg.content.includes(prefix) == false) {
+            if (msg.author.bot) return;
 
             let name = msg.author.username
             let content = msg.content
@@ -396,7 +465,7 @@ client.on('message', async msg => {
         
                 collSubmissions["submissions"]["fb-role-ideas"].push({name: name, message: content, submitted: dateCreated, channel: channel, guild: guild})
 
-            fs.writeFile('./saves/submissions.json', JSON.stringify(collSubmissions), (err) => {
+            fs.writeFile('./saves/submissions.json', JSON.stringify(collSubmissions, null, '\t'), (err) => {
                 if (err) throw err;
                 console.log('The file has been saved!');
             });
@@ -417,6 +486,7 @@ client.on('message', async msg => {
             return;
 
         } else if (msg.channel.id == channels[2]["AlexServer"][0] && msg.content.includes(prefix) == false) {
+            if (msg.author.bot) return;
 
             let name = msg.author.username
             let content = msg.content
@@ -432,7 +502,7 @@ client.on('message', async msg => {
         
             collSubmissions["submissions"]["movienight-alex"].push({name: name, message: content, submitted: dateCreated, channel: channel, guild: guild})
 
-            fs.writeFile('submissions.json', JSON.stringify(collSubmissions), (err) => {
+            fs.writeFile('submissions.json', JSON.stringify(collSubmissions, null, '\t'), (err) => {
             if (err) throw err;
                 console.log('The file has been saved!');
             });
