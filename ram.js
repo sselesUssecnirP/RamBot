@@ -1,6 +1,7 @@
 const { Client, MessageEmbed } = require('discord.js');
 //const { token } = require("./config/token.json");
-const { channels, guilds, prefix, ownerid, maid } = require('./config/config.json');
+const { sleep } = require('./functions/basic')
+const { channels, guilds, prefix, ownerid, maid, dogwater } = require('./config/config.json');
 const token = process.env.TOKEN
 
 client = new Client({
@@ -9,7 +10,7 @@ client = new Client({
     presence: {
         status: "online",
         activity: {
-            name: "ram! | Ram 1.0.1",
+            name: "ram! | Ram 1.0.2",
             type: "LISTENING"
         },
         afk: false
@@ -315,6 +316,20 @@ client.on('message', async msg => {
             if (!customChannel) msg.channel.send(embed);    
             if (customChannel) channel.send(embed);
         */
+        } else if (command === 'dogwater') {
+            let dogK
+
+            client.users.cache.find(user => {
+                if (user.id === dogwater) dogK = user;
+            })
+
+            if (msg.author.id === dogK.id) {
+                msg.reply("My master tells you are dogwater, and my master would never lie!")
+                dogK.send("https://www.youtube.com/watch?v=0KGS0IOzSQQ&list=PLrvwVi0t0h8AYitTAkCXEcGVRxqXXZeeq&index=343")
+            } else if (msg.author.id != dogK.id) {
+                msg.reply(`<@!${dogK.id}> is extremely dogwater. My master told me so and my master would never lie.`)
+                dogK.send("https://www.youtube.com/watch?v=0KGS0IOzSQQ&list=PLrvwVi0t0h8AYitTAkCXEcGVRxqXXZeeq&index=343")
+            }
         }
 
     }
