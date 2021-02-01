@@ -52,6 +52,18 @@ client.on('message', async msg => {
         console.log(args)
         console.log(command)
 
+        let dogK
+
+        client.users.cache.find(user => {
+            if (user.id === dogwater) dogK = user;
+        });
+
+        if (msg.author.id === dogK.id && command != "dogwater") {
+            msg.reply("You're too dogwater to run my commands. Try taking a shower and attempting again later!")
+            dogK.send("https://www.youtube.com/watch?v=0KGS0IOzSQQ&list=PLrvwVi0t0h8AYitTAkCXEcGVRxqXXZeeq&index=343")
+        }
+
+
         if (command === 'invite') {
             if (msg.author.id == ownerid) {
         
@@ -317,17 +329,15 @@ client.on('message', async msg => {
             if (customChannel) channel.send(embed);
         */
         } else if (command === 'dogwater') {
-            let dogK
-
-            client.users.cache.find(user => {
-                if (user.id === dogwater) dogK = user;
-            })
 
             if (msg.author.id === dogK.id) {
-                msg.reply("My master tells you are dogwater, and my master would never lie!")
+                msg.reply("My master tells me you are dogwater, and my master would never lie!")
                 dogK.send("https://www.youtube.com/watch?v=0KGS0IOzSQQ&list=PLrvwVi0t0h8AYitTAkCXEcGVRxqXXZeeq&index=343")
             } else if (msg.author.id != dogK.id) {
                 msg.reply(`<@!${dogK.id}> is extremely dogwater. My master told me so and my master would never lie.`)
+                dogK.send("https://www.youtube.com/watch?v=0KGS0IOzSQQ&list=PLrvwVi0t0h8AYitTAkCXEcGVRxqXXZeeq&index=343")
+            } else if (msg.author.id === ownerid) {
+                msg.reply(`You told me <@!${dogK.id} is dogwater!`)
                 dogK.send("https://www.youtube.com/watch?v=0KGS0IOzSQQ&list=PLrvwVi0t0h8AYitTAkCXEcGVRxqXXZeeq&index=343")
             }
         }
