@@ -4,12 +4,6 @@ const { sleep } = require('./functions/basic')
 const { channels, guilds, prefix, ownerid, maid, dogwater } = require('./config/config.json');
 const token = process.env.TOKEN
 
-let dogK;
-
-client.users.cache.find(user => {
-    if (user.id === dogwater) dogK = user;
-});
-
 client = new Client({
     disableMentions: 'everyone',
     partials: ["MESSAGE", "CHANNEL", "REACTION"],
@@ -22,6 +16,12 @@ client = new Client({
         afk: false
     }
 })
+
+let dogK;
+
+client.users.cache.find(user => {
+    if (user.id === dogwater) dogK = user;
+});
 
 const collSubmissions = require('./saves/submissions.json');
 const fs = require('fs');
