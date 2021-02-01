@@ -4,6 +4,12 @@ const { sleep } = require('./functions/basic')
 const { channels, guilds, prefix, ownerid, maid, dogwater } = require('./config/config.json');
 const token = process.env.TOKEN
 
+let dogK;
+
+client.users.cache.find(user => {
+    if (user.id === dogwater) dogK = user;
+});
+
 client = new Client({
     disableMentions: 'everyone',
     partials: ["MESSAGE", "CHANNEL", "REACTION"],
@@ -51,12 +57,6 @@ client.on('message', async msg => {
 
         console.log(args)
         console.log(command)
-
-        let dogK
-
-        client.users.cache.find(user => {
-            if (user.id === dogwater) dogK = user;
-        });
 
         if (msg.author.id === dogK.id && command != "dogwater") {
             msg.reply("You're too dogwater to run my commands. Try taking a shower and attempting again later!")
