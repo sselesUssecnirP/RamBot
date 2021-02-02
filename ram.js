@@ -10,7 +10,7 @@ client = new Client({
     presence: {
         status: "online",
         activity: {
-            name: "ram! | Ram 1.0.2",
+            name: "ram! | Ram 1.0.3",
             type: "LISTENING"
         },
         afk: false
@@ -75,7 +75,18 @@ client.on('message', async msg => {
                     .addField("Use this link to invite me to your server:", "https://discord.com/api/oauth2/authorize?client_id=762354168132010044&permissions=8&scope=bot\n\nUse this link to join my Owner's server:\nhttps://discord.brokenkingdom.net", true)
                     .setDescription("Invite links for myself and my Owner's server!")
         
-                    msg.reply(embed)
+                    msg.reply(embed).catch(() => {
+                        msg.author.send(`I was unable to send messages in ${msg.channel.name} on the server ${msg.guild.name}`)
+                        if (msg.guild.members.cache.find((user, index) => {
+                            if (user.id === ownerid) {
+                                return true
+                            } else {
+                                if (index === msg.guild.members.cache.array().length - 1) return false;
+                            };
+                        })) client.users.cache.find((user) => {
+                            if (user.id === ownerid) user.send(`I was unable to send messages in ${msg.channel.name} on the server ${msg.guild.name}`);
+                        });
+                    })
                 } else if (msg.guild.id == guilds[0]["id"]) {
         
                     let embed = new MessageEmbed()
@@ -84,7 +95,9 @@ client.on('message', async msg => {
                     .addField("Use this link to invite me to your server:", "https://discord.com/api/oauth2/authorize?client_id=762354168132010044&permissions=8&scope=bot", true)
                     .setDescription("Invite link for myself!")
         
-                    msg.reply(embed)
+                    msg.reply(embed).catch(() => {
+                        msg.author.send(`I was unable to send messages in ${msg.channel.name} on the server ${msg.guild.name}`)
+                    })
         
                     
                 };
@@ -106,7 +119,9 @@ client.on('message', async msg => {
         
                     msg.reply("You are not my Owner, but I did recognize you as my Owner's maid! You're permitted to use this command!")
                     msg.react("<:EmiThumbsUp:801972190496423977>")
-                    msg.reply(embed)
+                    msg.reply(embed).catch(() => {
+                        msg.author.send(`I was unable to send messages in ${msg.channel.name} on the server ${msg.guild.name}`)
+                    })
                 } else if (msg.guild.id == guilds[0]["id"]) {
         
                     let embed = new MessageEmbed()
@@ -115,13 +130,23 @@ client.on('message', async msg => {
                     .addField("Use this link to invite me to your server:", "https://discord.com/api/oauth2/authorize?client_id=762354168132010044&permissions=8&scope=bot", true)
                     .setDescription("Invite link for myself!")
         
-                    msg.reply("You are not my Owner, but I did recognize you as a fellow maid! You're permitted to use this command!")
-                    msg.react("<:EmiThumbsUp:801972190496423977>")
-                    msg.reply(embed)
+                    msg.reply("You are not my Owner, but I did recognize you as a fellow maid! You're permitted to use this command!").catch(() => {
+                        msg.author.send(`I was unable to send messages in ${msg.channel.name} on the server ${msg.guild.name}`)
+                    })
+                    msg.react("<:EmiThumbsUp:801972190496423977>").catch(() => {
+                        msg.author.send(`I was unable to react to messages in ${msg.channel.name} on the server ${msg.guild.name}`)
+                    })
+                    msg.reply(embed).catch(() => {
+                        msg.author.send(`I was unable to send messages in ${msg.channel.name} on the server ${msg.guild.name}`)
+                    })
                 }
             } else {
-                msg.react("<:BettyHmph:801972187706818650>")
-                msg.reply("You're not permitted to use my Owner's command. If you were his one of his maids, maybeeeee...")
+                msg.react("<:BettyHmph:801972187706818650>").catch(() => {
+                    msg.author.send(`I was unable to send messages in ${msg.channel.name} on the server ${msg.guild.name}`)
+                })
+                msg.reply("You're not permitted to use my Owner's command. If you were his one of his maids, maybeeeee...").catch(() => {
+                    msg.author.send(`I was unable to react to messages in ${msg.channel.name} on the server ${msg.guild.name}`)
+                })
             };
         
         /*          Commands
@@ -154,7 +179,9 @@ client.on('message', async msg => {
                 .addField("Submissions", submissions.join(', '), { inline: true })
                 .setFooter(`${name} used ${prefix}!${command} ${args.length > 1 ? `${args.join()}` : `${args.join(' ')}`}! It brought up a list of submissions!`, msg.author.displayAvatarURL())
 
-                msg.reply(embed)
+                msg.reply(embed).catch(() => {
+                    msg.author.send(`I was unable to send messages in ${msg.channel.name} on the server ${msg.guild.name}`)
+                })
 
         /*          Commands
                     ********************************************
@@ -234,6 +261,155 @@ client.on('message', async msg => {
                 .addField("ERROR", "You didn't provide any correct details. To use this command, add `skribblio`, `fbmovienight`, `fbanimenight`, or `fbroles` as an argument for the command.", { inline: true })
 
                 msg.reply(embed)
+            }
+
+
+/*          Commands
+            ********************************************
+            ***              Skribblio               ***
+            ********************************************
+*/
+        if (args[0] === 'remove') {
+
+                if (args[1] == "skribblio") {
+                    if (!msg.member.hasPermission('ADMINISTRATOR'))  msg.reply('You do not have the proper permission!');
+                    if (msg.guild.id != guilds[0]["id"][0] || guilds[0]["id"][1]) return;
+                    if (!Number.isIntegar(args[1])) msg.reply("The argument provided for which item on the skribblio list is not a number.")
+                    if (args[1] > collSubmissions["skribblio"].length - 1) msg.reply("That number is not an item within the list provided.")
+
+                    const filter = (m) => {
+                        m.author.id === msg.author.id
+                    }
+
+                    let reply = msg.reply(`Are you sure you want to delete this? Submissions > Skribblio > ${collSubmissions["skribblio"][args[1]]["message"]}`)
+                        .awaitMessages(filter, { max: 1, time: 30000, errors: ['time'] })
+                        .then(c => {
+                            const collected = c.array()
+                            if (c[0] === 'yes') {
+                                reply.delete({ timeout: 10 })
+                                collSubmissions["skribblio"].slice(collSubmissions["skribblio"][args[1]])
+                                msg.reply("Item was deleted from skribblio submissions")
+                            } else if (c[0] === 'no') {
+                                reply.delete({ timeout: 10 })
+                                msg.reply("Item will not be deleted from skribblio")
+                            }
+                        })
+                        .catch(() => {
+                            reply.delete({ timeout: 10 })
+                            msg.reply("You took too long to respond! Deletion cancelled.")
+                        })
+
+/*          Commands
+            ********************************************
+            ***            Idea For Roles            ***
+            ********************************************
+*/
+
+                } else if (args[1] == "fbroles") {
+                    if (!msg.member.hasPermission('ADMINISTRATOR')) msg.reply('You do not have the proper permission!');
+                    if (!msg.guild.id == guilds[1]["id"]) return;
+                    if (Number.isIntegar(args[1]))
+                    if (args[1] > collSubmissions["fb-role-ideas"].length - 1) msg.reply("That number is not an item within the list provided.")
+
+                    const filter = (m) => {
+                        m.author.id === msg.author.id
+                    }
+
+                    let reply = msg.reply(`Are you sure you want to delete this? Submissions > fbroles > ${collSubmissions["fb-role-ideas"][args[1]]["message"]}`)
+                        .awaitMessages(filter, { max: 1, time: 30000, errors: ['time'] })
+                        .then(c => {
+                            const collected = c.array()
+                            if (c[0] === 'yes') {
+                                reply.delete({ timeout: 10 })
+                                collSubmissions["fb-role-ideas"].slice(collSubmissions["fb-role-ideas"][args[1]])
+                                msg.reply("Item was deleted from fbroles submissions")
+                            } else if (c[0] === 'no') {
+                                reply.delete({ timeout: 10 })
+                                msg.reply("Item will not be deleted from fbroles")
+                            }
+                        })
+                        .catch(() => {
+                            reply.delete({ timeout: 10 })
+                            msg.reply("You took too long to respond! Deletion cancelled.")
+                        })
+
+/*          Commands
+            ********************************************
+            ***            FB Movie Night            ***
+            ********************************************
+*/
+
+                } else if (args[1] == "fbmovienight") {
+                    if (!msg.member.hasPermission('ADMINISTRATOR'))  msg.reply('You do not have the proper permission!');
+                    if (!msg.guild.id == guilds[1]["id"]) return;
+                    if (Number.isIntegar(args[1]))
+                    if (args[1] > collSubmissions["movienight-fb"].length - 1) msg.reply("That number is not an item within the list provided.")
+
+                    const filter = (m) => {
+                        m.author.id === msg.author.id
+                    }
+
+                    let reply = msg.reply(`Are you sure you want to delete this? Submissions > movienight > ${collSubmissions["movienight-fb"][args[1]]["message"]}`)
+                        .awaitMessages(filter, { max: 1, time: 30000, errors: ['time'] })
+                        .then(c => {
+                            const collected = c.array()
+                            if (c[0] === 'yes') {
+                                reply.delete({ timeout: 10 })
+                                collSubmissions["movienight-fb"].slice(collSubmissions["movienight-fb"][args[1]])
+                                msg.reply("Item was deleted from movienight submissions")
+                            } else if (c[0] === 'no') {
+                                reply.delete({ timeout: 10 })
+                                msg.reply("Item will not be deleted from movienight")
+                            }
+                        })
+                        .catch(() => {
+                            reply.delete({ timeout: 10 })
+                            msg.reply("You took too long to respond! Deletion cancelled.")
+                        })
+
+/*          Commands
+            ********************************************
+            ***            FB Anime Night            ***
+            ********************************************
+*/
+            
+
+                } else if (args[1] == "fbanimenight") {
+                    if (!msg.member.hasPermission('ADMINISTRATOR'))  msg.reply('You do not have the proper permission!');
+                    if (!msg.guild.id == guilds[1]["id"]) return;
+                    if (Number.isIntegar(args[1]))
+                    if (args[1] > collSubmissions["animenight-fb"].length - 1) msg.reply("That number is not an item within the list provided.")
+
+                    const filter = (m) => {
+                        m.author.id === msg.author.id
+                    }
+
+                    let reply = msg.reply(`Are you sure you want to delete this? Submissions > animenight > ${collSubmissions["animenight-fb"][args[1]]["message"]}`)
+                        .awaitMessages(filter, { max: 1, time: 30000, errors: ['time'] })
+                        .then(c => {
+                            const collected = c.array()
+                            if (c[0] === 'yes') {
+                                reply.delete({ timeout: 10 })
+                                collSubmissions["animenight-fb"].slice(collSubmissions["animenight-fb"][args[1]])
+                                msg.reply("Item was deleted from animenight submissions")
+                            } else if (c[0] === 'no') {
+                                reply.delete({ timeout: 10 })
+                                msg.reply("Item will not be deleted from animenight")
+                            }
+                        })
+                        .catch(() => {
+                            reply.delete({ timeout: 10 })
+                            msg.reply("You took too long to respond! Deletion cancelled.")
+                        })
+                
+                } else {
+                    let embed = new MessageEmbed()
+                    .setAuthor(client.user.username, client.user.displayAvatarURL())
+                    .setColor(83,12,176)
+                    .addField("ERROR", "You didn't provide any correct details. To use this command, add `skribblio`, `fbmovienight`, `fbanimenight`, or `fbroles` as an argument for the command.", { inline: true })
+
+                    msg.reply(embed)
+                }
             }
             
         /*          Commands
