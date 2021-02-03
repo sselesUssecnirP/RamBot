@@ -29,7 +29,7 @@ module.exports = {
 
         if (dog.id === ownerid) msg.reply('My master is not dogwater. Please refrain from insulting him!')
         if (dog.id === maid) msg.reply("My master's other maid is not dogwater.") 
-        if (dog.id === client.user.id) msg.reply(`I'm not `dogwater`. I'm the best maid <@!${ownerid}> has!`)
+        if (dog.id === client.user.id) msg.reply(`I'm not \`dogwater\`. I'm the best maid <@!${ownerid}> has!`)
         if (dog.id != ownerid && dog.id != maid) msg.channel.send(`<@!${msg.author.id}> says that <@!${dog.id}> is dogwater!`);
         dogK.send("https://www.youtube.com/watch?v=0KGS0IOzSQQ&list=PLrvwVi0t0h8AYitTAkCXEcGVRxqXXZeeq&index=343")
     }
