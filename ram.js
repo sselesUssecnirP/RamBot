@@ -1,8 +1,8 @@
 const { Client, MessageEmbed, Collection } = require('discord.js');
-const { token } = require("./config/token.json");
+//const { token } = require("./config/token.json");
 const { sleep } = require('./functions/basic'); 
 const { channels, guilds, prefix, ownerid, maid, dogwater } = require('./config/config.json');
-//const token = process.env.TOKEN
+const token = process.env.TOKEN
 const handlers = ["commands"]
 
 
@@ -12,7 +12,7 @@ client = new Client({
     presence: {
         status: "online",
         activity: {
-            name: "ram! | Ram 1.0.3",
+            name: "ram! | Ram 1.1.0",
             type: "LISTENING"
         },
         afk: false
