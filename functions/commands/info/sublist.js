@@ -2,7 +2,7 @@ module.exports = {
     name: "sublist",
     category: "info",
     description: "Grab a list of submissions, remove items from, create submissions channels, ",
-    aliases: [],
+    aliases: ["submissions"],
     usage: "<listname>",
     run: async (client, msg, args, guilds, collSubmissions, ownerid, maid) => {
 /*          Commands

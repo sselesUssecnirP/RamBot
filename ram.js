@@ -1,8 +1,8 @@
 const { Client, MessageEmbed, Collection } = require('discord.js');
-const { token } = require("./config/token.json");
+//const { token } = require("./config/token.json");
 const { sleep } = require('./functions/basic'); 
 const { channels, guilds, prefix, ownerid, maid, dogwater } = require('./config/config.json');
-//const token = process.env.TOKEN
+const token = process.env.TOKEN
 const handlers = ["commands"]
 
 let ramPuzzle = ["", ""]

@@ -12,6 +12,7 @@ module.exports = {
         const member = getMember(message, args.join(" "));
 
         const joined = formatDate(member.joinedAt);
+        
         const roles = member.roles
             .filter(r => r.id !== message.guild.id)
             .map(r => r)
