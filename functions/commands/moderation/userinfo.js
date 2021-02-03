@@ -1,5 +1,5 @@
 const { getMember, formatDate } = require('../../basic');
-const { MessageEmbed, Message } = require('discord.js');
+const { MessageEmbed } = require('discord.js');
 const { stripIndents } = require('common-tags');
 
 module.exports = {
@@ -9,12 +9,12 @@ module.exports = {
     aliases: ["whois", "who"],
     usage: "<username | id | mention>",
     run: async (client, msg, args, guilds, collSubmissions, ownerid, maid) => {
-        const member = getMember(message, args.join(" "));
+        const member = getMember(msg, args.join(" "));
 
         const joined = formatDate(member.joinedAt);
-        
+
         const roles = member.roles
-            .filter(r => r.id !== message.guild.id)
+            .filter(r => r.id !== msg.guild.id)
             .map(r => r)
             .join(", ") || "none"
         

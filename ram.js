@@ -5,8 +5,6 @@ const { channels, guilds, prefix, ownerid, maid, dogwater } = require('./config/
 const token = process.env.TOKEN
 const handlers = ["commands"]
 
-let ramPuzzle = ["", ""]
-
 client = new Client({
     disableMentions: 'everyone',
     partials: ["MESSAGE", "CHANNEL", "REACTION"],
@@ -83,7 +81,7 @@ client.on('message', async msg => {
         if (!cmd) cmd = client.commands.get(client.aliases.get(command));
 
         if (cmd)
-            cmd.run(client, msg, args, guilds, collSubmissions, ownerid, maid);
+            cmd.run(client, msg, args, guilds, collSubmissions, ownerid, maid, prefix);
 
         /*
         } else if (command == 'say') {
@@ -300,26 +298,9 @@ client.on('message', async msg => {
             console.log(collSubmissions)
 
 
-        } else if (msg.channel.id == channels["FruitBasket"][3] && msg.content.includes(prefix) == false) {
-            if (ramPuzzle[0] === "Solved!") msg.reply(`this puzzle was already solved by <@!${ramPuzzle[1]}>.`)
-            if (msg.author.bot) return;
-
-            let name = msg.author.username
-            let content = msg.content
-
-            let embed = new MessageEmbed()
-            .setAuthor(client.user.username, client.user.displayAvatarURL())
-            .setColor(83,12,176)
-            .addField("Guess", content)
-            .setFooter(name, msg.author.displayAvatarURL())
-
-            await msg.delete({ timeout: 10 })
-            await msg.channel.send(embed)
-            if (msg.content.toLowerCase() === "alex is jealous of ram") {
-                await msg.reply("You're correct! Congratulations... You solved the puzzle!")
-                ramPuzzle[0] = "Solved!"
-                ramPuzzle[1] = msg.author.id
-            }
+        } else if (msg.content.includes(prefix) == false) {
+            
+            
         };
 
 

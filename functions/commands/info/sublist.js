@@ -4,7 +4,7 @@ module.exports = {
     description: "Grab a list of submissions, remove items from, create submissions channels, ",
     aliases: ["submissions"],
     usage: "<listname>",
-    run: async (client, msg, args, guilds, collSubmissions, ownerid, maid) => {
+    run: async (client, msg, args, guilds, collSubmissions, ownerid, maid, prefix) => {
 /*          Commands
             ********************************************
             ***              Skribblio               ***
