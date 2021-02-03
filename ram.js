@@ -211,7 +211,7 @@ client.on('message', async msg => {
 
             return;
 
-        } else if (msg.channel.id == channels["fruitbasket"][0] && msg.content.includes(prefix) == false) {
+        } else if (msg.channel.id == channels["FruitBasket"][0] && msg.content.includes(prefix) == false) {
             if (msg.author.bot) return;
 
             let name = msg.author.username
@@ -240,7 +240,7 @@ client.on('message', async msg => {
             msg.delete({ timeout: 10 })
             console.log(collSubmissions)
 
-        } else if (msg.channel.id == channels["fruitbasket"][1] && msg.content.includes(prefix) == false) {
+        } else if (msg.channel.id == channels["FruitBasket"][1] && msg.content.includes(prefix) == false) {
             if (msg.author.bot) return;
 
             let name = msg.author.username
@@ -269,7 +269,7 @@ client.on('message', async msg => {
             msg.delete({ timeout: 10 })
             console.log(collSubmissions)
 
-        } else if (msg.channel.id == channels["fruitbasket"][2] && msg.content.includes(prefix) == false) {
+        } else if (msg.channel.id == channels["FruitBasket"][2] && msg.content.includes(prefix) == false) {
             if (msg.author.bot) return;
 
             let name = msg.author.username
@@ -300,7 +300,7 @@ client.on('message', async msg => {
             console.log(collSubmissions)
 
 
-        } else if (msg.channel.id == channels["fruitbasket"][2] && msg.content.includes(prefix) == false) {
+        } else if (msg.channel.id == channels["FruitBasket"][2] && msg.content.includes(prefix) == false) {
             if (ramPuzzle[0] = "Solved!") msg.reply(`This puzzle was already solved by <@!${ramPuzzle[1]}>!`)
             if (msg.author.bot) return;
 
