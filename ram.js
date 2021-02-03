@@ -5,6 +5,7 @@ const { channels, guilds, prefix, ownerid, maid, dogwater } = require('./config/
 const token = process.env.TOKEN
 const handlers = ["commands"]
 
+let ramPuzzle = ["", ""]
 
 client = new Client({
     disableMentions: 'everyone',
@@ -300,6 +301,7 @@ client.on('message', async msg => {
 
 
         } else if (msg.channel.id == channels["FruitBasket"][3] && msg.content.includes(prefix) == false) {
+            if (ramPuzzle[0] === "Solved!") msg.reply(`this puzzle was already solved by <@!${ramPuzzle[1]}>.`)
             if (msg.author.bot) return;
 
             let name = msg.author.username
@@ -315,6 +317,8 @@ client.on('message', async msg => {
             await msg.channel.send(embed)
             if (msg.content.toLowerCase() === "alex is jealous of ram") {
                 await msg.reply("You're correct! Congratulations... You solved the puzzle!")
+                ramPuzzle[0] = "Solved!"
+                ramPuzzle[1] = msg.author.id
             }
         };
 
