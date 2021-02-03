@@ -2,7 +2,7 @@ module.exports = {
     name: "help",
     category: "info",
     description: "Displays a wonderful embed of help pages",
-    run: async (client, msg, args) => {
+    run: async (client, msg, args, guilds, collSubmissions, ownerid, maid) => {
             //let embed = new MessageEmbed()
             //    .setAuthor(client.user.username, client.user.displayAvatarURL())
             //    .setColor(83,12,176)

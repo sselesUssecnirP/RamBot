@@ -4,7 +4,7 @@ module.exports = {
     description: "Calls someone dogwater",
     aliases: ["dogw"],
     usage: "<input>",
-    run: async (client, msg, args, ownerid, maid) => {
+    run: async (client, msg, args, guilds, collSubmissions, ownerid, maid) => {
         let dog;
 
         if (msg.mentions.users.array().length != 1) {

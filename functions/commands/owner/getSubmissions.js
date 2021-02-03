@@ -3,7 +3,7 @@ module.exports = {
     category: "owner-only",
     description: "Grabs the submissions.json file",
     aliases: ["getsub", "getsublist"],
-    run: async (client, msg, channels, guilds, ownerid, maid) => {
+    run: async (client, msg, args, guilds, collSubmissions, ownerid, maid) => {
         if (msg.author.id != ownerid) msg.reply("You're most certainly not my master, and you will not be able to run this command.");
 
             if (msg.author.id == ownerid) {

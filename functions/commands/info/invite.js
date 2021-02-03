@@ -3,7 +3,7 @@ module.exports = {
     category: "info",
     description: "Grab an invite for the bot (and, if not the owner's server, an invite to the owner's server)",
     aliases: ["inv"],
-    run: async (client, msg, channels, guilds, ownerid, maid) => {
+    run: async (client, msg, args, guilds, collSubmissions, ownerid, maid) => {
         
         if (msg.author.id == ownerid) {
         
