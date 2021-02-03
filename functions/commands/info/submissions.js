@@ -10,8 +10,10 @@ module.exports = {
             ***              Skribblio               ***
             ********************************************
 */
+const { MessageEmbed } = require('discord.js')
+
         
-       if (args[0] == "skribblio") {
+    if (args[0] == "skribblio") {
         if (!msg.member.hasPermission('MANAGE_GUILD'))  msg.reply('You do not have the proper permission!');
         if (msg.guild.id != guilds[0]["id"][0] || guilds[0]["id"][1]) return;
 

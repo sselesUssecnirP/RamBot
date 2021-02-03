@@ -11,7 +11,7 @@
   },
   "devDependencies": {},
   "scripts": {
-    "test": "node main.js"
+    "test": "node ram.js"
   },
   "author": "sselesUssecnirP",
   "license": "ISC"
