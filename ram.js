@@ -5,6 +5,7 @@ const { channels, guilds, prefix, ownerid, maid, dogwater } = require('./config/
 const token = process.env.TOKEN
 const handlers = ["commands"]
 
+let ramPuzzle;
 
 client = new Client({
     disableMentions: 'everyone',
@@ -54,6 +55,12 @@ client.on('message', async msg => {
 
         return;
     } else if (msg.channel.type === 'dm') return;
+
+    if (msg.mentions.has(client.user)) {
+        if (msg.author.id === ownerid && msg.content.toLowerCase() === "thank you") {
+            msg.reply("There is no need to thank me Master! I'm here to serve you... always.")
+        }
+    }
 
     if (msg.content.includes(prefix)) {
 
@@ -160,7 +167,7 @@ client.on('message', async msg => {
                     ********************************************
         */
         
-        if (msg.channel.id == channels[0]["BrokenKingdom"][0] && msg.content.includes(prefix) == false) {
+        if (msg.channel.id == channels["BrokenKingdom"][0] && msg.content.includes(prefix) == false) {
 
 
             let embed = new MessageEmbed()
@@ -204,7 +211,7 @@ client.on('message', async msg => {
 
             return;
 
-        } else if (msg.channel.id == channels[1]["FruitBasket"][0] && msg.content.includes(prefix) == false) {
+        } else if (msg.channel.id == channels["fruitbasket"][0] && msg.content.includes(prefix) == false) {
             if (msg.author.bot) return;
 
             let name = msg.author.username
@@ -233,7 +240,7 @@ client.on('message', async msg => {
             msg.delete({ timeout: 10 })
             console.log(collSubmissions)
 
-        } else if (msg.channel.id == channels[1]["FruitBasket"][1] && msg.content.includes(prefix) == false) {
+        } else if (msg.channel.id == channels["fruitbasket"][1] && msg.content.includes(prefix) == false) {
             if (msg.author.bot) return;
 
             let name = msg.author.username
@@ -262,7 +269,7 @@ client.on('message', async msg => {
             msg.delete({ timeout: 10 })
             console.log(collSubmissions)
 
-        } else if (msg.channel.id == channels[1]["FruitBasket"][2] && msg.content.includes(prefix) == false) {
+        } else if (msg.channel.id == channels["fruitbasket"][2] && msg.content.includes(prefix) == false) {
             if (msg.author.bot) return;
 
             let name = msg.author.username
@@ -291,6 +298,27 @@ client.on('message', async msg => {
 
             msg.delete({ timeout: 10 })
             console.log(collSubmissions)
+
+
+        } else if (msg.channel.id == channels["fruitbasket"][2] && msg.content.includes(prefix) == false) {
+            if (ramPuzzle[0] = "Solved!") msg.reply(`This puzzle was already solved by <@!${ramPuzzle[1]}>!`)
+            if (msg.author.bot) return;
+
+            let name = msg.author.username
+            let content = msg.content
+
+            let embed = new MessageEmbed()
+            .setAuthor(client.user.username, client.user.displayAvatarURL())
+            .setColor(83,12,176)
+            .addField("Guess", content)
+            .setFooter(name, msg.author.displayAvatarURL())
+
+            await msg.delete({ timeout: 10 })
+            await msg.channel.send(embed)
+            if (msg.content.toLowerCase() === "alex is jealous of ram") {
+                await msg.reply("You're correct! Congratulations... You solved the puzzle!")
+                ramPuzzle = ["Solved!", msg.author.id]
+            }
         };
 
 
@@ -304,7 +332,7 @@ client.on('message', async msg => {
 
             return;
 
-        } else if (msg.channel.id == channels[2]["AlexServer"][0] && msg.content.includes(prefix) == false) {
+        } else if (msg.channel.id == channels["AlexServer"][0] && msg.content.includes(prefix) == false) {
             if (msg.author.bot) return;
 
             let name = msg.author.username

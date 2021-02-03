@@ -3,7 +3,7 @@ module.exports = {
     category: "fun",
     description: "Calls someone dogwater",
     aliases: ["dogw"],
-    usage: "<input>",
+    usage: "<mention>",
     run: async (client, msg, args, guilds, collSubmissions, ownerid, maid) => {
         const { dogwater } = require('../../../config/config.json');
         let dog;
