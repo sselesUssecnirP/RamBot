@@ -300,7 +300,7 @@ client.on('message', async msg => {
             console.log(collSubmissions)
 
 
-        } else if (msg.channel.id == channels["FruitBasket"][2] && msg.content.includes(prefix) == false) {
+        } else if (msg.channel.id == channels["FruitBasket"][4] && msg.content.includes(prefix) == false) {
             if (ramPuzzle[0] = "Solved!") msg.reply(`This puzzle was already solved by <@!${ramPuzzle[1]}>!`)
             if (msg.author.bot) return;
 
