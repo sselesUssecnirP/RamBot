@@ -5,7 +5,7 @@ module.exports = {
     aliases: ["dogw"],
     usage: "<input>",
     run: async (client, msg, args, guilds, collSubmissions, ownerid, maid) => {
-        const { dogwater } = require('./config/config.json');
+        const { dogwater } = require('../../../config/config.json');
         let dog;
 
         if (msg.mentions.users.array().length != 1) {
