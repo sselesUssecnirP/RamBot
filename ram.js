@@ -76,7 +76,7 @@ client.on('message', async msg => {
         if (!cmd) cmd = client.commands.get(client.aliases.get(command));
 
         if (cmd)
-            cmd.run(client, msg, channels, guilds, ownerid, maid);
+            cmd.run(client, msg, args, guilds, collSubmissions, ownerid, maid);
 
         /*
         } else if (command == 'say') {
