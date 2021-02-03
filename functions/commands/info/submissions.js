@@ -4,25 +4,22 @@ module.exports = {
     description: "Grab a list of submissions, remove items from, create submissions channels, ",
     aliases: ["sublist"],
     usage: "<input>",
-    run: async (client, msg, args, guilds, collSubmissions, ownerid, maid) => {
+    run: async (client, msg, guilds, collSubmissions, ownerid, maid) => {
 /*          Commands
             ********************************************
             ***              Skribblio               ***
             ********************************************
 */
-const { MessageEmbed } = require('discord.js')
 
+    const { MessageEmbed } = require('discord.js')
         
-    if (args[0] == collSubmissions["submissions"]["skribblio"]["name"]) {
-        if (!msg.member.hasPermission('MANAGE_GUILD')) {
-            msg.reply('You do not have the proper permission!');
-            return;
-        }
+    if (args[0] == "skribblio") {
+        if (!msg.member.hasPermission('MANAGE_GUILD'))  msg.reply('You do not have the proper permission!');
         if (msg.guild.id != guilds[0]["id"][0] || guilds[0]["id"][1]) return;
 
         let submissions = []
 
-        collSubmissions["submissions"]["skribblio"]["content"].forEach((item) => {
+        collSubmissions["submissions"]["skribblio"].forEach((item) => {
             submissions.push(item["message"])
         })
 
@@ -42,16 +39,13 @@ const { MessageEmbed } = require('discord.js')
             ********************************************
 */
 
-    } else if (args[0] == collSubmissions["submissions"]["fb-role-ideas"]["name"]) {
-        if (!msg.member.hasPermission('MANAGE_GUILD')) {
-            msg.reply('You do not have the proper permission!');
-            return;
-        }
+    } else if (args[0] == "fbroles") {
+        if (!msg.member.hasPermission('MANAGE_GUILD')) msg.reply('You do not have the proper permission!');
         if (!msg.guild.id == guilds[1]["id"]) return;
 
         let submissions = []
 
-        collSubmissions["submissions"]["fb-role-ideas"]["content"].forEach((item) => {
+        collSubmissions["submissions"]["fb-role-ideas"].forEach((item) => {
             submissions.push(item["message"])
         })
 
@@ -69,16 +63,13 @@ const { MessageEmbed } = require('discord.js')
             ********************************************
 */
 
-    } else if (args[0] == collSubmissions["submissions"]["movienight-fb"]["name"]) {
-        if (!msg.member.hasPermission('MANAGE_GUILD')) {
-            msg.reply('You do not have the proper permission!');
-            return;
-        }
+    } else if (args[0] == "fbmovienight") {
+        if (!msg.member.hasPermission('MANAGE_GUILD'))  msg.reply('You do not have the proper permission!');
         if (!msg.guild.id == guilds[1]["id"]) return;
 
         let submissions = []
 
-        collSubmissions["submissions"]["movienight-fb"]["content"].forEach((item) => {
+        collSubmissions["submissions"]["movienight-fb"].forEach((item) => {
             submissions.push(item["message"])
         })
 
@@ -96,16 +87,13 @@ const { MessageEmbed } = require('discord.js')
             ********************************************
 */
 
-    } else if (args[0] == collSubmissions["submissions"]["animenight-fb"]["name"]) {
-        if (!msg.member.hasPermission('MANAGE_GUILD')) {
-            msg.reply('You do not have the proper permission!');
-            return;
-        }
+    } else if (args[0] == "fbanimenight") {
+        if (!msg.member.hasPermission('MANAGE_GUILD'))  msg.reply('You do not have the proper permission!');
         if (!msg.guild.id == guilds[1]["id"]) return;
 
         let submissions = []
 
-        collSubmissions["submissions"]["animenight-fb"]["content"].forEach((item) => {
+        collSubmissions["submissions"]["animenight-fb"].forEach((item) => {
             submissions.push(item["message"])
         })
 
@@ -127,32 +115,29 @@ const { MessageEmbed } = require('discord.js')
 
 
 /*          Commands
-            ********************************************
-            ***              Skribblio               ***
-            ********************************************
+    ********************************************
+    ***              Skribblio               ***
+    ********************************************
 */
 if (args[0] === 'remove') {
 
-        if (args[1] == collSubmissions["submissions"]["skribblio"]["name"]) {
-            if (!msg.member.hasPermission('ADMINISTRATOR')) {
-                msg.reply('You do not have the proper permission!');
-                return;
-            }
+        if (args[1] == "skribblio") {
+            if (!msg.member.hasPermission('ADMINISTRATOR'))  msg.reply('You do not have the proper permission!');
             if (msg.guild.id != guilds[0]["id"][0] || guilds[0]["id"][1]) return;
             if (!Number.isIntegar(args[1])) msg.reply("The argument provided for which item on the skribblio list is not a number.")
-            if (args[1] > collSubmissions["skribblio"]["content"].length - 1) msg.reply("That number is not an item within the list provided.")
+            if (args[1] > collSubmissions["skribblio"].length - 1) msg.reply("That number is not an item within the list provided.")
 
             const filter = (m) => {
                 m.author.id === msg.author.id
             }
 
-            let reply = msg.reply(`Are you sure you want to delete this? Submissions > Skribblio > ${collSubmissions["skribblio"]["content"][args[1]]["message"]}`)
+            let reply = msg.reply(`Are you sure you want to delete this? Submissions > Skribblio > ${collSubmissions["skribblio"][args[1]]["message"]}`)
                 .awaitMessages(filter, { max: 1, time: 30000, errors: ['time'] })
                 .then(c => {
                     const collected = c.array()
                     if (c[0] === 'yes') {
                         reply.delete({ timeout: 10 })
-                        collSubmissions["skribblio"].slice(collSubmissions["skribblio"]["content"][args[1]])
+                        collSubmissions["skribblio"].slice(collSubmissions["skribblio"][args[1]])
                         msg.reply("Item was deleted from skribblio submissions")
                     } else if (c[0] === 'no') {
                         reply.delete({ timeout: 10 })
@@ -165,31 +150,28 @@ if (args[0] === 'remove') {
                 })
 
 /*          Commands
-            ********************************************
-            ***            Idea For Roles            ***
-            ********************************************
+    ********************************************
+    ***            Idea For Roles            ***
+    ********************************************
 */
 
-        } else if (args[1] == collSubmissions["submissions"]["fb-role-ideas"]["name"]) {
-            if (!msg.member.hasPermission('ADMINISTRATOR')) {
-                msg.reply('You do not have the proper permission!');
-                return;
-            }
+        } else if (args[1] == "fbroles") {
+            if (!msg.member.hasPermission('ADMINISTRATOR')) msg.reply('You do not have the proper permission!');
             if (!msg.guild.id == guilds[1]["id"]) return;
             if (Number.isIntegar(args[1]))
-            if (args[1] > collSubmissions["fb-role-ideas"]["content"].length - 1) msg.reply("That number is not an item within the list provided.")
+            if (args[1] > collSubmissions["fb-role-ideas"].length - 1) msg.reply("That number is not an item within the list provided.")
 
             const filter = (m) => {
                 m.author.id === msg.author.id
             }
 
-            let reply = msg.reply(`Are you sure you want to delete this? Submissions > fbroles > ${collSubmissions["fb-role-ideas"]["content"][args[1]]["message"]}`)
+            let reply = msg.reply(`Are you sure you want to delete this? Submissions > fbroles > ${collSubmissions["fb-role-ideas"][args[1]]["message"]}`)
                 .awaitMessages(filter, { max: 1, time: 30000, errors: ['time'] })
                 .then(c => {
                     const collected = c.array()
                     if (c[0] === 'yes') {
                         reply.delete({ timeout: 10 })
-                        collSubmissions["fb-role-ideas"].slice(collSubmissions["fb-role-ideas"]["content"][args[1]])
+                        collSubmissions["fb-role-ideas"].slice(collSubmissions["fb-role-ideas"][args[1]])
                         msg.reply("Item was deleted from fbroles submissions")
                     } else if (c[0] === 'no') {
                         reply.delete({ timeout: 10 })
@@ -202,31 +184,28 @@ if (args[0] === 'remove') {
                 })
 
 /*          Commands
-            ********************************************
-            ***            FB Movie Night            ***
-            ********************************************
+    ********************************************
+    ***            FB Movie Night            ***
+    ********************************************
 */
 
-        } else if (args[1] == collSubmissions["submissions"]["movienight-fb"]["name"]) {
-            if (!msg.member.hasPermission('ADMINISTRATOR')) {
-                msg.reply('You do not have the proper permission!');
-                return;
-            }
+        } else if (args[1] == "fbmovienight") {
+            if (!msg.member.hasPermission('ADMINISTRATOR'))  msg.reply('You do not have the proper permission!');
             if (!msg.guild.id == guilds[1]["id"]) return;
             if (Number.isIntegar(args[1]))
-            if (args[1] > collSubmissions["movienight-fb"]["content"].length - 1) msg.reply("That number is not an item within the list provided.")
+            if (args[1] > collSubmissions["movienight-fb"].length - 1) msg.reply("That number is not an item within the list provided.")
 
             const filter = (m) => {
                 m.author.id === msg.author.id
             }
 
-            let reply = msg.reply(`Are you sure you want to delete this? Submissions > movienight > ${collSubmissions["movienight-fb"]["content"][args[1]]["message"]}`)
+            let reply = msg.reply(`Are you sure you want to delete this? Submissions > movienight > ${collSubmissions["movienight-fb"][args[1]]["message"]}`)
                 .awaitMessages(filter, { max: 1, time: 30000, errors: ['time'] })
                 .then(c => {
                     const collected = c.array()
                     if (c[0] === 'yes') {
                         reply.delete({ timeout: 10 })
-                        collSubmissions["movienight-fb"].slice(collSubmissions["movienight-fb"]["content"][args[1]])
+                        collSubmissions["movienight-fb"].slice(collSubmissions["movienight-fb"][args[1]])
                         msg.reply("Item was deleted from movienight submissions")
                     } else if (c[0] === 'no') {
                         reply.delete({ timeout: 10 })
@@ -239,32 +218,29 @@ if (args[0] === 'remove') {
                 })
 
 /*          Commands
-            ********************************************
-            ***            FB Anime Night            ***
-            *******************************************
+    ********************************************
+    ***            FB Anime Night            ***
+    ********************************************
 */
     
 
-        } else if (args[1] == collSubmissions["submissions"]["animenight-fb"]["name"]) {
-            if (!msg.member.hasPermission('ADMINISTRATOR')) {
-                msg.reply('You do not have the proper permission!');
-                return;
-            }
+        } else if (args[1] == "fbanimenight") {
+            if (!msg.member.hasPermission('ADMINISTRATOR'))  msg.reply('You do not have the proper permission!');
             if (!msg.guild.id == guilds[1]["id"]) return;
             if (Number.isIntegar(args[1]))
-            if (args[1] > collSubmissions["animenight-fb"]["content"].length - 1) msg.reply("That number is not an item within the list provided.")
+            if (args[1] > collSubmissions["animenight-fb"].length - 1) msg.reply("That number is not an item within the list provided.")
 
             const filter = (m) => {
                 m.author.id === msg.author.id
             }
 
-            let reply = msg.reply(`Are you sure you want to delete this? Submissions > animenight > ${collSubmissions["animenight-fb"]["content"][args[1]]["message"]}`)
+            let reply = msg.reply(`Are you sure you want to delete this? Submissions > animenight > ${collSubmissions["animenight-fb"][args[1]]["message"]}`)
                 .awaitMessages(filter, { max: 1, time: 30000, errors: ['time'] })
                 .then(c => {
                     const collected = c.array()
                     if (c[0] === 'yes') {
                         reply.delete({ timeout: 10 })
-                        collSubmissions["animenight-fb"].slice(collSubmissions["animenight-fb"]["content"][args[1]])
+                        collSubmissions["animenight-fb"].slice(collSubmissions["animenight-fb"][args[1]])
                         msg.reply("Item was deleted from animenight submissions")
                     } else if (c[0] === 'no') {
                         reply.delete({ timeout: 10 })

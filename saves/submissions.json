@@ -1,8 +1,6 @@
 {
 	"submissions": {
-		"skribblio": {
-			"name": "skribblio",
-			"content": [{
+		"skribblio": [{
 				"name": "sselesUssecnirP",
 				"message": "OwO",
 				"submitted": "2021-01-26T04:13:14.780Z",
@@ -37,11 +35,8 @@
 				"channel": "skribblio-custom-words",
 				"guild": "We're Gamers (*cringe intensifies*)"
 			}
-		]
-	},
-		"movienight-fb": {
-			"name": "movienight-fb",
-			"content": [
+		],
+		"movienight-fb": [
 			{
 				"name": "ThunderMuffin55",
 				"message": "I",
@@ -63,11 +58,8 @@
 				"channel": "submissions-movie-night",
 				"guild": "The Fruit Basket"
 			}
-		]
-	},
-		"animenight-fb": {
-			"name": "animenight-fb",
-			"content": [
+		],
+		"animenight-fb": [
 			{
 				"name": "CyanPink",
 				"message": "What?",
@@ -103,11 +95,8 @@
 				"channel": "submissions-anime",
 				"guild": "The Fruit Basket"
 			}
-		]
-	},
-		"movienight-alex": {
-			"name": "movienight-alex",
-			"content": [
+		],
+		"movienight-alex": [
 			{
 				"name": "sselesUssecnirP",
 				"message": "Ghost Rider",
@@ -157,13 +146,9 @@
 				"channel": "recommendation",
 				"guild": "Alex's Gamer Hole"
 			}
-		]},
-		"fruitbasket": {
-			"name": "fruitbasket",
-			"content": []},
-		"fb-role-ideas": {
-			"name": "fb-role-ideas",
-			"content": [
+		],
+		"fruitbasket": [],
+		"fb-role-ideas": [
 			{
 				"name": "sselesUssecnirP",
 				"message": "The Programming God",
@@ -451,6 +436,6 @@
 				"channel": "ideas-for-new-roles",
 				"guild": "The Fruit Basket"
 			}
-		]}
+		]
 	}
 }
