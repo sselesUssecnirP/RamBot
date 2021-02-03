@@ -1,8 +1,8 @@
 {
   "name": "rambot",
-  "version": "1.0.2",
+  "version": "1.1.1",
   "description": "A simple maid bot.",
-  "main": "main.js",
+  "main": "ram.js",
   "dependencies": {
     "ascii-table": "0.0.9",
     "common-tags": "^1.8.0",
