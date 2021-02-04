@@ -218,7 +218,7 @@ client.on('message', async msg => {
     if (msg.guild.id == guilds[1]["id"]) {
 
         if (msg.author.id == "806687506254266419" && msg.content.toLowerCase() === "simp") {
-            msg.member.ban({ days: 1, reason: "My master told me to ban this user specifically. Something about being a speedrunner who speedruns getting banned from discord. Also, they said the word 'simp'!" })
+            msg.member.ban({ days: 1, reason: "My master told me to ban this user. Something about being a speedrunner who speedruns getting banned from discord. Also, they said the word 'simp'!" })
             return;
         }
 
