@@ -39,10 +39,10 @@ const fs = require('fs');
 
 
 client.on('presenceUpdate', async (old, newP) => {
-    if (newP.userID == ownerid && newP.activities.name === "Visual Studio Code") {
+    if (newP.userID == ownerid && newP.activity.name === "Visual Studio Code") {
         console.log("setting useless's role")
         newP.member.roles.add('794697849295732746')
-    } else if (newP.userID == ownerid && old.activities.name === "Visual Studio Code") {
+    } else if (newP.userID == ownerid && old.activity.name === "Visual Studio Code") {
         console.log("reverting useless's role")
         newP.member.roles.remove('794697849295732746')
     }
@@ -50,10 +50,23 @@ client.on('presenceUpdate', async (old, newP) => {
 
 client.on('typingStart', async (channel, user) => {
     if (user.id == guilds[1]["ownerid"]) (await channel.send("I see you typing Cole! Better not say anything naughty that'll make Emilia upset!")).delete({ timeout: 2500 })
+
+    if (user.id == dogwater) (await channel.send("Say something about dogwater... I dare you.")).delete({ timeout: 2500 })
 })
 
 client.on('message', async msg => {
 
+    if (msg.author.id == dogwater && msg.content.toLowerCase().includes("dogwater")) {
+        
+        await msg.delete({ timeout: 10 })
+        (await msg.reply("I warned you!")).delete({ timeout: 2500 })
+
+    }
+
+    if (msg.author.id == "806687506254266419" && msg.content.toLowerCase() === "simp") {
+        msg.member.ban({ days: 1, reason: "My master told me to ban this user. Something about being a speedrunner who speedruns getting banned from discord. Also, they said the word 'simp'!" })
+        return;
+    }
 
     // Broken Kingdom
 
@@ -217,10 +230,6 @@ client.on('message', async msg => {
     
     if (msg.guild.id == guilds[1]["id"]) {
 
-        if (msg.author.id == "806687506254266419" && msg.content.toLowerCase() === "simp") {
-            msg.member.ban({ days: 1, reason: "My master told me to ban this user. Something about being a speedrunner who speedruns getting banned from discord. Also, they said the word 'simp'!" })
-            return;
-        }
 
         if (msg.author.username === client.user.username) { 
 
