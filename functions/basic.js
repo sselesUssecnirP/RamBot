@@ -5,6 +5,8 @@ module.exports = {
 
       getMember(message, toFind = '') {
           toFind = toFind.toLowerCase();
+          toFind.slice("<@!")
+          toFind.slice(">")
 
           let target = message.guild.members.fetch(toFind);
 
