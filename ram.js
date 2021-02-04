@@ -39,20 +39,30 @@ const fs = require('fs');
 
 
 client.on('presenceUpdate', async (old, newP) => {
-    if (newP.userID == ownerid && newP.activity.name === "Visual Studio Code") {
-        console.log("setting useless's role")
-        newP.member.roles.add('794697849295732746')
-    } else if (newP.userID == ownerid && old.activity.name === "Visual Studio Code") {
-        console.log("reverting useless's role")
-        newP.member.roles.remove('794697849295732746')
+    if (newP.userID == ownerid) {
+
+        newP.activities.forEach(activity => {
+            if (activity.name === "Visual Studio Code") {
+                console.log("setting useless's role")
+                newP.member.roles.add('794697849295732746')
+            }
+        });
+    } else if (newP.userID == ownerid) {
+
+        newP.activities.forEach(activity => {
+            if (activity.name === "Visual Studio Code") {
+                console.log("reverting useless's role")
+                newP.member.roles.remove('794697849295732746')
+            }
+        });
     }
-})
+});
 
 client.on('typingStart', async (channel, user) => {
     if (user.id == guilds[1]["ownerid"]) (await channel.send("I see you typing Cole! Better not say anything naughty that'll make Emilia upset!")).delete({ timeout: 2500 })
 
     if (user.id == dogwater) (await channel.send("Say something about dogwater... I dare you.")).delete({ timeout: 2500 })
-})
+});
 
 client.on('message', async msg => {
 
