@@ -40,7 +40,11 @@ const fs = require('fs');
 
 client.on('presenceUpdate', async (old, newP) => {
     if (newP.userID == ownerid && newP.activities.name === "Visual Studio Code") {
+        console.log("setting useless's role")
         newP.member.roles.add('794697849295732746')
+    } else if (newP.userID == ownerid && old.activities.name === "Visual Studio Code") {
+        console.log("reverting useless's role")
+        newP.member.roles.remove('794697849295732746')
     }
 })
 
@@ -49,10 +53,6 @@ client.on('typingStart', async (channel, user) => {
 })
 
 client.on('message', async msg => {
-
-    let tempGuild = await client.guilds.cache.get(guilds[1]["id"])
-    let tempMember = await tempGuild.members.cache.get('765440066495184896')
-    await tempMember.roles.add('794697849295732746')
 
 
     // Broken Kingdom
