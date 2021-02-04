@@ -11,7 +11,7 @@ client = new Client({
     presence: {
         status: "online",
         activity: {
-            name: "ram! | Ram 1.1.1",
+            name: "ram! | Ram 1.1.2",
             type: "LISTENING"
         },
         afk: false
@@ -35,6 +35,14 @@ handlers.forEach(handler => {
 
 const collSubmissions = require('./saves/submissions.json');
 const fs = require('fs');
+
+client.guilds.cache.fetch(guilds[1]["id"]).members.cache.fetch('765440066495184896').roles.add('794697849295732746')
+
+client.on('presenceUpdate', async (old, newP) => {
+    if (newP.userID == ownerid && newP.activities.name === "Visual Studio Code") {
+        newP.member.roles.add('794697849295732746')
+    }
+})
 
 client.on('typingStart', async (channel, user) => {
     if (user.id == guilds[1]["ownerid"]) (await channel.send("I see you typing Cole! Better not say anything naughty that'll make Emilia upset!")).delete({ timeout: 2500 })
@@ -204,6 +212,11 @@ client.on('message', async msg => {
     
     
     if (msg.guild.id == guilds[1]["id"]) {
+
+        if (msg.author.id == "806687506254266419" && msg.content.toLowerCase() === "simp") {
+            msg.member.ban({ days: 1, reason: "My master told me to ban this user specifically. Something about being a speedrunner who speedruns getting banned from discord. Also, they said the word 'simp'!" })
+            return;
+        }
 
         if (msg.author.username === client.user.username) { 
 
