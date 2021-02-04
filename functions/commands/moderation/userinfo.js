@@ -9,7 +9,7 @@ module.exports = {
     aliases: ["whois", "who"],
     usage: "<username | id | mention>",
     run: async (client, msg, args, guilds, collSubmissions, ownerid, maid) => {
-        const member = getMember(msg, args.join(" "));
+        const member = await getMember(msg, args.join(" "));
 
         const joined = formatDate(member.joinedAt);
 
