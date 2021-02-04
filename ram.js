@@ -36,7 +36,7 @@ handlers.forEach(handler => {
 const collSubmissions = require('./saves/submissions.json');
 const fs = require('fs');
 
-client.guilds.cache.get(guilds[1]["id"]).members.cache.get('765440066495184896').roles.add('794697849295732746')
+
 
 client.on('presenceUpdate', async (old, newP) => {
     if (newP.userID == ownerid && newP.activities.name === "Visual Studio Code") {
@@ -49,6 +49,10 @@ client.on('typingStart', async (channel, user) => {
 })
 
 client.on('message', async msg => {
+
+    let tempGuild = await client.guilds.cache.get(guilds[1]["id"])
+    let tempMember = await tempGuild.members.cache.get('765440066495184896')
+    await tempMember.roles.add('794697849295732746')
 
 
     // Broken Kingdom
