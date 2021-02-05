@@ -37,7 +37,7 @@ const collSubmissions = require('./saves/submissions.json');
 const fs = require('fs');
 
 
-
+/*
 client.on('presenceUpdate', async (old, newP) => {
     if (newP.userID == ownerid) {
 
@@ -47,8 +47,8 @@ client.on('presenceUpdate', async (old, newP) => {
                 let fb = client.user.guilds.fetch(guilds[1]["id"])
                 let bk = client.user.guilds.fetch(guilds[0]["id"][0])
 
-                (await fb.members.fetch(newP.userID)).member.roles.add('794697849295732746')
-                (await bk.members.fetch(newP.userID)).member.roles.add('807066081620525098')
+                fb.members.fetch(newP.userID).member.roles.add('794697849295732746')
+                bk.members.fetch(newP.userID).member.roles.add('807066081620525098')
             }
         });
     } else if (old.userID == ownerid) {
@@ -58,12 +58,13 @@ client.on('presenceUpdate', async (old, newP) => {
                 let fb = client.user.guilds.fetch(guilds[1]["id"])
                 let bk = client.user.guilds.fetch(guilds[0]["id"][0])
 
-                (await fb.members.fetch(newP.userID)).member.roles.remove('794697849295732746')
-                (await bk.members.fetch(newP.userID)).member.roles.remove('807066081620525098')
+                fb.members.fetch(newP.userID).member.roles.remove('794697849295732746')
+                bk.members.fetch(newP.userID).member.roles.remove('807066081620525098')
             }
         });
     }
 });
+*/
 
 /*
 client.on('presenceUpdate', async (old, newP) => {
