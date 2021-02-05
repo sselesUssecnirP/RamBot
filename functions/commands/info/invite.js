@@ -35,7 +35,7 @@ module.exports = {
                                 if (user.id === ownerid) user.send(`I was unable to send messages in ${msg.channel.name} on the server ${msg.guild.name}`);
                             });
                         })
-                    } else if (msg.guild.id == guilds[0]["id"]) {
+                    } else if (msg.guild.id == guilds[0]["id"][0]) {
             
                         let embed = new MessageEmbed()
                         .setAuthor(client.user.username, client.user.displayAvatarURL())
@@ -57,7 +57,7 @@ module.exports = {
             */
             
                 } else if (msg.author.id == maid) {
-                    if (msg.guild.id != guilds[0]["id"]) {
+                    if (msg.guild.id != guilds[0]["id"][0]) {
                         
                         let embed = new MessageEmbed()
                         .setAuthor(client.user.username, client.user.displayAvatarURL())

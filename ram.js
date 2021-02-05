@@ -44,19 +44,48 @@ client.on('presenceUpdate', async (old, newP) => {
         newP.activities.forEach(activity => {
             if (activity.name === "Visual Studio Code") {
                 console.log("setting useless's role")
-                newP.member.roles.add('794697849295732746')
+                let fb = client.user.guilds.fetch(guilds[1]["id"])
+                let bk = client.user.guilds.fetch(guilds[0]["id"][0])
+
+                (await fb.members.fetch(newP.userID)).member.roles.add('794697849295732746')
+                (await bk.members.fetch(newP.userID)).member.roles.add('807066081620525098')
             }
         });
-    } else if (newP.userID == ownerid) {
+    } else if (old.userID == ownerid) {
 
-        newP.activities.forEach(activity => {
+        old.activities.forEach(activity => {
             if (activity.name === "Visual Studio Code") {
-                console.log("reverting useless's role")
-                newP.member.roles.remove('794697849295732746')
+                let fb = client.user.guilds.fetch(guilds[1]["id"])
+                let bk = client.user.guilds.fetch(guilds[0]["id"][0])
+
+                (await fb.members.fetch(newP.userID)).member.roles.remove('794697849295732746')
+                (await bk.members.fetch(newP.userID)).member.roles.remove('807066081620525098')
             }
         });
     }
 });
+
+/*
+client.on('presenceUpdate', async (old, newP) => {
+    if (newP.userID == ownerid) {
+
+        newP.activities.forEach(activity => {
+            if (activity.name === "Visual Studio Code") {
+                console.log("setting useless's role")
+                newP.member.roles.add('804952032086982676')
+            }
+        });
+    } else if (old.userID == ownerid) {
+
+        old.activities.forEach(activity => {
+            if (activity.name === "Visual Studio Code") {
+                console.log("reverting useless's role")
+                newP.member.roles.remove('804952032086982676')
+            }
+        });
+    }
+});
+*/
 
 client.on('typingStart', async (channel, user) => {
     if (user.id == guilds[1]["ownerid"]) (await channel.send("I see you typing Cole! Better not say anything naughty that'll make Emilia upset!")).delete({ timeout: 2500 })

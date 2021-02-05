@@ -9,7 +9,22 @@ module.exports = {
     aliases: ["whois", "who"],
     usage: "<username | id | mention>",
     run: async (client, msg, args, guilds, collSubmissions, ownerid, maid) => {
-        const member = await getMember(msg, args.join(" "));
+        if (msg.mentions.members.first()) {
+            args[0].slice('<@!')
+            args[0].slice('>')
+        }
+
+        let member = msg.guild.members.cache.find(user => {
+            if (user.id == args[0]) {
+                return user;
+            } else if (user.tag == args[0]) {
+                return user;
+            } else if (user.username == args[0]) {
+                return user;
+            } else {
+                return;
+            }
+        })
 
         const joined = formatDate(member.joinedAt);
 
