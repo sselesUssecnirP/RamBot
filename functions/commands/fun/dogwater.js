@@ -11,8 +11,8 @@ module.exports = {
     run: async (client, msg, args) => {
         let dog;
 
-        let dChannel = msg.guild.channels.cache.each(channel => {
-            if (channel.name === "dogwater") return channel.name;
+        let dChannel = msg.guild.channels.cache.find(channel => {
+            if (channel.name === "dogwater") return channel;
         })
 
         if (args.length == 0) {
@@ -21,7 +21,8 @@ module.exports = {
         
         const { dogwater } = require('../../../config/config.json');
         if (msg.mentions.members.array().length > 0) {
-            dog = msg.mentions.members.first()
+            dog = msg.mentions.members.first().id
+            console.log(dog)
         } else {
             let dog = args[0]
         }
@@ -33,7 +34,7 @@ module.exports = {
         })
 
         await client.users.cache.find((user, index) => {
-            if (user.id === dog) {
+            if (user.tag === dog) {
                 dog = user
             } else if (user.name === dog) {
                 dog = user
@@ -47,39 +48,43 @@ module.exports = {
             // if ownerid -- if channel == dogwater
 
             msg.reply('My master is not dogwater. Please refrain from insulting him!')
+            dogK.send(`https://www.youtube.com/watch?v=0KGS0IOzSQQ&list=PLrvwVi0t0h8AYitTAkCXEcGVRxqXXZeeq&index=343`)
             return;
         } else if (dog.id === maid) {
             // if maid -- if channel == dogwater
 
             msg.reply("My master's other maid is not dogwater.")
+            dogK.send(`https://www.youtube.com/watch?v=0KGS0IOzSQQ&list=PLrvwVi0t0h8AYitTAkCXEcGVRxqXXZeeq&index=343`)
             return;
 
         } else if (dog.id === client.user.id) {
             // if Ram -- if channel == dogwater
 
             msg.reply(`I'm not \`dogwater\`. I'm the best maid <@!${ownerid}> has!`)
+            dogK.send(`https://www.youtube.com/watch?v=0KGS0IOzSQQ&list=PLrvwVi0t0h8AYitTAkCXEcGVRxqXXZeeq&index=343`)
             return;
 
         } else if (dog.id === '765440066495184896') {
             // if K -- if channel == dogwater
 
             msg.reply("Miss Emilia is most definitely not dogwater. Although, she can be annoying sometimes.")
+            dogK.send(`https://www.youtube.com/watch?v=0KGS0IOzSQQ&list=PLrvwVi0t0h8AYitTAkCXEcGVRxqXXZeeq&index=343`)
             return;
 
         } else { 
             // else if anyone else -- if channel == dogwater
 
             if (dChannel) {
-                msg.guild.channels.cache.each(channel => {
-                    if (channel.name === "dogwater") return channel.send(`<@!${msg.author.id}> says that ${dog} is dogwater!`);
-                })
+                dChannel.send(`<@!${msg.author.id}> says that <@!${dog}> is dogwater!`);
                 msg.delete({ timeout: 10 })
+                dogK.send(`https://www.youtube.com/watch?v=0KGS0IOzSQQ&list=PLrvwVi0t0h8AYitTAkCXEcGVRxqXXZeeq&index=343\n\n<@!${msg.author.id}> says that <@!${dog}> is dogwater!`)
             } else {
-                msg.reply(`says that <@!${dog.id}> is dogwater!`);
+                msg.reply(`says that <@!${dog}> is dogwater!`);
                 msg.delete({ timeout: 10 })
+                dogK.send(`https://www.youtube.com/watch?v=0KGS0IOzSQQ&list=PLrvwVi0t0h8AYitTAkCXEcGVRxqXXZeeq&index=343\n\n<@!${msg.author.id}> says that <@!${dog}> is dogwater!`)
             }
             
         }
-        dogK.send(`https://www.youtube.com/watch?v=0KGS0IOzSQQ&list=PLrvwVi0t0h8AYitTAkCXEcGVRxqXXZeeq&index=343\n\n<@!${msg.author.id}> says that ${dog} is dogwater!`)
+        
     }
 }

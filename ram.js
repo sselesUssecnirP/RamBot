@@ -1,6 +1,6 @@
 const { Client, MessageEmbed, Collection } = require('discord.js');
-//const { token } = require("./config/token.json");
-const token = process.env.TOKEN
+const { token } = require("./config/token.json");
+//const token = process.env.TOKEN
 const handlers = ["commands", "events"]
 
 client = new Client({
