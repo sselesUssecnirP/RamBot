@@ -19,7 +19,7 @@ module.exports = {
         
         const { dogwater } = require('../../../config/config.json');
         if (msg.mentions.members.array().length > 0) {
-            let dog = msg.mentions.members.first()
+            let dog = msg.mentions.members.first().toString()
         
             dog.slice("<@!")
             dog.slice(">")
