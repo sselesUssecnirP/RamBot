@@ -9,6 +9,8 @@ module.exports = {
     aliases: ["dogw"],
     usage: "<mention | name | id>",
     run: async (client, msg, args) => {
+        let dog;
+
         const dChannel = msg.guild.channels.cache.each(channel => {
             if (channel.name === "dogwater") return channel;
         })
@@ -19,7 +21,7 @@ module.exports = {
         
         const { dogwater } = require('../../../config/config.json');
         if (msg.mentions.members.array().length > 0) {
-            let dog = msg.mentions.members.first().toString()
+            dog = msg.mentions.members.first().toString()
         
             dog.slice("<@!")
             dog.slice(">")
