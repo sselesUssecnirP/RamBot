@@ -11,8 +11,8 @@ module.exports = {
     run: async (client, msg, args) => {
         let dog;
 
-        const dChannel = msg.guild.channels.cache.each(channel => {
-            if (channel.name === "dogwater") return channel;
+        let dChannel = msg.guild.channels.cache.each(channel => {
+            if (channel.name === "dogwater") return channel.name;
         })
 
         if (args.length == 0) {
@@ -73,7 +73,9 @@ module.exports = {
             // else if anyone else -- if channel == dogwater
 
             if (dChannel) {
-                dChannel.send(`<@!${msg.author.id}> says that <@!${dog.id}> is dogwater!`)
+                msg.guild.channels.cache.each(channel => {
+                    if (channel.name === "dogwater") return channel.send(`<@!${msg.author.id}> says that <@!${dog.id}> is dogwater!`);
+                })
                 msg.delete({ timeout: 10 })
             } else {
                 msg.reply(`says that <@!${dog.id}> is dogwater!`);
