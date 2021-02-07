@@ -21,10 +21,7 @@ module.exports = {
         
         const { dogwater } = require('../../../config/config.json');
         if (msg.mentions.members.array().length > 0) {
-            dog = msg.mentions.members.first().toString()
-        
-            dog.slice("<@!")
-            dog.slice(">")
+            dog = msg.mentions.members.first()
         } else {
             let dog = args[0]
         }
@@ -74,7 +71,7 @@ module.exports = {
 
             if (dChannel) {
                 msg.guild.channels.cache.each(channel => {
-                    if (channel.name === "dogwater") return channel.send(`<@!${msg.author.id}> says that <@!${dog.id}> is dogwater!`);
+                    if (channel.name === "dogwater") return channel.send(`<@!${msg.author.id}> says that ${dog} is dogwater!`);
                 })
                 msg.delete({ timeout: 10 })
             } else {
