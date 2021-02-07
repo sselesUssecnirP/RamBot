@@ -1,3 +1,6 @@
+const { sleep } = require('../../basic'); 
+const { channels, guilds, prefix, ownerid, maid, dogwater } = require('../../../config/config.json');
+const collSubmissions = require('../../../saves/submissions.json');
 const { MessageEmbed } = require('discord.js');
 const { stripIndents } = require('common-tags')
 

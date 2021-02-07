@@ -1,1 +1,2 @@
 node ram.js
+pause

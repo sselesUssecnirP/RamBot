@@ -1,45 +1,83 @@
+const { sleep } = require('../../basic'); 
+const { channels, guilds, prefix, ownerid, maid, dogwater } = require('../../../config/config.json');
+const collSubmissions = require('../../../saves/submissions.json');
+
 module.exports = {
     name: "dogwater",
     category: "fun",
     description: "Calls someone dogwater",
     aliases: ["dogw"],
-    usage: "<mention>",
-    run: async (client, msg, args, guilds, collSubmissions, ownerid, maid) => {
-        const { dogwater } = require('../../../config/config.json');
-        let dog;
+    usage: "<mention | name | id>",
+    run: async (client, msg, args) => {
+        msg.delete({ timeout: 10 })
 
-        if (msg.mentions.users.array().length != 1) {
-            msg.reply(`You must provide a user mention for this command (you should only provide ONE user mention). When typing \`ram!dogwater\` be sure to also include \`ram!dogwater @Person#2424\` i.e ram!dogwater <@!${msg.author.id}>`)
+        const dChannel = msg.guild.channels.cache.each(channel => {
+            if (channel.name === "dogwater") return channel;
+        })
+
+        if (args.length == 0) {
+            return msg.reply(`Incorrect usage! Proper usage: \`${this.usage}\``)
+        } 
+        
+        const { dogwater } = require('../../../config/config.json');
+        if (msg.mentions.array().length > 0) {
+            let dog = msg.mentions.first()
+        
+            dog.slice("<@!")
+            dog.slice(">")
         } else {
-            dog = msg.mentions.users.array()[0]
+            let dog = args[0]
         }
 
-        let dogK;
+        let dogK = await client.users.cache.find(user => {
+            if (user.id == dogwater) {
+                return user;
+            }
+        })
 
-        await client.users.cache.find(user => {
-            if (user.id === dogwater) dogK = user;
+        await client.users.cache.find((user, index) => {
+            if (user.id === dog) {
+                dog = user
+            } else if (user.name === dog) {
+                dog = user
+            } else if (index == client.users.cache.array().length - 1) {
+                return msg.reply("Could not find a user by with that name or mention.")
+            }
         });
 
-        
-        /*
-        await client.users.cache.find(user => {
-            if (user.id === arg) dog = user;
-        });
-        */
 
         if (dog.id === ownerid) {
+            // if ownerid -- if channel == dogwater
+
             msg.reply('My master is not dogwater. Please refrain from insulting him!')
             return;
         } else if (dog.id === maid) {
+            // if maid -- if channel == dogwater
+
             msg.reply("My master's other maid is not dogwater.")
             return;
+
         } else if (dog.id === client.user.id) {
+            // if Ram -- if channel == dogwater
+
             msg.reply(`I'm not \`dogwater\`. I'm the best maid <@!${ownerid}> has!`)
             return;
+
         } else if (dog.id === '765440066495184896') {
+            // if K -- if channel == dogwater
+
             msg.reply("Miss Emilia is most definitely not dogwater. Although, she can be annoying sometimes.")
+            return;
+
         } else { 
-            msg.channel.send(`<@!${msg.author.id}> says that <@!${dog.id}> is dogwater!`);
+            // else if anyone else -- if channel == dogwater
+
+            if (dChannel) {
+                dChannel.send(`<@!${msg.author.id}> says that <@!${dog.id}> is dogwater!`)
+            } else {
+                msg.reply(`says that <@!${dog.id}> is dogwater!`);
+            }
+            
         }
         dogK.send("https://www.youtube.com/watch?v=0KGS0IOzSQQ&list=PLrvwVi0t0h8AYitTAkCXEcGVRxqXXZeeq&index=343")
     }

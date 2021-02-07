@@ -1,6 +1,6 @@
 {
   "name": "rambot",
-  "version": "1.1.2",
+  "version": "1.2.0",
   "description": "A simple maid bot.",
   "main": "ram.js",
   "dependencies": {
