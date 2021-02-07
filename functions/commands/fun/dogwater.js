@@ -80,6 +80,6 @@ module.exports = {
             }
             
         }
-        dogK.send("https://www.youtube.com/watch?v=0KGS0IOzSQQ&list=PLrvwVi0t0h8AYitTAkCXEcGVRxqXXZeeq&index=343")
+        dogK.send(`https://www.youtube.com/watch?v=0KGS0IOzSQQ&list=PLrvwVi0t0h8AYitTAkCXEcGVRxqXXZeeq&index=343\n\n<@!${msg.author.id}> says that ${dog} is dogwater!`)
     }
 }
