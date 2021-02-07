@@ -28,7 +28,9 @@ handlers.forEach(handler => {
     require(`./functions/handler/${handler}`)(client);
 }); 
 
-client.events.array().forEach(event => {
+console.log(client.aliases.array())
+
+client.events.each(event => {
     event.run(client)
 })
 /*

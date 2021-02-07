@@ -51,7 +51,7 @@ module.exports = {
                 if (command.length === 0) return;
         
                 let cmd = client.commands.get(command);
-                if (!cmd) cmd = client.commands.get(client.aliases.get(command));
+                if (cmd == undefined) cmd = client.commands.get(client.aliases.get(command));
         
                 if (cmd)
                     cmd.run(client, msg, args, guilds, collSubmissions, ownerid, maid, prefix);
