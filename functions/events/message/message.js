@@ -54,7 +54,7 @@ module.exports = {
                 if (cmd == undefined) cmd = client.commands.get(client.aliases.get(command));
         
                 if (cmd)
-                    cmd.run(client, msg, args, guilds, collSubmissions, ownerid, maid, prefix);
+                    cmd.run(client, msg, args);
             }
         
             if (msg.guild.id == guilds[0]["id"][0] || guilds[0]["id"][1]) {

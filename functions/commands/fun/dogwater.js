@@ -9,8 +9,6 @@ module.exports = {
     aliases: ["dogw"],
     usage: "<mention | name | id>",
     run: async (client, msg, args) => {
-        msg.delete({ timeout: 10 })
-
         const dChannel = msg.guild.channels.cache.each(channel => {
             if (channel.name === "dogwater") return channel;
         })
@@ -74,8 +72,10 @@ module.exports = {
 
             if (dChannel) {
                 dChannel.send(`<@!${msg.author.id}> says that <@!${dog.id}> is dogwater!`)
+                msg.delete({ timeout: 10 })
             } else {
                 msg.reply(`says that <@!${dog.id}> is dogwater!`);
+                msg.delete({ timeout: 10 })
             }
             
         }
