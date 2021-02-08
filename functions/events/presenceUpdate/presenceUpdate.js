@@ -3,7 +3,8 @@ const { channels, guilds, prefix, ownerid, maid, dogwater } = require('../../../
 
 module.exports = {
     name: "presenceUpdate",
-    description: "Event emits on received presence update.",
+    description
+    : "Event emits on received presence update.",
     run: async (client) => {
         client.on('presenceUpdate', async (oldPresence, newPresence) => {
             console.log('found presenceUpdate')
