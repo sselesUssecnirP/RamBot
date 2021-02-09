@@ -20,6 +20,7 @@ client = new Client({
     Commands
 */
 
+client.submissions = new Collection
 client.events = new Collection
 client.commands = new Collection
 client.aliases = new Collection
