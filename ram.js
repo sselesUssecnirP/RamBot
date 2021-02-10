@@ -22,6 +22,7 @@ client = new Client({
 
 client.submissions = new Collection;
 client.events = new Collection;
+client.manualEvents = new Collection;
 client.commands = new Collection;
 client.aliases = new Collection;
 
