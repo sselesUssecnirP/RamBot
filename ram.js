@@ -22,8 +22,8 @@ client = new Client({
 
 client.submissions = new Collection;
 client.events = new Collection;
-client.commands = new Collection
-client.aliases = new Collection
+client.commands = new Collection;
+client.aliases = new Collection;
 
 handlers.forEach(handler => {
     require(`./functions/handler/${handler}`)(client);
