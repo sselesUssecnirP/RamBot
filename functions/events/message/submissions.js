@@ -10,10 +10,19 @@ module.exports = {
         client.on('message', async msg => {
             if (msg.author.bot) return;
             if (msg.content.startsWith('!') || msg.content.startsWith('?') || msg.content.startsWith('ram!') || msg.content.startsWith('emi!') || msg.content.startsWith('>>') || msg.content.startsWith('<<') || msg.content.startsWith('>') || msg.content.startsWith('t!')) return;
-            msg.delete({ timeout: 10 })
-
+            
             let coll = client.guildsColl.get(msg.guild.id)
-            let key = coll["submitTo"].keys(coll["submitTo"]).find(key => object["submitTo"][key] === msg.id)
+            let key;
+            let channelIs = false;
+            coll["submitTo"].forEach((value, pKey) => {
+                if (value == msg.channel.id) {
+                    channelIs = true;
+                    key = pKey;
+                }
+            })
+
+            if (!channelIs) return;
+            
             let nameMatch;
             coll["submissions"][key].forEach((obj, ind) => {
                 if (obj.name == msg.author.username) {
@@ -21,6 +30,7 @@ module.exports = {
                 }
             })
 
+            msg.delete({ timeout: 10 })
             let name = msg.author.username
             let dateCreated = msg.createdAt
             let channel = msg.channel.name

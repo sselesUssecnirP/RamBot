@@ -1,4 +1,3 @@
-const { setupMaster } = require('cluster');
 const { Client, MessageEmbed } = require('discord.js');
 //const { token } = require("./config/token.json");
 const token = process.env.TOKEN
