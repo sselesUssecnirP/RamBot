@@ -43,27 +43,27 @@ module.exports = {
         });
 
 
-        if (dog.id === ownerid) {
+        if (dog === ownerid) {
             // if ownerid -- if channel == dogwater
 
             msg.reply('My master is not dogwater. Please refrain from insulting him!')
             dogK.send(`https://www.youtube.com/watch?v=0KGS0IOzSQQ&list=PLrvwVi0t0h8AYitTAkCXEcGVRxqXXZeeq&index=343`)
             return;
-        } else if (dog.id === maid) {
+        } else if (dog === maid) {
             // if maid -- if channel == dogwater
 
             msg.reply("My master's other maid is not dogwater.")
             dogK.send(`https://www.youtube.com/watch?v=0KGS0IOzSQQ&list=PLrvwVi0t0h8AYitTAkCXEcGVRxqXXZeeq&index=343`)
             return;
 
-        } else if (dog.id === client.user.id) {
+        } else if (dog === client.user.id) {
             // if Ram -- if channel == dogwater
 
             msg.reply(`I'm not \`dogwater\`. I'm the best maid <@!${ownerid}> has!`)
             dogK.send(`https://www.youtube.com/watch?v=0KGS0IOzSQQ&list=PLrvwVi0t0h8AYitTAkCXEcGVRxqXXZeeq&index=343`)
             return;
 
-        } else if (dog.id === '765440066495184896') {
+        } else if (dog === '765440066495184896') {
             // if K -- if channel == dogwater
 
             msg.reply("Miss Emilia is most definitely not dogwater. Although, she can be annoying sometimes.")
