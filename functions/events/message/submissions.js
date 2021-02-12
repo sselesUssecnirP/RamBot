@@ -14,15 +14,10 @@ module.exports = {
             let coll = await client.guildsColl.get(msg.guild.id)
             let key;
             let channelIs = false;
-            coll.forEach((value, pKey) => {
-                
-                if (key == "submitTo") {
-                    value.forEach((val, pK) => {
-                        if (val == msg.channel.id) {
-                            channelIs = true;
-                            key = pK;
-                        }
-                    })
+            Object.keys(coll["submitTo"]).forEach(item => {
+                if (coll["submitTo"][item] == msg.channel.id) {
+                    key = item;
+                    channelIs = true;
                 }
             })
 
