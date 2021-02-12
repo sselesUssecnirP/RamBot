@@ -11,7 +11,7 @@ module.exports = {
             if (msg.author.bot) return;
             if (msg.content.startsWith('!') || msg.content.startsWith('?') || msg.content.startsWith('ram!') || msg.content.startsWith('emi!') || msg.content.startsWith('>>') || msg.content.startsWith('<<') || msg.content.startsWith('>') || msg.content.startsWith('t!')) return;
             
-            let coll = client.guildsColl.get(msg.guild.id)
+            let coll = await client.guildsColl.get(msg.guild.id)
             let key;
             let channelIs = false;
             coll.forEach((value, pKey) => {
