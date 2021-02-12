@@ -14,15 +14,20 @@ module.exports = {
             let coll = client.guildsColl.get(msg.guild.id)
             let key;
             let channelIs = false;
-            coll["submitTo"].forEach((value, pKey) => {
-                if (value == msg.channel.id) {
-                    channelIs = true;
-                    key = pKey;
+            coll.forEach((value, pKey) => {
+                
+                if (key == "submitTo") {
+                    value.forEach((val, pK) => {
+                        if (val == msg.channel.id) {
+                            channelIs = true;
+                            key = pK;
+                        }
+                    })
                 }
             })
 
             if (!channelIs) return;
-            
+
             let nameMatch;
             coll["submissions"][key].forEach((obj, ind) => {
                 if (obj.name == msg.author.username) {
