@@ -1,0 +1,41 @@
+{
+    "name": "The Broken Kingdom",
+    "id": "755657350962085888",
+    "submitTo": {
+		"movienight": "809759437711343643",
+        "animenight": "809769498051477514"
+	}, 
+	"reportTo": {
+		"channels": [
+            "806386037453750284"
+        ]
+	},
+    "submissions": {
+            "movienight": [
+                {
+                    "name": "trend mation",
+                    "message": "shrek",
+                    "submitted": "2021-01-30T14:28:36.109Z",
+                    "channel": "submissions-movie-night",
+                    "guild": ""
+                },
+                {
+                    "name": "thuntasicalex",
+                    "message": "Minecraft",
+                    "submitted": "2021-01-31T02:23:30.355Z",
+                    "channel": "submissions-movie-night",
+                    "guild": ""
+                }
+            ],
+            "animenight": [
+                {
+                    "name": "CyanPink",
+                    "message": "Attack on titan",
+                    "submitted": "2021-02-01T15:31:31.981Z",
+                    "channel": "submissions-anime",
+                    "guild": ""
+                }
+            ]
+            
+        }
+}

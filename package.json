@@ -1,9 +1,10 @@
 {
   "name": "rambot",
-  "version": "1.2.0",
+  "version": "1.2.5",
   "description": "A simple maid bot.",
   "main": "ram.js",
   "dependencies": {
+    "adm-zip": "^0.5.2",
     "ascii-table": "0.0.9",
     "common-tags": "^1.8.0",
     "discord.js": "^12.5.1",

@@ -1,6 +1,8 @@
-const { Client, MessageEmbed, Collection } = require('discord.js');
-//const { token } = require("./config/token.json");
-const token = process.env.TOKEN
+const { setupMaster } = require('cluster');
+const { Client, MessageEmbed } = require('discord.js');
+const { token } = require("./config/token.json");
+//const token = process.env.TOKEN
+const setupEvents = ["collections"]
 const handlers = ["commands", "events"]
 
 client = new Client({
@@ -9,7 +11,7 @@ client = new Client({
     presence: {
         status: "online",
         activity: {
-            name: "ram! | Ram 1.2.0",
+            name: "ram! | Ram 1.2.5",
             type: "LISTENING"
         },
         afk: false
@@ -20,11 +22,9 @@ client = new Client({
     Commands
 */
 
-client.submissions = new Collection;
-client.events = new Collection;
-client.manualEvents = new Collection;
-client.commands = new Collection;
-client.aliases = new Collection;
+setupEvents.forEach(event => {
+    require(`./functions/events/setup/${event}`)(client)
+})
 
 handlers.forEach(handler => {
     require(`./functions/handler/${handler}`)(client);

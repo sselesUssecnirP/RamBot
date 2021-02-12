@@ -1,7 +1,7 @@
 const { MessageEmbed } = require('discord.js')
 const { sleep } = require('../../basic'); 
-const { channels, guilds, prefix, ownerid, maid, dogwater } = require('../../../config/config.json');
-const collSubmissions = require('../../../saves/submissions.json')
+const { prefix, ownerid, maid, dogwater } = require('../../../config/config.json');
+const aZip = require('adm-zip')
 
 module.exports = {
     name: "message",
@@ -20,8 +20,12 @@ module.exports = {
 
             if (msg.channel.type === 'dm' && msg.author.id == ownerid) {
     
-                if (msg.content == "getSubmissions") {
-                    msg.author.send(`submissions.json as of ${new Date()}`, { files: ["./saves/submissions.json"] })
+                if (msg.content == "grabGuildSaves") {
+                    let zip = new aZip();
+                    zip.addLocalFolder('./saves')
+                    zip.writeZip('./functions/commands/owner/BotSaves.zip')
+        
+                    msg.author.send(`Here are the GuildSaves as you asked! Updated as of ${formatDate(new Date())}`, { files: ["functions/commands/owner/BotSaves.zip"] })
                 }
 
                 return;
@@ -59,7 +63,11 @@ module.exports = {
                 } else {
                     msg.reply("That command is not valid.")
                 }
-            };
+            } else if (msg.crosspostable) {
+                msg.crosspost()
+                .then(() => console.log('Crossposted message'))
+                .catch(console.error);
+            }
         });
     }
 }
