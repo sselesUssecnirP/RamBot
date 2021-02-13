@@ -40,7 +40,7 @@ module.exports = {
             let embed = new MessageEmbed()
             .setAuthor(client.user.username, client.user.displayAvatarURL())
             .setColor(msg.member.displayHexColor === "#000000" ? msg.member.displayHexColor : "#FFFFFF")
-            .setFooter(`Submission by ${name} for ${key}`, author.displayAvatarURL())
+            .setFooter(`Submission by ${name} for ${key}`, msg.author.displayAvatarURL())
             .addField("Submission", content)
 
             msg.reply(embed)

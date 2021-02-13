@@ -15,6 +15,11 @@ module.exports = {
 
         let coll = await client.guildsColl.get(msg.guild.id)
 
+        if (msg.mentions.user.first()) {
+            args[0].slice('<@!')
+            args[0].slice('>')
+        }
+
         if (args[0] && args[1]) {
             if (args[0] == "" || args[1] == "") {
                 msg.reply(`Please provide all of the necessary information! \`${this.usage}\` - channel_ID can also be a mention -- list_key should be something like \`movienight\`(A list for movie night submissions)`)
