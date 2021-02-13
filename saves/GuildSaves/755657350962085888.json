@@ -11,31 +11,8 @@
         ]
 	},
     "submissions": {
-            "movienight": [
-                {
-                    "name": "trend mation",
-                    "message": "shrek",
-                    "submitted": "2021-01-30T14:28:36.109Z",
-                    "channel": "submissions-movie-night",
-                    "guild": ""
-                },
-                {
-                    "name": "thuntasicalex",
-                    "message": "Minecraft",
-                    "submitted": "2021-01-31T02:23:30.355Z",
-                    "channel": "submissions-movie-night",
-                    "guild": ""
-                }
-            ],
-            "animenight": [
-                {
-                    "name": "CyanPink",
-                    "message": "Attack on titan",
-                    "submitted": "2021-02-01T15:31:31.981Z",
-                    "channel": "submissions-anime",
-                    "guild": ""
-                }
-            ]
+            "movienight": [],
+            "animenight": []
             
         }
 }

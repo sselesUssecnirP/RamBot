@@ -39,7 +39,7 @@ module.exports = {
 
             let embed = new MessageEmbed()
             .setAuthor(client.user.username, client.user.displayAvatarURL())
-            .setColor(msg.member.displayHexColor === "#000000" ? "#FFFFFF" : msg.member.displayHexColor)
+            .setColor(msg.member.displayHexColor === "#000000" ? msg.member.displayHexColor : "#FFFFFF")
             .setFooter(`Submission by ${name} for ${key}`, author.displayAvatarURL())
             .addField("Submission", content)
 
@@ -47,10 +47,8 @@ module.exports = {
             console.log(`${name} submitted ${content} for ${key} in ${msg.guild.name}`)
             
             if (nameMatch[0]) {
-                if (Array.isArray(coll["submissions"][key][1]["message"])) {
-                    coll["submissions"][key][1]["message"].push({ submitted: dateCreated, content: content})
-                } else {
-                    coll["submissions"][key][1]["message"] = [coll["submissions"][key][1]["message"], { dateCreated: dateCreated, content: content }]
+                if (Array.isArray(coll["submissions"][key][nameMatch[1]]["message"])) {
+                    coll["submissions"][key][nameMatch[1]]["message"].push({ submitted: dateCreated, content: content})
                 }
             } else if (!nameMatch[0]) {
                 coll["submissions"][key].push({name: name, message: [{ submitted: dateCreated, content: content }], channel: channel, guild: guild})
