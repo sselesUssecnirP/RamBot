@@ -1,6 +1,6 @@
 const { MessageEmbed } = require('discord.js');
 const { stripIndents } = require('common-tags');
-const { prefix, owner, maid, keywords, specKeywords, meanKeywords, niceKeywords } = require("../../../config/config.json")
+const { prefix, ownerid, maid, keywords, specKeywords, meanKeywords, niceKeywords } = require("../../../config/config.json")
 const { sleep, formatDate } = require('../../basic');
 const aZip = require('adm-zip')
 
@@ -10,7 +10,8 @@ module.exports = {
     aliases: ["botsaves", "gbsaves", "gbotsaves", "grabbsaves"],
     run: (client, msg, args) => {
 
-        if (msg.author.id == owner) {
+        if (msg.author.id == ownerid) {
+            console.log("attempting to run aZip")
             let zip = new aZip();
             zip.addLocalFolder('./saves')
             zip.writeZip('./functions/commands/owner/BotSaves.zip')

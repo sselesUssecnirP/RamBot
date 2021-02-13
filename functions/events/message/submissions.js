@@ -8,6 +8,7 @@ module.exports = {
     description: "Event emits on message received",
     run: (client, msg, args) => {
         client.on('message', async msg => {
+            if (msg.channel.type == 'dm') return;
             if (msg.author.bot) return;
             if (msg.content.startsWith('!') || msg.content.startsWith('?') || msg.content.startsWith('ram!') || msg.content.startsWith('emi!') || msg.content.startsWith('>>') || msg.content.startsWith('<<') || msg.content.startsWith('>') || msg.content.startsWith('t!')) return;
             
@@ -23,12 +24,13 @@ module.exports = {
 
             if (!channelIs) return;
 
-            let nameMatch;
-            coll["submissions"][key].forEach((obj, ind) => {
+            let nameMatch = [false];
+
+            await coll["submissions"][key].forEach((obj, ind) => {
                 if (obj.name == msg.author.username) {
                     nameMatch = [true, ind];
                 }
-            })
+            });
 
             msg.delete({ timeout: 10 })
             let name = msg.author.username
