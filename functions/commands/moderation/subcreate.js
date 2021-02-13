@@ -34,3 +34,4 @@ module.exports = {
             msg.reply(`Please provide all of the necessary information! \`${this.usage}\` - channel_ID can also be a mention -- list_key should be something like \`movienight\`(A list for movie night submissions)`)
         }
     }
+}
