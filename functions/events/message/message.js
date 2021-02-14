@@ -48,10 +48,10 @@ module.exports = {
                 console.log(args)
                 console.log(command)
 
-                let randomDW = Math.ceil(Math.random() * 8)
+                if (msg.author.id === dogwater && command != "dogwater") {
+                    let randomDW = Math.ceil(Math.random() * 8)
 
-                if (randomDW > 6) {
-                    if (msg.author.id === dogwater && command != "dogwater") {
+                    if (randomDW > 6) {
                         msg.reply("You're too dogwater to run my commands. Try taking a shower and attempting again later!")
                         dogK.send("https://www.youtube.com/watch?v=0KGS0IOzSQQ&list=PLrvwVi0t0h8AYitTAkCXEcGVRxqXXZeeq&index=343")
                         return;
@@ -59,14 +59,21 @@ module.exports = {
                 }
 
                 if (command.length === 0) return;
+                
+                if (command == "help") console.log("hey")
 
                 let cmd = client.commands.get(command);
+
+                if (command == "help" && cmd) console.log(cmd.name)
+
                 if (!cmd) cmd = client.commands.get(client.aliases.get(command));
+
+                if (command == "help") console.log(cmd.name)
 
                 msg.delete({ timeout: 10 })
 
                 if (args[0] == cmd.category.toLowerCase()) {
-                    msg.reply("Yes, good job! That is indeed what category this command is placed under! I'm so happy you know how to read the basic English of ")
+                    msg.reply("Yes, good job! That is indeed what category this command is placed under! I'm so happy you know how to read the basic English that the help menu is written in.")
                     return;
                 }
 
@@ -74,6 +81,8 @@ module.exports = {
                     if (args[0] == "info") {
                         msg.reply(`Command Usage: ${prefix}${cmd.name}${cmd.usage != "" ? ` ${cmd.usage}` : ""}\nCommand Aliases: ${cmd.aliases}`)
                     } else {
+                        console.log("running command")
+
                         cmd.run(client, msg, args);
                     }
                 } else {
