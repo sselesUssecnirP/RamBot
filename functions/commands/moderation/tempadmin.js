@@ -5,16 +5,8 @@ module.exports = {
     name: "help",
     category: "info",
     description: "Displays a wonderful embed of help pages",
-    run: async (client, msg, args, guilds, collSubmissions, ownerid, maid) => {
-        const { sleep } = require('../../basic')
-
-        if (msg.guild.id != guilds[1]["id"]) return;
-
-        if (args[0] === "info") {
-            await msg.reply("This command will give the user temporary god powers. This command is only usable by very few people selected by Cole.")
-            return;
-        }
-
+    run: async (client, msg, args) => {
+/*
         let time = args[0] * 1000
 
         if (guilds[1]["tempgod"].forEach((id, index) => {
@@ -36,6 +28,6 @@ module.exports = {
             return;
         }
             
-
+*/
     }
 }
