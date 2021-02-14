@@ -60,6 +60,8 @@ module.exports = {
                 let cmd = client.commands.get(command);
                 if (!cmd) cmd = client.commands.get(client.aliases.get(command));
 
+                msg.delete({ timeout: 10 })
+
                 if (cmd) {
                     if (args[0] == "info") {
                         if (cmd.usage) msg.reply(`Command Usage: ram!${cmd.name}${cmd.usage != "" ? ` ${cmd.usage}` : ""}`)

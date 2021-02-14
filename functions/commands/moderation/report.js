@@ -9,8 +9,6 @@ module.exports = {
     description: "Reports a member",
     usage: "<mention | id>",
     run: async (client, msg, args, guilds, collSubmissions, ownerid, maid) => {
-        msg.delete({ timeout: 10 })
-
         let emilia = msg.guild.members.fetch('765440066495184896')
         if (emilia) {
             msg.reply(`<@!${emilia.id}> is in the discord. Try using her for this command instead! :3`)

@@ -6,8 +6,6 @@ module.exports = {
     aliases: ["subc", "screate", "scre"],
     usage: "<channel_ID> <list_key>",
     run: async (client, msg, args) => {
-        msg.delete({ timeout: 10 })
-
         if (args[0] == "info") {
             msg.reply("Using this command and providing a channelID/Mention and a list_key will create a submissions box. All messages in that submissions box will be saved and able to be acquired using the key in another command (`ram!sublist`)")
             return;
