@@ -1,8 +1,7 @@
 const { Client, MessageEmbed } = require('discord.js');
 //const { token } = require("./config/token.json");
 const token = process.env.TOKEN
-const setupEvents = ["collections"]
-const handlers = ["commands", "events"]
+const handlers = ["collections", "commands", "events"]
 
 client = new Client({
     disableMentions: 'everyone',
@@ -20,10 +19,6 @@ client = new Client({
 /*
     Commands
 */
-
-setupEvents.forEach(event => {
-    require(`./functions/events/setup/${event}`)(client)
-})
 
 handlers.forEach(handler => {
     require(`./functions/handler/${handler}`)(client);

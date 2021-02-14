@@ -12,7 +12,7 @@ module.exports = {
             ***              Skribblio               ***
             ********************************************
 */ 
-            let coll = client.guildsR.get(msg.guild.id)
+            let coll = client.guildsColl.get(msg.guild.id)
             let key = coll["submitTo"].keys(coll["submitTo"]).find(key => object["submitTo"][key] === msg.id)
             let keys = coll["submitTo"].keys()
 
