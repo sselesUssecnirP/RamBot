@@ -9,6 +9,8 @@ module.exports = {
     run: async (client) => {
         client.on('message', async msg => {
 
+            if (msg.author.id == client.user.id) return;
+
             if (msg.author.id == dogwater && msg.content.toLowerCase().includes("dogwater")) {
                 
                 await msg.delete({ timeout: 10 })
@@ -60,7 +62,7 @@ module.exports = {
 
                 if (cmd) {
                     if (args[0] == "info") {
-                        msg.reply(`Command Usage: ram!${cmd} ${cmd.usage}`)
+                        msg.reply(`Command Usage: ram!${cmd.name} ${cmd.usage}`)
                     } else {
                         cmd.run(client, msg, args);
                     }
