@@ -82,7 +82,7 @@ module.exports = {
                         msg.reply(`Command Usage: ${prefix}${cmd.name}${cmd.usage != "" ? ` ${cmd.usage}` : ""}\nCommand Aliases: ${cmd.aliases}`)
                     } else {
                         console.log("running command")
-
+                        console.log(cmd)
                         cmd.run(client, msg, args);
                     }
                 } else {

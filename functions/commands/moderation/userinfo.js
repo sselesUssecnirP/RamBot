@@ -10,7 +10,7 @@ module.exports = {
     description: "A command to acquire information about a user.",
     aliases: ["whois", "who"],
     usage: "<username | id | mention>",
-    run: async (client, msg, args, guilds, collSubmissions, ownerid, maid) => {
+    run: async (client, msg, args) => {
         if (msg.mentions.members.first()) {
             args[0].slice('<@!')
             args[0].slice('>')
