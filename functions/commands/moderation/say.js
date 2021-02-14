@@ -7,9 +7,13 @@ module.exports = {
     description: "",
     aliases: [],
     run: async (client, msg, args, guilds, collSubmissions, ownerid, maid) => {
-        
+
         msg.reply("ERROR: Command not created.")
         
+        let emilia = msg.guild.members.fetch('765440066495184896')
+        if (emilia) {
+            msg.reply(`<@!${emilia.id}> is in the discord. Try using her for this command instead! :3`)
+        }
         
         /*
         if (args[0] == undefined) {
