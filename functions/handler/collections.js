@@ -13,7 +13,7 @@ module.exports = (client) => {
     const guildSaves = readdirSync(`./saves/GuildSaves`).filter(f => f.endsWith('.json'))
 
     for (let file of guildSaves) {
-        let pull = require(`../../../saves/GuildSaves/${file}`);
+        let pull = require(`../../saves/GuildSaves/${file}`);
 
         if (pull) {
         client.guildsColl.set(pull.id, pull)
