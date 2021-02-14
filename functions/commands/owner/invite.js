@@ -6,6 +6,7 @@ module.exports = {
     category: "info",
     description: "Grab an invite for the bot (and, if not the owner's server, an invite to the owner's server)",
     aliases: ["inv"],
+    usage: "",
     run: async (client, msg, args, guilds, collSubmissions, ownerid, maid) => {
         const { MessageEmbed } = require('discord.js')
 

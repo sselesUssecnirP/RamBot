@@ -58,11 +58,11 @@ module.exports = {
                 if (command.length === 0) return;
 
                 let cmd = client.commands.get(command);
-                if (cmd == undefined) cmd = client.commands.get(client.aliases.get(command));
+                if (!cmd) cmd = client.commands.get(client.aliases.get(command));
 
                 if (cmd) {
                     if (args[0] == "info") {
-                        msg.reply(`Command Usage: ram!${cmd.name} ${cmd.usage}`)
+                        if (cmd.usage) msg.reply(`Command Usage: ram!${cmd.name}${cmd.usage != "" ? ` ${cmd.usage}` : ""}`)
                     } else {
                         cmd.run(client, msg, args);
                     }

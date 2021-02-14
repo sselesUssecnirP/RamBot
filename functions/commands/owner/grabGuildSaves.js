@@ -8,6 +8,7 @@ module.exports = {
     name: "grabbotsaves",
     description: "Grabs a .zip of all the GuildSaves",
     aliases: ["botsaves", "gbsaves", "gbotsaves", "grabbsaves"],
+    usage: "",
     run: (client, msg, args) => {
 
         if (msg.author.id == ownerid) {

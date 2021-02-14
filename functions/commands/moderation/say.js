@@ -5,14 +5,14 @@ module.exports = {
     name: "say",
     category: "moderation",
     description: "",
-    aliases: [],
-    run: async (client, msg, args, guilds, collSubmissions, ownerid, maid) => {
+    usage: "<MESSAGE> [hexColor] [channel_ID | channel_MENTION]",
+    run: async (client, msg, args) => {
 
         msg.reply("ERROR: Command not created.")
         
         let emilia = msg.guild.members.fetch('765440066495184896')
         if (emilia) {
-            msg.reply(`<@!${emilia.id}> is in the discord. Try using her for this command instead! :3`)
+            msg.reply(`Lovely little <@!${emilia.id}> is in the discord. Try using her for this command instead!`)
         }
         
         /*

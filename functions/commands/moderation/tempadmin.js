@@ -5,6 +5,7 @@ module.exports = {
     name: "help",
     category: "info",
     description: "Displays a wonderful embed of help pages",
+    usage: "<time (in seconds)>",
     run: async (client, msg, args) => {
 /*
         let time = args[0] * 1000
