@@ -48,12 +48,15 @@ module.exports = {
                 console.log(args)
                 console.log(command)
 
-                if (msg.author.id === dogwater && command != "dogwater") {
-                    msg.reply("You're too dogwater to run my commands. Try taking a shower and attempting again later!")
-                    dogK.send("https://www.youtube.com/watch?v=0KGS0IOzSQQ&list=PLrvwVi0t0h8AYitTAkCXEcGVRxqXXZeeq&index=343")
-                    return;
-                }
+                let randomDW = Math.ceil(Math.random() * 8)
 
+                if (randomDW > 6) {
+                    if (msg.author.id === dogwater && command != "dogwater") {
+                        msg.reply("You're too dogwater to run my commands. Try taking a shower and attempting again later!")
+                        dogK.send("https://www.youtube.com/watch?v=0KGS0IOzSQQ&list=PLrvwVi0t0h8AYitTAkCXEcGVRxqXXZeeq&index=343")
+                        return;
+                    }
+                }
 
                 if (command.length === 0) return;
 
@@ -64,7 +67,7 @@ module.exports = {
 
                 if (cmd) {
                     if (args[0] == "info") {
-                        if (cmd.usage) msg.reply(`Command Usage: ram!${cmd.name}${cmd.usage != "" ? ` ${cmd.usage}` : ""}`)
+                        msg.reply(`Command Usage: ${prefix}${cmd.name}${cmd.usage != "" ? ` ${cmd.usage}` : ""}`)
                     } else {
                         cmd.run(client, msg, args);
                     }
@@ -74,7 +77,6 @@ module.exports = {
             } else if (msg.crosspostable) {
                 msg.crosspost()
                 .then(() => console.log('Crossposted message'))
-                .catch(console.error);
             }
         });
     }
