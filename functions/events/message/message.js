@@ -65,6 +65,11 @@ module.exports = {
 
                 msg.delete({ timeout: 10 })
 
+                if (args[0] == cmd.category.toLowerCase()) {
+                    msg.reply("Yes, good job! That is indeed what category this command is placed under! I'm so happy you know how to read the basic English of ")
+                    return;
+                }
+
                 if (cmd) {
                     if (args[0] == "info") {
                         msg.reply(`Command Usage: ${prefix}${cmd.name}${cmd.usage != "" ? ` ${cmd.usage}` : ""}\nCommand Aliases: ${cmd.aliases}`)
