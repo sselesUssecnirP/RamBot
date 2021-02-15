@@ -68,7 +68,7 @@ module.exports = {
 
                 if (!cmd) cmd = client.commands.get(client.aliases.get(command));
 
-                if (command == "help") console.log(cmd.name)
+                console.log(cmd.name)
 
                 msg.delete({ timeout: 10 })
 
@@ -82,8 +82,7 @@ module.exports = {
                         msg.reply(`Command Usage: ${prefix}${cmd.name}${cmd.usage != "" ? ` ${cmd.usage}` : ""}\nCommand Aliases: ${cmd.aliases}`)
                     } else {
                         console.log("running command")
-                        console.log(cmd)
-                        cmd.run(client, msg, args);
+                        cmd.run(client, msg, args).catch(err => console.error(err));
                     }
                 } else {
                     msg.reply("That command is not valid.")

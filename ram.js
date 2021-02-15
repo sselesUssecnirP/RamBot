@@ -1,6 +1,7 @@
 const { Client, MessageEmbed } = require('discord.js');
-//const { token } = require("./config/token.json");
-const token = process.env.TOKEN
+const { token } = require("./config/token.json");
+const { readdirSync } = require('fs')
+//const token = process.env.TOKEN
 const handlers = ["collections", "commands", "events"]
 
 client = new Client({
@@ -14,7 +15,7 @@ client = new Client({
         },
         afk: false
     }
-})
+});
 
 /*
     Commands
