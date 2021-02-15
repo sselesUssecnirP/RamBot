@@ -7,8 +7,7 @@ module.exports = {
     name: "tempadmin",
     category: "moderation",
     description: "Gives the user temporary admin powers for a time up to two hours.",
-    run: async (client, msg, args, guilds, collSubmissions, ownerid, maid) => {
-        if (msg.guild.id != guilds[1]["id"]) return;
+    run: async (client, msg, args) => {
 /*
         let time = args[0] * 1000
 

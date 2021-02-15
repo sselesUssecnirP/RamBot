@@ -14,5 +14,6 @@
             "movienight": [],
             "animenight": []
             
-        }
+    },
+    "permissions": false
 }

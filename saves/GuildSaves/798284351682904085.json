@@ -9,5 +9,6 @@
 	},
 	"submissions": {
         "movienight": []
-    }
+    },
+	"permissions": false
 }

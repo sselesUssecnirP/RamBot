@@ -10,7 +10,7 @@ module.exports = {
 
         msg.reply("ERROR: Command not created.")
         
-        let emilia = msg.guild.members.fetch('765440066495184896')
+        let emilia = await msg.guild.members.cache.get('765440066495184896')
         if (emilia) {
             msg.reply(`Lovely little <@!${emilia.id}> is in the discord. Try using her for this command instead!`)
         }

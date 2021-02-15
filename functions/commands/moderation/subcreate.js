@@ -6,24 +6,19 @@ module.exports = {
     aliases: ["subc", "screate", "scre"],
     usage: "<channel_ID> <list_key>",
     run: async (client, msg, args) => {
-        if (args[0] == "info") {
-            msg.reply("Using this command and providing a channelID/Mention and a list_key will create a submissions box. All messages in that submissions box will be saved and able to be acquired using the key in another command (`ram!sublist`)")
+        if (args[0] == "" || args[1] == "") {
+            msg.reply(`Please provide all of the necessary information! Use info as the first argument to learn how to use this command. \`ram!subc info\``)
             return;
-        }
+        } 
 
         let coll = await client.guildsColl.get(msg.guild.id)
 
-        if (msg.mentions.user.first()) {
+        if (msg.mentions.channels.first()) {
             args[0].slice('<@!')
             args[0].slice('>')
         }
 
         if (args[0] && args[1]) {
-            if (args[0] == "" || args[1] == "") {
-                msg.reply(`Please provide all of the necessary information! \`${this.usage}\` - channel_ID can also be a mention -- list_key should be something like \`movienight\`(A list for movie night submissions)`)
-                return;
-            }
-
 
             coll["submitTo"][args[1]] = args[0]
             coll["submissions"][args[1]] = []
@@ -34,7 +29,7 @@ module.exports = {
             });
 
         } else {
-            msg.reply(`Please provide all of the necessary information! \`${this.usage}\` - channel_ID can also be a mention -- list_key should be something like \`movienight\`(A list for movie night submissions)`)
+            msg.reply(`Please provide all of the necessary information! Use info as the first argument to learn how to use this command. \`ram!subc info\``)
         }
     }
 }

@@ -11,8 +11,6 @@ module.exports = {
     usage: "",
     run: async (client, msg, args) => {
 
-        console.log("I'm here")
-
         let name = msg.author.username
         let command = client.commands.get('help')
 
@@ -34,9 +32,7 @@ module.exports = {
             **>> invite**: My master and one of his maids has access to display an embed that gives a link to invite me to your server. If I'm not in The Broken Kingdom, I'll also provide an invite link there.`)
             .setFooter(`${msg.author.id == ownerid ? "My master" : name} used ${prefix}${command.name}! It made the help embed appear!`, msg.author.displayAvatarURL())
             
-        
-        console.log("I made the embed")
-        msg.reply(embed).then(() => console.log("I sent the message!"))
+        msg.reply(embed)
         
     }
 }

@@ -12,5 +12,6 @@
     "submissions": {
             "skribblio": []
             
-        }
+    },
+    "permissions": false
 }
