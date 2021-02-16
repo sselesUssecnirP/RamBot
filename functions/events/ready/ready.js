@@ -12,10 +12,10 @@ module.exports = {
             console.log(`sselesUssecnirP's maid ${client.user.username} is ready for work!`)
 
 
-            
+
             dw = client.usersColl.get('616807010591047722')
 
-            dwUser = client.users.get(dw.id)
+            dwUser = client.users.cache.get(dw.id)
 
             while (ready == true) {
                 if (dw["dogwaterDM"]["lastMessage"] != formatDate(new Date())) {
@@ -33,7 +33,7 @@ module.exports = {
 
             useless = client.usersColl.get('160424636369207296')
 
-            uselessUser = client.users.get(useless.id)
+            uselessUser = client.users.cache.get(useless.id)
 
             while (ready == true) {
                 if (useless["savesDM"]["lastMessage"] != formatDate(new Date())) {
