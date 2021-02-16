@@ -36,6 +36,13 @@ module.exports = {
         if (!customColor)
             customChannel = args[1] ? true : false
 
+        if (customColor && !customChannel) {
+            if (msg.mentions.channels.first()) {
+                customColor = false
+                customChannel = true
+            }
+        }
+
         if (customColor) {
             color = args[1]
             args.slice(args[1])
