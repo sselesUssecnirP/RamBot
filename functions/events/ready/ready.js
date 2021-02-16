@@ -24,8 +24,9 @@ module.exports = {
 
                         user["DM"]["lastMessage"] = formatDate(new Date())
 
-                        await fs.writeFile(`./saves/UserSaves/${user.id}.json`, JSON.stringify(user, null, '\t'), (err) => {
-                            if (err) throw err;
+                        fs.writeFile(`./saves/UserSaves/${user.id}.json`, JSON.stringify(user, null, '\t'), (err) => {
+                            if (err)
+                                throw err;
                             console.log(`${user.id}/${user.name} has been saved!`);
                         });
 
@@ -39,7 +40,7 @@ module.exports = {
 
                         if (user.id == ownerid) return;
 
-                        await u.send(`Day ${user["DM"]["days"]} of sending you this:\n\n${user['DM']['message']}${user.id == dogwater ? "\n\nI think some dogs are thirsty over there. You should go quench their thirst!" : ""}`)
+                        u.send(`Day ${user["DM"]["days"]} of sending you this:\n\n${user['DM']['message']}${user.id == dogwater ? "\n\nI think some dogs are thirsty over there. You should go quench their thirst!" : ""}`)
                     }
                 });
 
