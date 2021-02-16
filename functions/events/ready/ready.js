@@ -31,6 +31,8 @@ module.exports = {
                         console.log('The file has been saved!');
                     });
                 }
+
+                sleep(240000)
             }
 
             useless = client.usersColl.get('160424636369207296')
@@ -54,6 +56,8 @@ module.exports = {
                         console.log('The file has been saved!');
                     });
                 }
+
+                sleep(240000)
             }
         });
     }
