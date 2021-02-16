@@ -16,14 +16,12 @@ module.exports = {
 
 
             dw = client.usersColl.get('616807010591047722')
-            console.log(dw)
 
             dwUser = client.users.cache.get(dw.id)
-            console.log(dwUser)
 
             while (ready == true) {
                 if (dw["dogwaterDM"]["lastMessage"] != formatDate(new Date())) {
-                    console.log("if/else succeeded")
+
 
                     dw["dogwaterDM"]["days"] += 1
                     dwUser.send(`Day ${dw["dogwaterDM"]["days"]} of sending you this video!\n\n\nhttps://www.youtube.com/watch?v=0KGS0IOzSQQ&list=PLrvwVi0t0h8AYitTAkCXEcGVRxqXXZeeq&index=343`)
@@ -40,14 +38,11 @@ module.exports = {
             }
 
             useless = client.usersColl.get('160424636369207296')
-            console.log(useless)
 
             uselessUser = client.users.cache.get(useless.id)
-            console.log(uselessUser)
 
             while (ready == true) {
                 if (useless["savesDM"]["lastMessage"] != formatDate(new Date())) {
-                    console.log("if/else succeeded")
 
                     useless["savesDM"]["days"] += 1
 
@@ -55,7 +50,7 @@ module.exports = {
                     zip.addLocalFolder('./saves')
                     zip.writeZip('./functions/commands/owner/BotSaves.zip')
 
-                    dwUser.send(`Day ${useless["savesDM"]["days"]} of sending you my save files!`, { files: ["functions/commands/owner/BotSaves.zip"] })
+                    uselessUser.send(`Day ${useless["savesDM"]["days"]} of sending you my save files!`, { files: ["functions/commands/owner/BotSaves.zip"] })
                     
                     useless["savesDM"]["lastMessage"] = formatDate(new Date())
 
