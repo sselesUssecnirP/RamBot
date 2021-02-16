@@ -13,7 +13,7 @@ module.exports = {
     run: async (client, msg, args) => {
         
         if (!args[0]) {
-            msg.reply("You did not provide a required argument. You must give me a username, mention, or ID.")
+            msg.reply("Provide the proper information, and maybe my commands will work. You must give me a username, mention, or ID.")
             return;
         }
 
@@ -38,7 +38,7 @@ module.exports = {
         const joined = formatDate(member.joinedAt);
 
         const roles = member.roles.cache
-            .filter(r => r.guild.id != msg.guild.id)
+            .filter(r => r.guild.id == msg.guild.id)
             .map(r => r)
             .join(", ") || "none"
         
