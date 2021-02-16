@@ -54,7 +54,7 @@ module.exports = {
                     
                     useless["savesDM"]["lastMessage"] = formatDate(new Date())
 
-                    fs.writeFile(`./saves/UserSaves/${uselessUser.id}.json`, JSON.stringify(dw, null, '\t'), (err) => {
+                    fs.writeFile(`./saves/UserSaves/${uselessUser.id}.json`, JSON.stringify(useless, null, '\t'), (err) => {
                         if (err) throw err;
                         console.log('The file has been saved!');
                     });
