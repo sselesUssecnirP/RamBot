@@ -22,17 +22,26 @@ module.exports = {
         let defaultColor = '#bc22e3'
         let channel;
         let color = false;
-        let customColor = args[1].includes('#') ? true : false
-        let customChannel = args[2] ? true : false
+        let customColor = args[1] ? true : false
+        let customChannel;
+
+        if (customColor)
+            args[1].includes('#') ? null : customColor = false
+
+        if (customColor)
+            customChannel = args[2] ? true : false
+
+        if (!customColor)
+            customChannel = args[1] ? true : false
 
         if (customColor) {
             color = args[1]
-            args.slice(color)
+            args.slice(args[1])
         }
 
         if (customChannel) {
             channel = msg.mentions.channels.first() || msg.guild.channels.get(args[1])
-            args.slice(1)
+            args.slice(args[1])
         }
 
         let embed = new MessageEmbed()
