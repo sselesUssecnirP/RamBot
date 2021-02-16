@@ -19,6 +19,10 @@ module.exports = {
 
             dwUser = client.users.cache.get(dw.id)
 
+            useless = client.usersColl.get('160424636369207296')
+
+            uselessUser = client.users.cache.get(useless.id)
+
             while (ready == true) {
                 if (dw["dogwaterDM"]["lastMessage"] != formatDate(new Date())) {
 
@@ -34,14 +38,6 @@ module.exports = {
                     });
                 }
 
-                await sleep(240000)
-            }
-
-            useless = client.usersColl.get('160424636369207296')
-
-            uselessUser = client.users.cache.get(useless.id)
-
-            while (ready == true) {
                 if (useless["savesDM"]["lastMessage"] != formatDate(new Date())) {
 
                     useless["savesDM"]["days"] += 1
