@@ -4,7 +4,7 @@ const { prefix, ownerid, maid, dogwater } = require('../../../config/config.json
 
 module.exports = {
     name: "say",
-    category: "moderation",
+    category: "info",
     description: "",
     aliases: [],
     usage: "<MESSAGE> [hexColor] [channel_ID | channel_MENTION]\nFor <MESSAGE>, write it like this: `Hi,there,people,how,are,you?`. Using commas INSTEAD of space.",

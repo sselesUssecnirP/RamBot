@@ -27,9 +27,10 @@ module.exports = {
                 if (dw["dogwaterDM"]["lastMessage"] != formatDate(new Date())) {
 
 
-                    dw["dogwaterDM"]["days"] += 1
+                    dw["dogwaterDM"]["days"] = dw["dogwaterDM"]["days"] + 1
                     dwUser.send(`Day ${dw["dogwaterDM"]["days"]} of sending you this video!\n\n\nhttps://www.youtube.com/watch?v=0KGS0IOzSQQ&list=PLrvwVi0t0h8AYitTAkCXEcGVRxqXXZeeq&index=343`)
-                    
+                    console.log(dw["dogwaterDM"]["days"])
+
                     dw["dogwaterDM"]["lastMessage"] = formatDate(new Date())
 
                     fs.writeFile(`./saves/UserSaves/${dwUser.id}.json`, JSON.stringify(dw, null, '\t'), (err) => {
@@ -40,7 +41,8 @@ module.exports = {
 
                 if (useless["savesDM"]["lastMessage"] != formatDate(new Date())) {
 
-                    useless["savesDM"]["days"] += 1
+                    useless["savesDM"]["days"] = useless["savesDM"]["days"] + 1
+                    console.log(useless["savesDM"]["days"])
 
                     let zip = new aZip();
                     zip.addLocalFolder('./saves')
@@ -56,7 +58,7 @@ module.exports = {
                     });
                 }
 
-                await sleep(240000)
+                await sleep(360000)
             }
         });
     }

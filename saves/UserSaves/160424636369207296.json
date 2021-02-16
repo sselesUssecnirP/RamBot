@@ -15,8 +15,8 @@
         }
     },
     "warnings": [],
-    "savesDM": {
-        "days": 0,
-        "lastMessaged": ""
+    "dogwaterDM": {
+        "days": 1,
+        "lastMessaged": "2/15/2021"
     }
 }

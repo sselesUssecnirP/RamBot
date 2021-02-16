@@ -17,11 +17,13 @@ module.exports = {
 
             let coll = await client.guildsColl.get(msg.guild.id)
             let key;
-            Object.keys(coll["submitTo"]).forEach(item => {
+            let keys = Object.keys(coll["submitTo"])
+            
+            keys.forEach(item => {
                 if (coll["submitTo"][item] == msg.channel.id) {
                     key = item;
                 }
-            })
+            });
 
             if (coll["submissions"][key] == []) {
                 msg.reply("No one has submitted anything to this submissions box yet.")
