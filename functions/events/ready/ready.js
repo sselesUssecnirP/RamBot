@@ -1,5 +1,7 @@
 const { sleep, formatDate } = require('../../basic'); 
 const { prefix, ownerid, maid, dogwater } = require('../../../config/config.json');
+const fs = require('fs')
+const aZip = require('adm-zip')
 
 module.exports = {
     name: "ready",
