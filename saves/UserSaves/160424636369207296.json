@@ -15,8 +15,9 @@
         }
     },
     "warnings": [],
-    "savesDM": {
+    "DM": {
         "days": 1,
+        "message": "",
         "lastMessage": "2/15/2021"
     }
 }

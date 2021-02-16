@@ -1,7 +1,7 @@
 {
-    "name": "Anthony L",
+    "name": "Anthony L.",
     "id": "616807010591047722",
-    "tag": "Anthony L#7777",
+    "tag": "Anthony L.#6666",
     "guilds": [],
     "permissions": {
         "755657350962085888": {
@@ -15,8 +15,9 @@
         }
     },
     "warnings": [],
-    "dogwaterDM": {
+    "DM": {
         "days": 1,
+        "message": "https://www.youtube.com/watch?v=0KGS0IOzSQQ&list=PLrvwVi0t0h8AYitTAkCXEcGVRxqXXZeeq&index=343",
         "lastMessage": "2/15/2021"
     }
 }

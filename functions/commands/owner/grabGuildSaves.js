@@ -7,6 +7,7 @@ const aZip = require('adm-zip')
 module.exports = {
     name: "grabbotsaves",
     description: "Grabs a .zip of all the GuildSaves",
+    category: "owner",
     aliases: ["botsaves", "gbsaves", "gbotsaves", "grabbsaves"],
     usage: "",
     run: (client, msg, args) => {

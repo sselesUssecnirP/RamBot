@@ -14,52 +14,37 @@ module.exports = {
             console.log(`sselesUssecnirP's maid ${client.user.username} is ready for work!`)
 
 
-
-            let dw = client.usersColl.get('616807010591047722')
-
-            let dwUser = client.users.cache.get(dw.id)
-
-            let useless = client.usersColl.get('160424636369207296')
-
-            let uselessUser = client.users.cache.get(useless.id)
-
             while (ready == true) {
-                if (dw["dogwaterDM"]["lastMessage"] != formatDate(new Date())) {
+                client.usersColl.each(user => {
+                    if (Object.keys(user).includes('DM')) {
+                        if (user["DM"]["lastMessage"] == formatDate(new Date())) return;
+                        let u = client.users.cache.get(user.id)
 
+                        user["DM"]["days"] += 1
 
-                    dw["dogwaterDM"]["days"] = dw["dogwaterDM"]["days"] + 1
-                    dwUser.send(`Day ${dw["dogwaterDM"]["days"]} of sending you this video!\n\n\nhttps://www.youtube.com/watch?v=0KGS0IOzSQQ&list=PLrvwVi0t0h8AYitTAkCXEcGVRxqXXZeeq&index=343`)
-                    console.log(dw["dogwaterDM"]["days"])
+                        user["DM"]["lastMessage"] = await formatDate(new Date())
 
-                    dw["dogwaterDM"]["lastMessage"] = formatDate(new Date())
+                        await fs.writeFile(`./saves/UserSaves/${user.id}.json`, JSON.stringify(user, null, '\t'), (err) => {
+                            if (err) throw err;
+                            console.log(`${user.id}/${user.name} has been saved!`);
+                        });
 
-                    fs.writeFile(`./saves/UserSaves/${dwUser.id}.json`, JSON.stringify(dw, null, '\t'), (err) => {
-                        if (err) throw err;
-                        console.log('The file has been saved!');
-                    });
-                }
+                        if (user.id == ownerid) {
+                            let zip = new aZip();
+                            zip.addLocalFolder('./saves')
+                            zip.writeZip('./functions/commands/owner/BotSaves.zip')
 
-                if (useless["savesDM"]["lastMessage"] != formatDate(new Date())) {
+                            user.send(`Day ${useless["savesDM"]["days"]} of sending you my save files!`, { files: ["functions/commands/owner/BotSaves.zip"] })
+                        }
 
-                    useless["savesDM"]["days"] = useless["savesDM"]["days"] + 1
-                    console.log(useless["savesDM"]["days"])
+                        if (user.id == ownerid) return;
 
-                    let zip = new aZip();
-                    zip.addLocalFolder('./saves')
-                    zip.writeZip('./functions/commands/owner/BotSaves.zip')
+                        await u.send(`Day ${user["DM"]["days"]} of sending you this:\n\n${user['DM']['message']}${user.id == dogwater ? "\n\nI think some dogs are thirsty over there. You should go quench their thirst!" : ""}`)
+                    }
+                });
 
-                    uselessUser.send(`Day ${useless["savesDM"]["days"]} of sending you my save files!`, { files: ["functions/commands/owner/BotSaves.zip"] })
-                    
-                    useless["savesDM"]["lastMessage"] = formatDate(new Date())
-
-                    fs.writeFile(`./saves/UserSaves/${uselessUser.id}.json`, JSON.stringify(useless, null, '\t'), (err) => {
-                        if (err) throw err;
-                        console.log('The file has been saved!');
-                    });
-                }
-
-                await sleep(360000)
+                sleep(360000)
             }
-        });
+        }); // End of ready Event
     }
 }
