@@ -34,7 +34,7 @@ module.exports = {
                     });
                 }
 
-                sleep(240000)
+                await sleep(240000)
             }
 
             useless = client.usersColl.get('160424636369207296')
@@ -60,7 +60,7 @@ module.exports = {
                     });
                 }
 
-                sleep(240000)
+                await sleep(240000)
             }
         });
     }
