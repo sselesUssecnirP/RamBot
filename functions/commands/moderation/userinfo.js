@@ -65,7 +65,7 @@ module.exports = {
             embed.addField('Currently Playing', `**> Name:** ${member.user.presence.activities.name}`, true)
         } else if (member.user.presence.activities.type === "STREAMING") {
             embed.addField('Currently Streaming', `**> Name:** ${member.user.presence.activities.name}`, true)
-        } else if (member.user.presence.acitivities.type === "LISTENING") {
+        } else if (member.user.presence.activities.type === "LISTENING") {
             embed.addField('Currently Listening', `**> Name:** ${member.user.presence.activities.name}`, true)
         }
 
