@@ -1,4 +1,5 @@
 const { sleep } = require('../../basic'); 
+const { MessageEmbed } = require('discord.js')
 const { prefix, ownerid, maid, dogwater } = require('../../../config/config.json');
 
 module.exports = {
@@ -12,6 +13,7 @@ module.exports = {
         let emilia = await msg.guild.members.cache.get('765440066495184896')
         if (emilia) {
             msg.reply(`Lovely little <@!${emilia.id}> is in the discord. Try using her for this command instead!`)
+            return;
         }
         
         if (args[0] == undefined) {
