@@ -17,7 +17,7 @@ module.exports = {
             while (ready == true) {
                 client.usersColl.each(user => {
                     if (Object.keys(user).includes('DM')) {
-                        if (user["DM"]["lastMessage"] == formatDate(new Date())) continue;
+                        if (user["DM"]["lastMessage"] == formatDate(new Date())) return;
                         let u = client.users.cache.get(user.id)
 
                         user["DM"]["days"] += 1
@@ -45,6 +45,7 @@ module.exports = {
                 });
 
                 sleep(360000)
+                continue;
             }
         }); // End of ready Event
     }
