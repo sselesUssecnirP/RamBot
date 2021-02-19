@@ -13,7 +13,7 @@ module.exports = {
         
             console.log(`sselesUssecnirP's maid ${client.user.username} is ready for work!`)
 
-
+            /*
             while (ready == true) {
                 client.usersColl.each(user => {
                     if (Object.keys(user).includes('DM')) {
@@ -46,7 +46,7 @@ module.exports = {
 
                 sleep(360000)
                 continue;
-            }
+            */
         }); // End of ready Event
     }
 }
