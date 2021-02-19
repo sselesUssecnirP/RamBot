@@ -1,5 +1,5 @@
 const { sleep } = require('../../basic'); 
-const { prefix, ownerid, maid, dogwater } = require('../../../config/config.json');
+const { prefix, owner, maid, dogwater } = require('../../../config/config.json');
 
 module.exports = {
     name: "invite",
@@ -7,11 +7,11 @@ module.exports = {
     description: "Grab an invite for the bot (and, if not the owner's server, an invite to the owner's server)",
     aliases: ["inv"],
     usage: "",
-    run: async (client, msg, args, guilds, collSubmissions, ownerid, maid) => {
+    run: async (client, msg, args, guilds, collSubmissions, owner, maid) => {
         const { MessageEmbed } = require('discord.js')
 
 
-        if (msg.author.id == ownerid) {
+        if (msg.author.id == owner) {
         
             /*
                         ********************************************
@@ -30,13 +30,13 @@ module.exports = {
                         msg.reply(embed).catch(() => {
                             msg.author.send(`I was unable to send messages in ${msg.channel.name} on the server ${msg.guild.name}`)
                             if (msg.guild.members.cache.find((user, index) => {
-                                if (user.id === ownerid) {
+                                if (user.id === owner) {
                                     return true
                                 } else {
                                     if (index === msg.guild.members.cache.array().length - 1) return false;
                                 };
                             })) client.users.cache.find((user) => {
-                                if (user.id === ownerid) user.send(`I was unable to send messages in ${msg.channel.name} on the server ${msg.guild.name}`);
+                                if (user.id === owner) user.send(`I was unable to send messages in ${msg.channel.name} on the server ${msg.guild.name}`);
                             });
                         })
                     } else if (msg.guild.id == guilds[0]["id"][0]) {

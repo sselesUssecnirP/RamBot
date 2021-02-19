@@ -1,6 +1,6 @@
 const { MessageEmbed } = require('discord.js')
 const { sleep } = require('../../basic'); 
-const { prefix, ownerid, maid, dogwater } = require('../../../config/config.json');
+const { prefix, owner, maid, dogwater } = require('../../../config/config.json');
 const aZip = require('adm-zip')
 
 module.exports = {
@@ -20,7 +20,7 @@ module.exports = {
 
             // Broken Kingdom
 
-            if (msg.channel.type === 'dm' && msg.author.id == ownerid) {
+            if (msg.channel.type === 'dm' && msg.author.id == owner) {
     
                 if (msg.content == "grabGuildSaves") {
                     let zip = new aZip();
@@ -34,7 +34,7 @@ module.exports = {
             } else if (msg.channel.type === 'dm') return;
 
             if (msg.mentions.has(client.user)) {
-                if (msg.author.id === ownerid && msg.content.toLowerCase() === "thank you") {
+                if (msg.author.id === owner && msg.content.toLowerCase() === "thank you") {
                     msg.reply("There is no need to thank me Master! I'm here to serve you... always.")
                 }
             }

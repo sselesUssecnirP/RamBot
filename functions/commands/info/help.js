@@ -1,6 +1,6 @@
 const { MessageEmbed } = require('discord.js');
 const { stripIndents } = require('common-tags');
-const { prefix, ownerid, maid, keywords, specKeywords, meanKeywords, niceKeywords, botemojis } = require("../../../config/config.json")
+const { prefix, owner, maid, keywords, specKeywords, meanKeywords, niceKeywords, botemojis } = require("../../../config/config.json")
 const { sleep, formatDate } = require('../../basic');
 
 module.exports = {
@@ -30,7 +30,7 @@ module.exports = {
             
             .addField("Master Only", stripIndents`**>> grabGuildSaves**: Allows my master to grab a .zip file of ALL of my saves.
             **>> invite**: My master and one of his maids has access to display an embed that gives a link to invite me to your server. If I'm not in The Broken Kingdom, I'll also provide an invite link there.`)
-            .setFooter(`${msg.author.id == ownerid ? "My master" : name} used ${prefix}${command.name}! It made the help embed appear!`, msg.author.displayAvatarURL())
+            .setFooter(`${msg.author.id == owner ? "My master" : name} used ${prefix}${command.name}! It made the help embed appear!`, msg.author.displayAvatarURL())
             
         msg.reply(embed)
         
