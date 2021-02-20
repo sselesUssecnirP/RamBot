@@ -65,7 +65,7 @@ module.exports = {
                 if (!cmd) cmd = client.commands.get(client.aliases.get(command));
 
                 msg.delete({ timeout: 10 })
-
+                
                 if (args[0] == cmd.category.toLowerCase()) {
                     msg.reply("Yes, good job! That is indeed what category this command is placed under! I'm so happy you know how to read the basic English that the help menu is written in.")
                     return;
