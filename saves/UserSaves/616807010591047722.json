@@ -1,23 +1,23 @@
 {
-    "name": "Anthony L.",
-    "id": "616807010591047722",
-    "tag": "Anthony L.#6666",
-    "guilds": [],
-    "permissions": {
-        "755657350962085888": {
-            "ALL": false
-        },
-        "798284351682904085": {
-            "ALL": false
-        },
-        "621916957238755328": {
-            "ALL": false
-        }
-    },
-    "warnings": [],
-    "DM": {
-        "days": 1,
-        "message": "https://www.youtube.com/watch?v=0KGS0IOzSQQ&list=PLrvwVi0t0h8AYitTAkCXEcGVRxqXXZeeq&index=343",
-        "lastMessage": "2/15/2021"
-    }
+	"name": "Anthony L.",
+	"id": "616807010591047722",
+	"tag": "Anthony L.#6666",
+	"guilds": [],
+	"permissions": {
+		"755657350962085888": {
+			"ALL": false
+		},
+		"798284351682904085": {
+			"ALL": false
+		},
+		"621916957238755328": {
+			"ALL": false
+		}
+	},
+	"warnings": [],
+	"DM": {
+		"days": 2,
+		"message": "https://www.youtube.com/watch?v=0KGS0IOzSQQ&list=PLrvwVi0t0h8AYitTAkCXEcGVRxqXXZeeq&index=343",
+		"lastMessage": "2/20/2021"
+	}
 }
