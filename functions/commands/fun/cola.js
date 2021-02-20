@@ -15,7 +15,7 @@ module.exports = {
             if (msg.mentions.members.first()) {
                 let user = msg.mentions.members.first()
 
-                user.send({ files: ["./files/videos/cola.mp4"]})
+                user.send(`__**${msg.author.username}:**__`, { files: ["./files/videos/cola.mp4"]})
             }
         }
     }
