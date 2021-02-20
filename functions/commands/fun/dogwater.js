@@ -5,7 +5,7 @@ module.exports = {
     name: "dogwater",
     category: "fun",
     description: "Calls someone dogwater",
-    aliases: ["dogw"],
+    aliases: ["dogw", "dw"],
     usage: "<mention | name | id>",
     run: async (client, msg, args) => {
         let dog;

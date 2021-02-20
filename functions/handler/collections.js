@@ -6,8 +6,6 @@ module.exports = (client) => {
     client.usersColl = new Collection
     client.events = new Collection
     client.manualEvents = new Collection
-    client.commands = new Collection
-    client.aliases = new Collection
 
     const guildSaves = readdirSync(`./saves/GuildSaves`).filter(f => f.endsWith('.json'))
 
