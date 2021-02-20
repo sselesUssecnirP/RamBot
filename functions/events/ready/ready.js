@@ -12,8 +12,6 @@ module.exports = {
             // (await client.users.cache.get(owner)).send("hey I'm online!")
         
             console.log(`sselesUssecnirP's maid ${client.user.username} is ready for work!`)
-
-            console.log(client.aliases.array())
             /*
             while (ready == true) {
                 client.usersColl.each(user => {
