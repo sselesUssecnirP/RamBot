@@ -1,9 +1,12 @@
 module.exports = {
-      sleep(ms) {
-          return new Promise(resolve => setTimeout(resolve, ms));
-      },
+    sleep(ms) {
+      return new Promise(resolve => setTimeout(resolve, ms));
+    },
 
-      formatDate(date) {
-          return new Intl.DateTimeFormat('en-US').format(date);
-      }
+    formatDate(date) {
+      return date.toLocaleString('en-US', { timeZone: 'America/New_York' })
+    },
+    mentionUser(user) {
+      return `<@!${user}>`
+    }
 }
