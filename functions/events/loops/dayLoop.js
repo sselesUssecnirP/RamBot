@@ -11,6 +11,10 @@ module.exports = {
 
             while (ready == true) {
                 client.usersColl.each(async user => {
+                    if (!user) return;
+                    if (user == []) return;
+                    if (user == {}) return;
+
                     if (Object.keys(user).includes('DM')) {
                         if (user["DM"]["lastMessage"] == formatDate(new Date())) return;
                         let u = await client.users.cache.get(user.id)
@@ -20,9 +24,8 @@ module.exports = {
                         user["DM"]["lastMessage"] = formatDate(new Date())
 
                         fs.writeFile(`./saves/UserSaves/${user.id}.json`, JSON.stringify(user, null, '\t'), (err) => {
-                            if (err)
-                                throw err;
-                            console.log(`${user.id}/${user.name} has been saved!`);
+                            if (err) throw err;
+                            console.log('The file has been saved!');
                         });
 
                         if (user.id == owner) {
