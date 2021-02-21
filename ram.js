@@ -24,9 +24,7 @@ client.aliases = new Collection
     Commands
 */
 
-handlers.forEach(handler => {
-    require(`./functions/handler/${handler}`)(client);
-}); 
+handlers.forEach(async handler => await require(`./functions/handler/${handler}`)(client)); 
 
 client.events.each(event => {
     event.run(client)
