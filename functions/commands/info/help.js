@@ -17,7 +17,7 @@ module.exports = {
         let fun = [];
         let info = [];
         let moderation = [];
-        let master = [];
+        let masteronly = [];
 
         await client.commands.each(cmd => {
             if (cmd.category == "fun") {
@@ -27,14 +27,14 @@ module.exports = {
             } else if (cmd.category == "moderation") {
                 moderation.push(`**>> ${cmd.name}**: ${cmd.description}`)
             } else if (cmd.category == "master") {
-                master.push(`**>> ${cmd.name}**: ${cmd.description}`)
+                masteronly.push(`**>> ${cmd.name}**: ${cmd.description}`)
             }
         });
 
         fun.join('\n')
         info.join('\n')
         moderation.join('\n')
-        master.join('\n')
+        masteronly.join('\n')
 
         let embed = new MessageEmbed()
             .setAuthor(client.user.username, client.user.displayAvatarURL())
@@ -46,8 +46,8 @@ module.exports = {
             
             .addField("Moderation", moderation)
             
-            .addField("Master Only", master)
-            .setFooter(`${msg.author.id == master ? "My master" : name} used ${prefix}${command.name}! It made the help embed appear!`, msg.author.displayAvatarURL())
+            .addField("Master Only", masteronly)
+            .setFooter(`${msg.author.id == master ? "My Master" : name} used ${prefix}${command.name}! It made the help embed appear! Use ram!{cmd} info for more information on a specific command.`, msg.author.displayAvatarURL())
             
         msg.reply(embed)
         

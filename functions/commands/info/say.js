@@ -5,7 +5,7 @@ const { prefix, master, maid, dogwater } = require('../../../config/config.json'
 module.exports = {
     name: "say",
     category: "info",
-    description: "",
+    description: "Creates an embed with your own message.",
     aliases: [],
     usage: "<MESSAGE> [hexColor] [channel_ID | channel_MENTION]\nFor <MESSAGE>, write it like this: `Hi,there,people,how,are,you?`. Using commas INSTEAD of space.",
     run: async (client, msg, args) => {
