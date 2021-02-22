@@ -1,5 +1,5 @@
 const { sleep } = require('../../basic'); 
-const { prefix, owner, maid, dogwater, botemojis } = require('../../../config/config.json');
+const { prefix, master, maid, dogwater, botemojis } = require('../../../config/config.json');
 module.exports = {
     name: "subremove",
     category: "moderation",

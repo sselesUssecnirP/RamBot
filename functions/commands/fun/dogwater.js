@@ -1,5 +1,5 @@
 const { sleep } = require('../../basic'); 
-const { prefix, owner, maid, dogwater } = require('../../../config/config.json');
+const { prefix, master, maid, dogwater } = require('../../../config/config.json');
 
 module.exports = {
     name: "dogwater",
@@ -23,7 +23,7 @@ module.exports = {
             dog = msg.mentions.members.first().id
             console.log(dog)
         } else {
-            let dog = args[0]
+            dog = args[0]
         }
 
         let dogK = await client.users.cache.find(user => {
@@ -43,28 +43,28 @@ module.exports = {
         });
 
 
-        if (dog === owner) {
-            // if owner -- if channel == dogwater
+        if (dog === master) {
+            // if Master
 
             msg.reply('My master is not dogwater. Please refrain from insulting him!')
             dogK.send(`https://www.youtube.com/watch?v=0KGS0IOzSQQ&list=PLrvwVi0t0h8AYitTAkCXEcGVRxqXXZeeq&index=343`)
             return;
         } else if (dog === maid) {
-            // if maid -- if channel == dogwater
+            // if Alex
 
             msg.reply("My master's other maid is not dogwater.")
             dogK.send(`https://www.youtube.com/watch?v=0KGS0IOzSQQ&list=PLrvwVi0t0h8AYitTAkCXEcGVRxqXXZeeq&index=343`)
             return;
 
         } else if (dog === client.user.id) {
-            // if Ram -- if channel == dogwater
+            // if Ram
 
-            msg.reply(`I'm not \`dogwater\`. I'm the best maid <@!${owner}> has!`)
+            msg.reply(`I'm not \`dogwater\`. I'm the best maid <@!${master}> has!`)
             dogK.send(`https://www.youtube.com/watch?v=0KGS0IOzSQQ&list=PLrvwVi0t0h8AYitTAkCXEcGVRxqXXZeeq&index=343`)
             return;
 
         } else if (dog === '765440066495184896') {
-            // if K -- if channel == dogwater
+            // if Emilia
 
             msg.reply("Miss Emilia is most definitely not dogwater. Although, she can be annoying sometimes.")
             dogK.send(`https://www.youtube.com/watch?v=0KGS0IOzSQQ&list=PLrvwVi0t0h8AYitTAkCXEcGVRxqXXZeeq&index=343`)

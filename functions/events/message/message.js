@@ -1,6 +1,6 @@
 const { MessageEmbed } = require('discord.js')
 const { sleep } = require('../../basic'); 
-const { prefix, owner, maid, dogwater } = require('../../../config/config.json');
+const { prefix, master, maid, dogwater } = require('../../../config/config.json');
 const aZip = require('adm-zip')
 
 module.exports = {
@@ -8,6 +8,8 @@ module.exports = {
     description: "Event emits on receiving a message.",
     run: async (client) => {
         client.on('message', async msg => {
+
+            msg.author.fetch()
 
             if (msg.author.id == client.user.id) return;
 
@@ -20,21 +22,21 @@ module.exports = {
 
             // Broken Kingdom
 
-            if (msg.channel.type === 'dm' && msg.author.id == owner) {
+            if (msg.channel.type === 'dm' && msg.author.id == master) {
     
                 if (msg.content == "grabGuildSaves") {
                     let zip = new aZip();
                     zip.addLocalFolder('./saves')
-                    zip.writeZip('./functions/commands/owner/BotSaves.zip')
+                    zip.writeZip('./functions/commands/master/BotSaves.zip')
         
-                    msg.author.send(`Here are the GuildSaves as you asked! Updated as of ${formatDate(new Date())}`, { files: ["functions/commands/owner/BotSaves.zip"] })
+                    msg.author.send(`Here are the GuildSaves as you asked! Updated as of ${formatDate()}`, { files: ["functions/commands/master/BotSaves.zip"] })
                 }
 
                 return;
             } else if (msg.channel.type === 'dm') return;
 
             if (msg.mentions.has(client.user)) {
-                if (msg.author.id === owner && msg.content.toLowerCase() === "thank you") {
+                if (msg.author.id === master && msg.content.toLowerCase() === "thank you") {
                     msg.reply("There is no need to thank me Master! I'm here to serve you... always.")
                 }
             }

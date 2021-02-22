@@ -1,6 +1,6 @@
 const { MessageEmbed } = require('discord.js');
 const { stripIndents } = require('common-tags');
-const { prefix, owner, maid, keywords, specKeywords, meanKeywords, niceKeywords } = require("../../../config/config.json")
+const { prefix, master, maid, keywords, specKeywords, meanKeywords, niceKeywords } = require("../../../config/config.json")
 const { sleep, formatDate } = require('../../basic');
 
 module.exports = {

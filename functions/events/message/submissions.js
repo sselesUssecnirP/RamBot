@@ -1,6 +1,6 @@
 const { MessageEmbed, MessageFlags } = require('discord.js')
 const { sleep } = require('../../basic'); 
-const { prefix, owner, maid, dogwater } = require('../../../config/config.json');
+const { prefix, master, maid, dogwater } = require('../../../config/config.json');
 const fs = require('fs')
 
 module.exports = {
