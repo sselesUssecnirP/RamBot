@@ -7,7 +7,7 @@ module.exports = {
     name: "help",
     category: "info",
     description: "Displays a wonderful embed of help pages",
-    aliases: ["?", "h"],
+    aliases: ["?", "h", "commands"],
     usage: "none",
     run: async (client, msg, args) => {
 
@@ -47,7 +47,7 @@ module.exports = {
             .addField("Moderation", moderation)
             
             .addField("Master Only", masteronly)
-            .setFooter(`${msg.author.id == master ? "My Master" : name} used ${prefix}${command.name}! It made the help embed appear! Use ram!{cmd} info for more information on a specific command.`, msg.author.displayAvatarURL())
+            .setFooter(`${msg.author.id == master ? "My Master" : name} used ${prefix}${command.name}! It made the help embed appear! Use ${prefix}{cmd} info for more information on a specific command.`, msg.author.displayAvatarURL())
             
         msg.reply(embed)
         
