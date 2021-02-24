@@ -2,7 +2,7 @@ module.exports = {
     name: "korone",
     category: "fun",
     description: "Sends the user (or the mentioned user) a 'im die, thank you for ever' video",
-    aliases: [],
+    aliases: "none",
     usage: "[mention]",
     run: async (client, msg, args) => {
         

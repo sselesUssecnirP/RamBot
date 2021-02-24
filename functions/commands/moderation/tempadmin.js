@@ -7,7 +7,7 @@ module.exports = {
     name: "tempadmin",
     category: "moderation",
     description: "Gives the user temporary admin powers for a time up to two hours.",
-    aliases: [],
+    aliases: "none",
     run: async (client, msg, args) => {
 
 

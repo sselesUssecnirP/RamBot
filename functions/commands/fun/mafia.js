@@ -5,7 +5,7 @@ module.exports = {
     name: "mafia",
     category: "fun",
     description: "Decides if you're Mafia or not. (A more basic (and currently broken) version of my master's MafiaBot.)",
-    aliases: [],
+    aliases: "none",
     run: async (client, msg, args, guilds, collSubmissions, master, maid) => {
 
         if (args[0] === "info") {

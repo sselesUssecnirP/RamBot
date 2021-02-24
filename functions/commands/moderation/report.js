@@ -8,7 +8,7 @@ module.exports = {
     category: "moderation",
     description: "Reports a member",
     usage: "<mention | id>",
-    aliases: [],
+    aliases: "none",
     run: async (client, msg, args) => {
         let emilia = msg.guild.members.fetch('765440066495184896')
         if (emilia) {
