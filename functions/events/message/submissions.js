@@ -6,7 +6,7 @@ const fs = require('fs')
 module.exports = {
     name: "submissions",
     description: "Event emits on message received",
-    run: (client, msg, args) => {
+    run: async (client, msg, args) => {
         client.on('message', async msg => {
             if (msg.channel.type == 'dm') return;
             if (msg.author.bot) return;

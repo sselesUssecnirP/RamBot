@@ -10,7 +10,7 @@ module.exports = {
     category: "master",
     aliases: ["botsaves", "gbsaves", "gbotsaves", "grabbsaves"],
     usage: "none",
-    run: (client, msg, args) => {
+    run: async (client, msg, args) => {
 
         if (msg.author.id == master) {
             console.log("attempting to run aZip")

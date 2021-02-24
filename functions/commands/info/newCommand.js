@@ -7,7 +7,7 @@ module.exports = {
     description: "newCommand",
     aliases: ["newCommand"],
     usage: "none",
-    run: (client, msg, args) => {
+    run: async (client, msg, args) => {
         if (msg.author.id == master) {
             msg.reply("I thought this command was just a placeholder for you... Why are you using it?")
         } else {

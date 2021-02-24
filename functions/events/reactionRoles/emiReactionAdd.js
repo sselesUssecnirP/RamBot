@@ -1,7 +1,7 @@
 module.exports = {
     name: "emiReactionAdd",
     description: "Event emits on reaction add received.",
-    run: (client) => {
+    run: async (client) => {
 
         let emojis = ["<:EmiRee:801972190374658068>", "<:EmiLove:801972190195089428>", "<:EmiPout:801972190803132467>", "<:EmiYeah:801972189673816104>"]
         let ramEmojis = []

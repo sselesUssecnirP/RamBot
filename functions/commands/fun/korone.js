@@ -4,7 +4,7 @@ module.exports = {
     description: "Sends the user (or the mentioned user) a 'im die, thank you for ever' video",
     aliases: [],
     usage: "[mention]",
-    run: (client, msg, args) => {
+    run: async (client, msg, args) => {
         
         if (args.length == 0) {
             msg.author.send({ files: ["./files/videos/korone.mp4"]})
