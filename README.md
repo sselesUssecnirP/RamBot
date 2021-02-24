@@ -7,7 +7,7 @@ RamBot is **[sselesUssecnirP's](https://github.com/sselesUssecnirP)** maid Disco
 ## Commands
 
 | Name | Description | Category | Status |
-| ----- | ------------ | ----- | ----- |
+| :-----: | :------------: | :-----: | :-----: |
 | Cola | Gives the user or mentioned user a cola. (DM) | Fun | ✅ |
 | Dogwater | Calls the mentioned user dogwater. | Fun | ✅ |
 | ImDie | Sends a message to the channel: {USERNAME}: {imdie.mp4} | Fun | ✅ |
