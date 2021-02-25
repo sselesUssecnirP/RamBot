@@ -37,7 +37,7 @@ module.exports = {
             let dateCreated = msg.createdAt
             let channel = msg.channel.name
             let guild = msg.guild.name
-            let content = msg.content
+            let content = msg.content.toLowerCase()
 
             let embed = new MessageEmbed()
             .setAuthor(client.user.username, client.user.displayAvatarURL())

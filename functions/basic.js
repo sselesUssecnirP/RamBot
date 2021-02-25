@@ -2,16 +2,20 @@ module.exports = {
   sleep(ms = 10000) {
     return new Promise(resolve => setTimeout(resolve, ms));
   },
-
-  formatDate(date = new Date()) {
-    date.toLocaleString('en-US', { timeZone: 'America/New_York' })
+  
+  formatDate(date = new Date(), timeZone = 'America/New_York') {
+    date.toLocaleString('en-US', { timeZone: timeZone }).split(', ')
 
     return date[1]
   },
-  formatDateTime(date = new Date()) {
-    return date.toLocaleString('en-US', { timeZone: 'America/New_York' })
+
+  formatDateTime(date = new Date(), timeZone = 'America/New_York') {
+    return date.toLocaleString('en-US', { timeZone: timeZone })
   },
-  mentionUser(user) {
-    return `<@!${user}>`
+
+  mentionUser(userid = "none") {
+    if (userid === "none")
+        throw "No userid was given."
+    return `<@!${userid}>`
   }
 }
