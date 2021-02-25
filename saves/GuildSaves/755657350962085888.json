@@ -15,5 +15,9 @@
             "animenight": []
             
     },
+    "mutedMembers": {
+        
+    },
+    "banNWord": false,
     "permissions": false
 }

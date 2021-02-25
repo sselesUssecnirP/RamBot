@@ -1,11 +1,11 @@
-const { sleep } = require('../../basic'); 
+const { sleep, formatDate, formatDateTime, mentionUser } = require('../../basic'); 
 const { prefix, master, maid, dogwater } = require('../../../config/config.json');
 
 module.exports = {
-    name: "newCommand",
-    category: "newCommand",
-    description: "newCommand",
-    aliases: ["newCommand"],
+    name: "newcommand",
+    category: "newcommand",
+    description: "newcommand",
+    aliases: ["newcommand"],
     usage: "none",
     run: async (client, msg, args) => {
         if (msg.author.id == master) {

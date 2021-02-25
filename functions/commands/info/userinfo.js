@@ -1,4 +1,4 @@
-const { sleep } = require('../../basic'); 
+const { sleep, formatDate, formatDateTime, mentionUser } = require('../../basic'); 
 const { prefix, master, maid, dogwater } = require('../../../config/config.json');
 const { formatDate } = require('../../basic');
 const { MessageEmbed } = require('discord.js');
@@ -8,10 +8,13 @@ module.exports = {
     name: "userinfo",
     category: "info",
     description: "A command to acquire information about a user.",
-    aliases: ["whois", "who"],
+    aliases: ["whois", "who", "uinfo"],
     usage: "<username | id | mention>",
     run: async (client, msg, args) => {
         
+        if (msg.channel.type == 'DM' && args[0])
+            return msg.reply('You cannot call this command in a DM.')
+
         if (!args[0]) {
             msg.reply("Provide the proper information, and maybe my commands will work. You must give me a username, mention, or ID.")
             return;
@@ -30,10 +33,8 @@ module.exports = {
                 }
             });
 
-        if (!member) {
-            msg.reply("Could not find a member with the argument you gave me.")
-            return;
-        }
+        if (!member)
+            member = msg.member
 
         const joined = formatDate(member.joinedAt);
 

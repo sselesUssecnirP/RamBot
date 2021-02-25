@@ -1,6 +1,7 @@
 const { MessageEmbed } = require('discord.js')
-const { sleep } = require('../../basic'); 
+const { sleep, formatDate, formatDateTime, mentionUser } = require('../../basic'); 
 const { prefix, master, maid, dogwater } = require('../../../config/config.json');
+const { writeFile } = require('fs')
 const aZip = require('adm-zip')
 
 module.exports = {
@@ -10,6 +11,39 @@ module.exports = {
         client.on('message', async msg => {
 
             msg.author.fetch()
+
+            const guildS = client.guildsColl.get(msg.guild.id) || undefined
+
+            if (guildS) {
+                // muted user IF the user was on the muted list.
+                let deleteUser = false;
+                guildS["mutedUsers"].forEach(user => {
+                    if (user["user"]["id"] == msg.author.id) {
+                        if (user["mutedOn"] !== user["mutedOn"]) {
+                            let timeSince = (new Date().getTime() - new Date(user["mutedOn"]).getTime()) / (1000 * 3600 * 24)
+
+                            if (timeSince > 30) {
+                                msg.author.send("You've been muted for more than thirty days. I'm removing your muted status! Don't be naughty again. If do end up being naughty again, they may just ban you.")
+                            
+                                deleteUser = true
+                            } else if (timeSince <= 30) {
+                                
+                                msg.author.send(`You've been muted for ${timeSince} days. If you speak, I will delete your messages immediately.${timeSince == 30 ? "Today happens to be your last day of the mute, so tomorrow (if you speak), I will remove your mute status." : ""}`)
+                                msg.delete({ timeout: 200 })
+                            }
+                        }
+                    }
+                });
+
+                if (deleteUser) {
+                    delete guildS["mutedUsers"][msg.author.id]
+                    
+                    writeFile(`./saves/GuildSaves/${msg.guild.id}`, JSON.stringify(guildS, null, '\t'), err => {
+                        if (err) throw err;
+                        console.log("The file has been saved!")
+                    });
+                }
+            }
 
             if (msg.author.id == client.user.id) return;
 

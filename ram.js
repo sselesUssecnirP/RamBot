@@ -9,7 +9,7 @@ client = new Client({
     presence: {
         status: "online",
         activity: {
-            name: "ram! | Ram 1.3.0",
+            name: "ram! | Ram 1.3.1",
             type: "LISTENING"
         },
         afk: false
