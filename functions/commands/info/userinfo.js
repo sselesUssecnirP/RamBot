@@ -1,6 +1,5 @@
 const { sleep, formatDate, formatDateTime, mentionUser } = require('../../basic'); 
 const { prefix, master, maid, dogwater } = require('../../../config/config.json');
-const { formatDate } = require('../../basic');
 const { MessageEmbed } = require('discord.js');
 const { stripIndents } = require('common-tags');
 
