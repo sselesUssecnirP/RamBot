@@ -34,13 +34,13 @@ module.exports = {
                         const collected = c.array()[0]
                         if (collected === botemojis["yesNo"][0]) {
 
-                            reply.delete({ timeout: 10 })
+                            reply.delete({ timeout: 200 })
                             coll["submissions"][key].slice(coll["submissions"][key][args[1]])
                             msg.reply(`${key} submission box was deleted.`)
 
                         } else if (c === botemojis["yesNo"][1]) {
 
-                            reply.delete({ timeout: 10 })
+                            reply.delete({ timeout: 200 })
                             msg.reply(`${key} submission box will not be deleted.`)
 
                         }

@@ -49,7 +49,7 @@ module.exports = {
 
             if (msg.author.id == dogwater && msg.content.toLowerCase().includes("dogwater")) {
                 
-                await msg.delete({ timeout: 10 })
+                await msg.delete({ timeout: 200 })
                 (await msg.reply("I warned you!")).delete({ timeout: 2500 })
 
             }       
@@ -100,7 +100,7 @@ module.exports = {
 
                 if (!cmd) cmd = client.commands.get(client.aliases.get(command));
 
-                msg.delete({ timeout: 10 })
+                msg.delete({ timeout: 200 })
                 
                 if (args[0] == cmd.category.toLowerCase()) {
                     msg.reply("Yes, good job! That is indeed what category this command is placed under! I'm so happy you know how to read the basic English that the help menu is written in.")

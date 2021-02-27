@@ -32,7 +32,7 @@ module.exports = {
                 }
             });
 
-            msg.delete({ timeout: 10 })
+            msg.delete({ timeout: 200 })
             let name = msg.author.username
             let dateCreated = msg.createdAt
             let channel = msg.channel.name

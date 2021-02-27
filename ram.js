@@ -1,4 +1,4 @@
-const { Client, MessageEmbed, Collection } = require('discord.js');
+const { Client, Collection } = require('discord.js');
 const { readdirSync } = require('fs')
 const token = process.env.TOKEN || require('./config/token.json').TOKEN
 const handlers = ["collections", "commands", "events"]
