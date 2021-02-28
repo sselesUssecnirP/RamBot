@@ -35,13 +35,15 @@ module.exports = {
             **>> Created At:** ${created}
             **>> Description:** ${guild.id}${guild.rulesChannel ? `
             **>> Rules Channel:** <#!${guild.rulesChannelID}>` : ``}
-            **>> Joined At:** ${joined}
-            **>> Population:** ${guild.membersCount}${guild.partnered ? `
-            >>** Partnered:** Yes` : ``}${guild.verified ? `
-            >>** Verified:** Yes` : ``}${guild.vanityURLCode ? `
+            **>> Population:** ${guild.membersCount}${guild.vanityURLCode ? `
             **>> Vanity URL:** ${guild.vanityURLCode}
             **>> Vanity URL Uses:** ${guild.vanityURLUses}` : ``}
-            **>> Voice Region:** ${guild.region}
+            `, true)
+            
+            .addField("Other Information", `**>> Joined At:** ${joined}
+            **>> Voice Region:** ${guild.region}${guild.partnered ? `
+            >>** Partnered:** Yes` : ``}${guild.verified ? `
+            >>** Verified:** Yes` : ``}
             **>> Roles:** ${roles}`, true)
 
             .setTimestamp()
