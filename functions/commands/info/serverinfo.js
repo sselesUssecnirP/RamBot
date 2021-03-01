@@ -32,20 +32,20 @@ module.exports = {
         .setThumbnail(msg.guild.iconURL)
         .setColor(msg.member.displayHexColor === "#000000" ? "#ffffff" : msg.member.displayHexColor)
 
-        .addField("Guild Information #1", stripIndents`**> Name:** ${msg.guild.name}
+        .addField("Guild Information #1", `**> Name:** ${msg.guild.name}
         **>> ID:** ${msg.guild.id}
         **>> Created At:** ${created}
         **>> Description:** ${msg.guild.id}`, true)
 
-        .addField("Roles", stripIndents`**>> Roles:** ${roles}`)
+        .addField("Roles", `**>> Roles:** ${roles}`)
         
-        .addField("Info #2", stripIndents`${msg.guild.rulesChannel ? `
+        .addField("Info #2", `${msg.guild.rulesChannel ? `
         **>> Rules Channel:** <#!${msg.guild.rulesChannelID}>` : ``}
         **>> Population:** ${msg.guild.membersCount}
         **>> Joined At:** ${joined}
         **>> Voice Region:** ${msg.guild.region}`, true)
 
-        .addField("Info #3", stripIndents`${msg.guild.vanityURLCode ? `
+        .addField("Info #3", `${msg.guild.vanityURLCode ? `
         **>> Vanity URL:** ${msg.guild.vanityURLCode}
         **>> Vanity URL Uses:** ${msg.guild.vanityURLUses}` : ``}${msg.guild.partnered ? `
         **>> Partnered:** Yes` : ``}${msg.guild.verified ? `
