@@ -33,16 +33,17 @@ module.exports = {
         .addField("Guild Information #1", stripIndents`**> Name:** ${guild.name}
         **>> ID:** ${guild.id}
         **>> Created At:** ${created}
-        **>> Description:** ${guild.id}
-        **>> Roles:** ${roles}`, true)
+        **>> Description:** ${guild.id}`, true)
+
+        .addField("Roles", stripIndents`**>> Roles:** ${roles}`)
         
-        .addField("Info #2", `${guild.rulesChannel ? `
+        .addField("Info #2", stripIndents`${guild.rulesChannel ? `
         **>> Rules Channel:** <#!${guild.rulesChannelID}>` : ``}
         **>> Population:** ${guild.membersCount}
         **>> Joined At:** ${joined}
         **>> Voice Region:** ${guild.region}`, true)
 
-        .addField("Info #3", `${guild.vanityURLCode ? `
+        .addField("Info #3", stripIndents`${guild.vanityURLCode ? `
         **>> Vanity URL:** ${guild.vanityURLCode}
         **>> Vanity URL Uses:** ${guild.vanityURLUses}` : ``}${guild.partnered ? `
         **>> Partnered:** Yes` : ``}${guild.verified ? `
