@@ -35,22 +35,16 @@ module.exports = {
         .addField("Guild Information #1", `**> Name:** ${msg.guild.name}
         **>> ID:** ${msg.guild.id}
         **>> Created At:** ${created}
-        **>> Description:** ${msg.guild.id}`, true)
-
-        .addField("Roles", `**>> Roles:** ${roles}`)
-        /*
-        .addField("Info #2", `${msg.guild.rulesChannel ? `
+        **>> Description:** ${msg.guild.id}${msg.guild.rulesChannel ? `
         **>> Rules Channel:** <#!${msg.guild.rulesChannelID}>` : ``}
         **>> Population:** ${msg.guild.membersCount}
         **>> Joined At:** ${joined}
-        **>> Voice Region:** ${msg.guild.region}`, true)
-
-        .addField("Info #3", `${msg.guild.vanityURLCode ? `
+        **>> Voice Region:** ${msg.guild.region}${msg.guild.vanityURLCode ? `
         **>> Vanity URL:** ${msg.guild.vanityURLCode}
         **>> Vanity URL Uses:** ${msg.guild.vanityURLUses}` : ``}${msg.guild.partnered ? `
         **>> Partnered:** Yes` : ``}${msg.guild.verified ? `
         **>> Verified:** Yes` : ``}`, true)
-        */
+        
         .setTimestamp()
 
     if (msg.guild.bannerURL) {
