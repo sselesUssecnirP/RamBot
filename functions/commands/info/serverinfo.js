@@ -11,48 +11,49 @@ module.exports = {
     run: async (client, msg, args) => {
         
         if (msg.channel.type == 'DM')
-            return msg.reply("This is a direct message. You cannot get information about the server you're in from here.")
+        return msg.reply("This is a direct message. You cannot get information about the server you're in from here.")
 
-        let guild = msg.guild
+    let guild = msg.guild
 
-        const joined = formatDate(msg.member.joinedAt);
+    const joined = formatDate(msg.member.joinedAt);
 
-        const roles = guild.roles.cache
-            .filter(r => r.id != msg.guild.id)
-            .map(r => r)
-            .join(", ") || "none"
+    const roles = guild.roles.cache
+        .filter(r => r.id != msg.guild.id)
+        .map(r => r)
+        .join(", ") || "none"
+    
+    const created = formatDate(guild.createdAt)
+
+    const embed = new MessageEmbed()
+        .setTitle('Serverinfo')
+        .setFooter(guild.name, guild.iconURL)
+        .setThumbnail(guild.iconURL)
+        .setColor(msg.member.displayHexColor === "#000000" ? "#ffffff" : msg.member.displayHexColor)
+
+        .addField("Guild Information #1", stripIndents`**> Name:** ${guild.name}
+        **>> ID:** ${guild.id}
+        **>> Created At:** ${created}
+        **>> Description:** ${guild.id}`, true)
         
-        const created = formatDate(guild.createdAt)
+        .addField("Info #2", `${guild.rulesChannel ? `
+        **>> Rules Channel:** <#!${guild.rulesChannelID}>` : ``}
+        **>> Population:** ${guild.membersCount}
+        **>> Joined At:** ${joined}
+        **>> Voice Region:** ${guild.region}`, true)
 
-        const embed = new MessageEmbed()
-            .setTitle('Serverinfo')
-            .setFooter(guild.name, guild.iconURL)
-            .setThumbnail(guild.iconURL)
-            .setColor(msg.member.displayHexColor === "#000000" ? "#ffffff" : msg.member.displayHexColor)
+        .addField("Info #3", `**>> Roles:** ${roles}${guild.vanityURLCode ? `
+        **>> Vanity URL:** ${guild.vanityURLCode}
+        **>> Vanity URL Uses:** ${guild.vanityURLUses}` : ``}${guild.partnered ? `
+        **>> Partnered:** Yes` : ``}${guild.verified ? `
+        **>> Verified:** Yes` : ``}`, true)
 
-            .addField("Guild Information #1", stripIndents`**> Name:** ${guild.name}
-            **>> ID:** ${guild.id}
-            **>> Created At:** ${created}
-            **>> Description:** ${guild.id}${guild.rulesChannel ? `
-            **>> Rules Channel:** <#!${guild.rulesChannelID}>` : ``}
-            **>> Population:** ${guild.membersCount}`, true)
-            
-            .addField("Info #2", `**>> Joined At:** ${joined}
-            **>> Voice Region:** ${guild.region}${guild.partnered ? `
-            **>> Partnered:** Yes` : ``}${guild.verified ? `
-            **>> Verified:** Yes` : ``}`, true)
+        .setTimestamp()
 
-            .addField("Info #3", `**>> Roles:** ${roles}${guild.vanityURLCode ? `
-            **>> Vanity URL:** ${guild.vanityURLCode}
-            **>> Vanity URL Uses:** ${guild.vanityURLUses}` : ``}`, true)
+    if (guild.bannerURL) {
+        embed.setImage(guild.bannerURL)
+    }
 
-            .setTimestamp()
-
-        if (guild.bannerURL) {
-            embed.setImage(guild.bannerURL)
-        }
-
-        msg.channel.send("Here's the server information!", embed)
+    msg.channel.send("Here's the server information!", embed)
 
     }
 }
