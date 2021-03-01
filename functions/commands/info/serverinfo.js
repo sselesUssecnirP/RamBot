@@ -10,15 +10,15 @@ module.exports = {
     usage: "<username | id | mention>",
     run: async (client, msg, args) => {
         
-        if (msg.channel.type == 'DM')
-        return msg.reply("This is a direct message. You cannot get information about the server you're in from here.")
+    if (msg.channel.type == 'DM')
+    return msg.reply("This is a direct message. You cannot get information about the server you're in from here.")
 
     let guild = msg.guild
 
     const joined = formatDate(msg.member.joinedAt);
 
     const roles = guild.roles.cache
-        .filter(r => r.id != msg.guild.id)
+        .filter(r => r.name != 'everyone')
         .map(r => r)
         .join(", ") || "none"
     
