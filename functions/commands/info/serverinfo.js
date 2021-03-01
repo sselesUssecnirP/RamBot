@@ -1,6 +1,4 @@
-const { formatDate } = require('../../basic');
 const { MessageEmbed } = require('discord.js');
-const { stripIndents } = require('common-tags');
 
 module.exports = {
     name: "serverinfo",
@@ -13,18 +11,14 @@ module.exports = {
     if (msg.channel.type == 'DM')
     return msg.reply("This is a direct message. You cannot get information about the server you're in from here.")
 
-    const joined = formatDate(new Date(msg.member.joinedAt));
-
     const roles = [];
     
     await msg.guild.roles.cache.each(r => {
         if (roles.name != '@everyone')
-            roles.push(`<@!${r.id}>`)
+            roles.push(`<@&${r.id}>`)
     });
 
     roles.join(', ')
-    
-    const created = formatDate(new Date(msg.guild.createdAt))
 
     const embed = new MessageEmbed()
         .setTitle('Serverinfo')
@@ -34,11 +28,11 @@ module.exports = {
 
         .addField("Guild Information #1", `**>> Name:** ${msg.guild.name}
         **>> ID:** ${msg.guild.id}
-        **>> Created At:** ${created}
-        **>> Description:** ${msg.guild.id}${msg.guild.rulesChannel ? `
-        **>> Rules Channel:** <#!${msg.guild.rulesChannelID}>` : ``}
+        **>> Created At:** ${msg.guild.createdAt}
+        **>> Description:** ${msg.guild.description}${msg.guild.rulesChannel ? `
+        **>> Rules Channel:** <#${msg.guild.rulesChannelID}>` : ``}
         **>> Population:** ${msg.guild.membersCount}
-        **>> Joined At:** ${joined}
+        **>> Joined At:** ${msg.member.joinedAt}
         **>> Voice Region:** ${msg.guild.region}${msg.guild.vanityURLCode ? `
         **>> Vanity URL:** ${msg.guild.vanityURLCode}
         **>> Vanity URL Uses:** ${msg.guild.vanityURLUses}` : ``}${msg.guild.partnered ? `
@@ -52,6 +46,7 @@ module.exports = {
     }
 
     msg.channel.send("Here's the server information!", embed)
+    msg.channel.send(`Here are the server's roles: ${roles}`)
 
     }
 }
