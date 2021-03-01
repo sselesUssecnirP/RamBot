@@ -13,7 +13,7 @@ module.exports = {
     if (msg.channel.type == 'DM')
     return msg.reply("This is a direct message. You cannot get information about the server you're in from here.")
 
-    const joined = formatDate(msg.member.joinedAt);
+    const joined = formatDate(new Date(msg.member.joinedAt));
 
     const roles = [];
     
@@ -24,7 +24,7 @@ module.exports = {
 
     roles.join(', ')
     
-    const created = formatDate(msg.guild.createdAt)
+    const created = formatDate(new Date(msg.guild.createdAt))
 
     const embed = new MessageEmbed()
         .setTitle('Serverinfo')
@@ -32,7 +32,7 @@ module.exports = {
         .setThumbnail(msg.guild.iconURL)
         .setColor(msg.member.displayHexColor === "#000000" ? "#ffffff" : msg.member.displayHexColor)
 
-        .addField("Guild Information #1", `**> Name:** ${msg.guild.name}
+        .addField("Guild Information #1", `**>> Name:** ${msg.guild.name}
         **>> ID:** ${msg.guild.id}
         **>> Created At:** ${created}
         **>> Description:** ${msg.guild.id}${msg.guild.rulesChannel ? `
