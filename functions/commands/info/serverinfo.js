@@ -38,7 +38,7 @@ module.exports = {
         **>> Description:** ${msg.guild.id}`, true)
 
         .addField("Roles", `**>> Roles:** ${roles}`)
-        
+        /*
         .addField("Info #2", `${msg.guild.rulesChannel ? `
         **>> Rules Channel:** <#!${msg.guild.rulesChannelID}>` : ``}
         **>> Population:** ${msg.guild.membersCount}
@@ -50,7 +50,7 @@ module.exports = {
         **>> Vanity URL Uses:** ${msg.guild.vanityURLUses}` : ``}${msg.guild.partnered ? `
         **>> Partnered:** Yes` : ``}${msg.guild.verified ? `
         **>> Verified:** Yes` : ``}`, true)
-
+        */
         .setTimestamp()
 
     if (msg.guild.bannerURL) {
