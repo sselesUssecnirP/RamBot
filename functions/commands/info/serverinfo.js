@@ -8,44 +8,57 @@ module.exports = {
     usage: "<username | id | mention>",
     run: async (client, msg, args) => {
         
-    if (msg.channel.type == 'DM')
-        return msg.reply("This is a direct message. You cannot get information about the server you're in from here.")
+        if (msg.channel.type == 'DM')
+            return msg.reply("This is a direct message. You cannot get information about the server you're in from here.")
 
-    const roles = [];
+        const roles = [];
     
-    await msg.guild.roles.cache.each(r => {
-        if (roles.name != '@everyone')
-            roles.push(`<@&${r.id}>`)
-    });
+        await msg.guild.roles.cache.each(r => {
+            if (roles.name != '@everyone')
+                // roles.push(`<@&${r.id}>`)
+                roles.push(r.name)
+        });
 
-    roles.join(', ')
+        roles.join(', ')
 
-    const embed = new MessageEmbed()
-        .setTitle('Serverinfo')
-        .setFooter(msg.guild.name, msg.guild.iconURL)
-        .setThumbnail(msg.guild.iconURL)
-        .setColor(msg.member.displayHexColor === "#000000" ? "#ffffff" : msg.member.displayHexColor)
+        const embed = new MessageEmbed()
+            .setTitle('Serverinfo')
+            .setFooter(msg.guild.name, msg.guild.iconURL)
+            .setThumbnail(msg.guild.iconURL)
+            .setColor(msg.member.displayHexColor === "#000000" ? "#ffffff" : msg.member.displayHexColor)
 
-        .addField("Guild Information #1", `**>> Name:** ${msg.guild.name}
-        **>> ID:** ${msg.guild.id}
-        **>> Created At:** ${msg.guild.createdAt}${msg.guild.description ? `
-        **>> Description:** ${msg.guild.description}` : ``}${msg.guild.rulesChannel ? `
-        **>> Rules Channel:** <#${msg.guild.rulesChannelID}>` : ``}
-        **>> Population:** ${msg.guild.memberCount}
-        **>> Joined At:** ${msg.member.joinedAt}
-        **>> Voice Region:** ${msg.guild.region}${msg.guild.vanityURLCode ? `
-        **>> Vanity URL:** ${msg.guild.vanityURLCode}
-        **>> Vanity URL Uses:** ${msg.guild.vanityURLUses}` : ``}${msg.guild.partnered ? `
-        **>> Partnered:** Yes` : ``}${msg.guild.verified ? `
-        **>> Verified:** Yes` : ``}`, true)
+            .addField("Guild Information #1", `**>> Name:** ${msg.guild.name}
+            **>> ID:** ${msg.guild.id}
+            **>> Created At:** ${msg.guild.createdAt}${msg.guild.description ? `
+            **>> Description:** ${msg.guild.description}` : ``}${msg.guild.rulesChannel ? `
+            **>> Rules Channel:** <#${msg.guild.rulesChannelID}>` : ``}
+            **>> Population:** ${msg.guild.memberCount}
+            **>> Joined At:** ${msg.member.joinedAt}
+            **>> Voice Region:** ${msg.guild.region}${msg.guild.vanityURLCode ? `
+            **>> Vanity URL:** ${msg.guild.vanityURLCode}
+            **>> Vanity URL Uses:** ${msg.guild.vanityURLUses}` : ``}${msg.guild.partnered ? `
+            **>> Partnered:** Yes` : ``}${msg.guild.verified ? `
+            **>> Verified:** Yes` : ``}`, true)
         
-        .setTimestamp()
+            .setTimestamp()
 
-    if (msg.guild.bannerURL) {
-        embed.setImage(msg.guild.bannerURL)
-    }
+        if (msg.guild.bannerURL) {
+            embed.setImage(msg.guild.bannerURL)
+        }
 
-    msg.channel.send("Here's the server information!", embed)
+        msg.channel.send("Here's the server information!", embed)
 
+        if (roles.length > 2000) {
+            writeFile('message.txt', roles, err => {
+                if (err)    
+                    throw err
+                console.log('message.txt (guild roles) has been saved.')
+            });
+        
+            msg.channel.send('The roles in the guild:', { files: ['/functions/commands/fun/info/message.txt'] });
+        } else {
+            msg.channel.send(`The roles in the guild:\n${roles}`)
+        }
+    
     }
 }
