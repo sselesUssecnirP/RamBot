@@ -34,7 +34,7 @@ module.exports = {
     
     /**
      * @name mentionUser A function to return the string discord uses when mentioning users.
-     * @param {(string|Integar)} user A user ID to mention. **must** be the ID.
+     * @param {(string|Number)} user A user ID to mention. **must** be the ID.
      * @returns {string} Returns a string used by discord when mentioning users.
      */
     mentionUser(user) {

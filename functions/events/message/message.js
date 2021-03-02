@@ -67,9 +67,7 @@ module.exports = {
         
                     msg.author.send(`Here are the GuildSaves as you asked! Updated as of ${formatDate()}`, { files: ["functions/commands/master/BotSaves.zip"] })
                 }
-
-                return;
-            } else if (msg.channel.type === 'dm') return;
+            } else if (msg.channel.type === 'dm' && msg.author.id !== master) return;
 
             if (msg.mentions.has(client.user)) {
                 if (msg.author.id === master && msg.content.toLowerCase() === "thank you") {
