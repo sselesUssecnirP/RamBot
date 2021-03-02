@@ -12,7 +12,7 @@ module.exports = {
 
             msg.author.fetch()
 
-            const guildS = client.guildsColl.get(msg.guild.id) || undefined
+            if (msg.channel.type !== 'DM') const guildS = client.guildsColl.get(msg.guild.id) || undefined
 
             if (guildS) {
                 if (guildS["mutedUsers"]) {
