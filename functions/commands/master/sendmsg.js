@@ -11,7 +11,10 @@ module.exports = {
         const { message } = require('../../../saves/message.json');
 
         if (msg.channel.type !== 'DM') {
-            let t = grabms(args[0])
+            let t = grabms(args[0]).catch(err => {
+                if (err)
+                    msg.reply(err[1])
+            })
 
             sleep(t)
 

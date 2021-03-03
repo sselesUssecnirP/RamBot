@@ -41,6 +41,22 @@ module.exports = {
       return `<@!${user}>`
     },
     /**
+     * @name mentionChannel A function to return the string discord uses when mentioning channels.
+     * @param {(string|Number)} channel A channel ID to mention. **must** be the ID.
+     * @returns Returns a string used by discord when mentioning channels.
+     */
+    mentionChannel(channel) {
+      return `<#${channel}>`
+    },
+    /**
+     * @name mentionRole A function to return the string discord uses when mentioning roles.
+     * @param {(string|Number)} role A role ID to mention. **must** be the ID.
+     * @returns Returns a string used by discord when mentioning roles.
+     */
+    mentionRole(role) {
+      return `<@&${role}>`
+    },
+    /**
      * @name grabms A function to return a number that can be used for functions/methods that require an argument in milliseconds.
      * @param {string} arg Must be a string of a number plus either 'd', 's', 'm', 'ms' at the end for day, second, minute, and millisecond respectively.
      * @returns {number} Returns a number in milliseconds.

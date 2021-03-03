@@ -1,3 +1,4 @@
+const { sleep, formatDate, formatDateTime, mentionUser, mentionChannel, mentionRole, grabms } = require('../../basic'); 
 const { MessageEmbed } = require('discord.js');
 
 module.exports = {
@@ -15,7 +16,7 @@ module.exports = {
     
         await msg.guild.roles.cache.each(r => {
             if (roles.name != '@everyone')
-                // roles.push(`<@&${r.id}>`)
+                // roles.push(`${mentionRole(r.id)}`)
                 roles.push(r.name)
         });
 
