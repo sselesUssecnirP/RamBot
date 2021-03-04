@@ -5,60 +5,6 @@ const { prefix, master, maid, dogwater } = require('../../../config/config.json'
 const { writeFile } = require('fs')
 const aZip = require('adm-zip')
 
-let runCMD = () => {
-    if (msg.content.includes(prefix)) {
-
-        let args = msg.content.slice(prefix.length).split(/ +/);
-        let command = args.shift().toLowerCase();
-        args = args.slice(command)
-
-        console.log(args)
-        console.log(command)
-
-        if (msg.author.id === dogwater && command != "dogwater") {
-            let randomDW = Math.ceil(Math.random() * 8)
-
-            if (randomDW > 6) {
-                msg.reply("You're too dogwater to run my commands. Try taking a shower and attempting again later!")
-                dogK.send("https://www.youtube.com/watch?v=0KGS0IOzSQQ&list=PLrvwVi0t0h8AYitTAkCXEcGVRxqXXZeeq&index=343")
-                return;
-            }
-        }
-
-        if (command.length === 0) return;
-
-        let cmd = client.commands.get(command);
-
-        if (!cmd) cmd = client.commands.get(client.aliases.get(command));
-
-        msg.delete({ timeout: 200 })
-    
-        if (args[0] == cmd.category.toLowerCase()) {
-            msg.reply("Yes, good job! That is indeed what category this command is placed under! I'm so happy you know how to read the basic English that the help menu is written in.")
-            return;
-        }
-
-        if (userS && cmd && guildS["permissions"]) {
-            if (userS["permissions"][msg.guild.id])
-                if (!userS["permissions"][msg.guild.id][cmd.name])
-                    return msg.reply("You do not have access to this command. ||(This guild has enabled custom permissions)||")
-        }
-
-        if (cmd) {
-            if (args[0] == "info") {
-                msg.reply(`Command Usage: ${prefix}${cmd.name}${cmd.usage != "" ? ` ${cmd.usage}` : ""}\nCommand Aliases: ${cmd.aliases}`)
-            } else {
-            cmd.run(client, msg, args)
-            }
-        } else {
-            msg.reply("That command is not valid.")
-        }
-    } else if (msg.crosspostable) {
-        msg.crosspost()
-        .then(() => console.log('Crossposted message'))
-    }
-}
-
 module.exports = {
     name: "message",
     description: "Event emits on receiving a message.",
@@ -69,6 +15,60 @@ module.exports = {
 
             const guildS = client.guildsColl.get(msg.guild.id) || undefined
             let userS = client.usersColl.get(msg.author.id) || undefined
+
+            let runCMD = () => {
+                if (msg.content.includes(prefix)) {
+            
+                    let args = msg.content.slice(prefix.length).split(/ +/);
+                    let command = args.shift().toLowerCase();
+                    args = args.slice(command)
+            
+                    console.log(args)
+                    console.log(command)
+            
+                    if (msg.author.id === dogwater && command != "dogwater") {
+                        let randomDW = Math.ceil(Math.random() * 8)
+            
+                        if (randomDW > 6) {
+                            msg.reply("You're too dogwater to run my commands. Try taking a shower and attempting again later!")
+                            dogK.send("https://www.youtube.com/watch?v=0KGS0IOzSQQ&list=PLrvwVi0t0h8AYitTAkCXEcGVRxqXXZeeq&index=343")
+                            return;
+                        }
+                    }
+            
+                    if (command.length === 0) return;
+            
+                    let cmd = client.commands.get(command);
+            
+                    if (!cmd) cmd = client.commands.get(client.aliases.get(command));
+            
+                    msg.delete({ timeout: 200 })
+                
+                    if (args[0] == cmd.category.toLowerCase()) {
+                        msg.reply("Yes, good job! That is indeed what category this command is placed under! I'm so happy you know how to read the basic English that the help menu is written in.")
+                        return;
+                    }
+            
+                    if (userS && cmd && guildS["permissions"]) {
+                        if (userS["permissions"][msg.guild.id])
+                            if (!userS["permissions"][msg.guild.id][cmd.name])
+                                return msg.reply("You do not have access to this command. ||(This guild has enabled custom permissions)||")
+                    }
+            
+                    if (cmd) {
+                        if (args[0] == "info") {
+                            msg.reply(`Command Usage: ${prefix}${cmd.name}${cmd.usage != "" ? ` ${cmd.usage}` : ""}\nCommand Aliases: ${cmd.aliases}`)
+                        } else {
+                        cmd.run(client, msg, args)
+                        }
+                    } else {
+                        msg.reply("That command is not valid.")
+                    }
+                } else if (msg.crosspostable) {
+                    msg.crosspost()
+                    .then(() => console.log('Crossposted message'))
+                }
+            }
 
             if (guildS) {
                 if (guildS["mutedUsers"]) {
