@@ -1,5 +1,7 @@
 const { Client, Collection } = require('discord.js');
 const { readdirSync } = require('fs')
+const func = require('./functions/basic')
+const { newUser, newGuild } = require('./functions/classes')
 const token = process.env.TOKEN || require('./config/token.json').TOKEN
 const handlers = ["collections", "commands", "events"]
 

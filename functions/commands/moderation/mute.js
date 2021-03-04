@@ -1,4 +1,4 @@
-const { sleep, formatDate, formatDateTime, mentionUser, mentionChannel, mentionRole, grabms } = require('../../basic'); 
+const func = require('../../basic');
 const { prefix, master, maid, dogwater } = require('../../../config/config.json');
 const message = require('../../events/message/message');
 const { writeFile } = require('fs')
@@ -21,7 +21,7 @@ module.exports = {
 
         const guildS = client.guildsColl.get(msg.guild.id) || { name: msg.guild.name, id: msg.guild.id, submitTo: {}, reportTo: {}, submissions: {}, mutedMembers: {}, banNWord: false, permissions: false }
     
-        guildS["mutedMembers"][member.id] = { user: { name: member.user.username, id: member.id }, mutedOn: formatDate(), mutedBy: { name: msg.member.username, id: msg.member.id } }
+        guildS["mutedMembers"][member.id] = { user: { name: member.user.username, id: member.id }, mutedOn: func.formatDate(), mutedBy: { name: msg.member.username, id: msg.member.id } }
 
         writeFile(`./saves/GuildSaves/${msg.guild.id}`, JSON.stringify(guildS, null, '\t'))
 

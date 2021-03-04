@@ -19,5 +19,6 @@
         
     },
     "banNWord": true,
-    "permissions": false
+    "permissions": false,
+    "permissionsDefault": {}
 }

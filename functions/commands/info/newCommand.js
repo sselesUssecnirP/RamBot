@@ -1,4 +1,4 @@
-const { sleep, formatDate, formatDateTime, mentionUser, mentionChannel, mentionRole, grabms } = require('../../basic'); 
+const func = require('../../basic');
 const { prefix, master, maid, dogwater } = require('../../../config/config.json');
 
 module.exports = {

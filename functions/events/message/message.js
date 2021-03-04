@@ -1,5 +1,6 @@
 const { MessageEmbed } = require('discord.js')
-const { sleep, formatDate, formatDateTime, mentionUser, mentionChannel, mentionRole, grabms } = require('../../basic'); 
+const func = require('../../basic');
+const { newUser, newGuild } = require('../../classes')
 const { prefix, master, maid, dogwater } = require('../../../config/config.json');
 const { writeFile } = require('fs')
 const aZip = require('adm-zip')
@@ -37,9 +38,10 @@ let runCMD = () => {
             return;
         }
 
-        if (userS) {
-            if (!userS[`permissions`][msg.guild.id][cmd.name])
-                return msg.reply("This guild has custom permissions enabled and you do not have permission to use this command.")
+        if (userS && cmd && guildS["permissions"]) {
+            if (userS["permissions"][msg.guild.id])
+                if (!userS["permissions"][msg.guild.id][cmd.name])
+                    return msg.reply("You do not have access to this command. ||(This guild has enabled custom permissions)||")
         }
 
         if (cmd) {
@@ -66,8 +68,7 @@ module.exports = {
             msg.author.fetch()
 
             const guildS = client.guildsColl.get(msg.guild.id) || undefined
-            let userS = false;
-
+            let userS = client.usersColl.get(msg.author.id) || undefined
 
             if (guildS) {
                 if (guildS["mutedUsers"]) {
@@ -122,7 +123,7 @@ module.exports = {
                     zip.addLocalFolder('./saves')
                     zip.writeZip('./functions/commands/master/BotSaves.zip')
         
-                    msg.author.send(`Here are the GuildSaves as you asked! Updated as of ${formatDate()}`, { files: ["functions/commands/master/BotSaves.zip"] })
+                    msg.author.send(`Here are the GuildSaves as you asked! Updated as of ${func.formatDate()}`, { files: ["functions/commands/master/BotSaves.zip"] })
                 }
 
                 if (msg.content.startsWith(prefix)) runCMD();

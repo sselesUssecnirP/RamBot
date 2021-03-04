@@ -1,4 +1,4 @@
-const { sleep, formatDate, formatDateTime, mentionUser, mentionChannel, mentionRole, grabms } = require('../../basic'); 
+const func = require('../../basic');
 const { prefix, master, maid, dogwater } = require('../../../config/config.json');
 
 module.exports = {
@@ -14,7 +14,7 @@ module.exports = {
                         newState.setDeaf(true, `He rolled a ${random}!`)
                         newState.setMute(true, `He rolled a ${random}!`)
 
-                        sleep(20000)
+                        func.sleep(20000)
 
                         newState.setMute(false, `His 20 second mute has ended.`)
                         newState.setDeaf(false, `His 20 second mute has ended.`)
@@ -28,7 +28,7 @@ module.exports = {
                         newState.setDeaf(true, `He rolled a ${random}!`)
                         newState.setMute(true, `He rolled a ${random}!`)
 
-                        sleep(120000)
+                        func.sleep(120000)
 
                         newState.setMute(false, `His 2 minute mute has ended.`)
                         newState.setDeaf(false, `His 2 minute mute has ended.`)
