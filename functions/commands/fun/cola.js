@@ -16,6 +16,8 @@ module.exports = {
                 let user = msg.mentions.members.first()
 
                 user.send(`__**${msg.author.username}:**__`, { files: ["./files/videos/cola.mp4"]})
+            } else if (args.length > 0 && !msg.mentions.members.first()) {
+                msg.reply('The user you mentioned is not in this guild.').then(m => m.delete({ timeout: 15000 }))
             }
         }
     }
