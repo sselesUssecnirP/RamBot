@@ -13,6 +13,8 @@ module.exports = {
 
             msg.author.fetch()
 
+            if (msg.author.id == client.user.id) return;
+
             const guildS = client.guildsColl.get(msg.guild.id) || undefined
             let userS = client.usersColl.get(msg.author.id) || undefined
 
@@ -49,8 +51,8 @@ module.exports = {
                         return;
                     }
             
-                    if (userS && cmd && guildS["permissions"]) {
-                        if (userS["permissions"][msg.guild.id])
+                    if (userS && cmd && guildS) {
+                        if (userS["permissions"][msg.guild.id] && guildS["permissions"])
                             if (!userS["permissions"][msg.guild.id][cmd.name])
                                 return msg.reply("You do not have access to this command. ||(This guild has enabled custom permissions)||")
                     }
@@ -104,8 +106,6 @@ module.exports = {
                     userS = client.usersColl.get(msg.author.id) || undefined
                 }
             }
-
-            if (msg.author.id == client.user.id) return;
 
             if (msg.author.id == dogwater && msg.content.toLowerCase().includes("dogwater")) {
                 
