@@ -7,7 +7,7 @@ const classes = require('../../classes')
 module.exports = {
     name: "count",
     category: "fun",
-    description: "Counts to the number! Use New_Number if you're restarting a count. (i.e last number = 100 so do `ram!count 100 1500 101` ... when restarting counting, you'll need to include a timeout between messages.)",
+    description: "Counts 100 from the specified number! Use New_Number if you're restarting a count. (i.e last number = 100 so do `ram!count 100 1500 101` ... when restarting counting, you'll need to include a timeout between messages.)",
     aliases: [],
     usage: "<Number> [timeout_between_messages_in_ms]",
     run: async (client, msg, args) => {
@@ -35,7 +35,7 @@ module.exports = {
         }
 
         if (number) {
-            for (let i = number; i != 100; i++) {
+            for (let i = number; i != number + 100; i++) {
                 msg.channel.send(i)
                 func.sleep(wait ? wait : 1500)
             }
