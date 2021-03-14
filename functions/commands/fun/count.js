@@ -1,7 +1,7 @@
 const func = require('../../basic');
 const { prefix, master, maid, dogwater } = require('../../../config/config.json');
 const { writeFile } = require('fs');
-const counter = require('countapi-js')
+const counter = require('countapi-js');
 const classes = require('../../classes')
 
 module.exports = {
