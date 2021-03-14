@@ -37,7 +37,7 @@ module.exports = {
         if (number) {
             for (let i = number; i != number + 100; i++) {
                 msg.channel.send(i)
-                func.sleep(wait ? wait : 1500)
+                await func.sleep(wait ? wait : 1500)
             }
 
         }
