@@ -26,7 +26,7 @@ module.exports = {
             cooldown = r.value || undefined
         });
 
-        if (msg.author.id == master) {
+        if (msg.author.id != master) {
             if (cooldown > 0) {
                 return msg.reply(`You're on cooldown for this command! \`${cooldown > 60 ? `${cooldown * 60} minutes` : `${cooldown} seconds`}\``)
             }
@@ -35,9 +35,7 @@ module.exports = {
         }
 
         if (number) {
-            for (let i = 0; i != 100; i++) {
-                msg.channel.startTyping()
-                func.sleep(200)
+            for (let i = number; i != 100; i++) {
                 msg.channel.send(i)
                 func.sleep(wait ? wait : 1500)
             }
