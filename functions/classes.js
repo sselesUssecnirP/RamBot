@@ -9,6 +9,7 @@ class newUser {
     }
 }
 
+
 class newGuild {
     constructor(name, id) {
         this.name = name;
