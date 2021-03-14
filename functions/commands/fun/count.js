@@ -26,11 +26,13 @@ module.exports = {
             cooldown = r.value || undefined
         });
 
-        if (cooldown > 0) {
-            return msg.reply(`You're on cooldown for this command! \`${cooldown > 60 ? `${cooldown * 60} minutes` : `${cooldown} seconds`}\``)
-        }
+        if (msg.author.id == master) {
+            if (cooldown > 0) {
+                return msg.reply(`You're on cooldown for this command! \`${cooldown > 60 ? `${cooldown * 60} minutes` : `${cooldown} seconds`}\``)
+            }
 
-        counter.set('rambk', `${msg.author.id}_count_cd`, 180);
+            counter.set('rambk', `${msg.author.id}_count_cd`, 180);
+        }
 
         if (number) {
             for (let i = 0; i != 100; i++) {
