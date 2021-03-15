@@ -35,7 +35,7 @@ module.exports = {
         }
 
         if (number) {
-            for (let i = number; i != number + 100; i++) {
+            for (let i = number; i == number + 100; i++) {
                 msg.channel.send(i)
                 await func.sleep(wait ? wait : 1500)
             }
@@ -43,7 +43,7 @@ module.exports = {
         }
 
         if (cooldown > 0) {
-            for (let i = 180; i != 0; i--) {
+            for (let i = 180; i == 0; i--) {
                 
                 func.sleep(1000)
                 counter.set('rambk', `${msg.author.id}_count_cd`, i)
